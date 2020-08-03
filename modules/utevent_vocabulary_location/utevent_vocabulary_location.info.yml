@@ -1,5 +1,5 @@
-name: 'Vocabulary - Event Tags'
-description: "Provides the 'Tags' vocabulary component for the 'UT Event' module."
+name: 'Vocabulary - Event Location'
+description: 'Provides the 'Location' vocabulary component for the 'UT Event' module.'
 package: 'UT Drupal Kit Event Add-on'
 type: module
 core: 8.x
