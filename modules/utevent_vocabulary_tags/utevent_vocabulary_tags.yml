@@ -1,6 +1,6 @@
 name: 'Vocabulary - Event Tags'
 description: "Provides the 'Tags' vocabulary component for the 'UT Event' module.\r\n"
-package: 'UT Drupal Kit Events Add-on'
+package: 'UT Drupal Kit Event Add-on'
 type: module
 core: 8.x
 core_version_requirement: ^8 || ^9
