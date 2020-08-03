@@ -13,8 +13,7 @@
     "source": "https://github.austin.utexas.edu/eis1-wcs/utevent"
   },
   "require": {
-    "composer/installers": "~1.0",
-    "utexas/utdk_profile": "^3.0.0-beta.4 || dev-develop"
+    "composer/installers": "~1.0"
   },
   "config": {
     "sort-packages": true
