@@ -16,7 +16,7 @@ dependencies:
   - drupal:taxonomy
   - drupal:text
   - drupal:user
-  - utevent_vocabulary_location
-  - utevent_vocabulary_tags
+  - utevent:utevent_vocabulary_location
+  - utevent:utevent_vocabulary_tags
   - utexas_media_types:utexas_media_types
 package: 'UT Drupal Kit Event Add-on'
