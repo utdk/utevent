@@ -13,6 +13,17 @@ use Symfony\Component\Yaml\Yaml;
  * Implements hook_install().
  */
 function utevent_content_type_event_install() {
+  $modules_to_install = [
+    'metatag_twitter_cards',
+    'metatag_open_graph',
+    'schema_metatag',
+    'schema_event',
+  ];
+  foreach ($modules_to_install as $module) {
+    if (\Drupal::moduleHandler()->moduleExists($module) === FALSE) {
+      \Drupal::service('module_installer')->install([$module]);
+    }
+  }
   // Import default configuration that can subsequently be managed by sites.
   // For SaaS-type sites to inherit changes to this configuration, an update
   // hook needs to be added that will programmatically load the configuration
