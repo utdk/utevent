@@ -10,7 +10,7 @@ field_name: field_utevent_location
 entity_type: node
 bundle: utevent_event
 label: Location
-description: 'The location will appear on the event page'
+description: 'The location will appear on the event page.'
 required: false
 translatable: false
 default_value: {  }
