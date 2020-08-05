@@ -19,9 +19,9 @@ class ListingPageConfig extends UteventConfigurationForm {
     $form['page_title'] = [
       '#title' => $this->t('Event listing page title'),
       '#type' => 'textfield',
-      '#default_value' => $default_title ?? 'Event',
+      '#default_value' => $default_title ?? 'Events',
       '#description' => $this->t('Displayed on <a href=":link">:link</a>.', [
-        ':link' => \Drupal::request()->getSchemeAndHttpHost() . '/event',
+        ':link' => \Drupal::request()->getSchemeAndHttpHost() . '/events',
       ]),
     ];
     // Remove message from UteventConfigurationForm default which states
