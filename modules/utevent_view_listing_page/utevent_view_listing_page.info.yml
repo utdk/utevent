@@ -6,4 +6,5 @@ core: 8.x
 core_version_requirement: '^8 || ^9'
 dependencies:
   - 'utevent:utevent'
+  - 'utevent:utevent_content_type_event'
 core_incompatible: false
