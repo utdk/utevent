@@ -16,3 +16,21 @@ function utevent_view_listing_page_form_utevent_general_config_alter(&$form, For
   // Alter the general config form to include an the listing page title.
   \Drupal::classResolver(ListingPageConfig::class)->alterForm($form, $form_state, $form_id);
 }
+
+/**
+ * Implements hook_views_post_render().
+ */
+function utevent_view_listing_page_views_post_render(ViewExecutable $view) {
+  // Set the page title based on editor-provided value.
+  if ($view->id() !== 'utevent_listing_page') {
+    return;
+  }
+  $config = \Drupal::config('utevent_view_listing_page.config');
+  if ($title = $config->get('page_title')) {
+    // Set the view title.
+    $view->setTitle($title);
+    // Set the route title.
+    $route = \Drupal::routeMatch()->getCurrentRouteMatch()->getRouteObject();
+    $route->setDefault('_title', $title);
+  }
+}
