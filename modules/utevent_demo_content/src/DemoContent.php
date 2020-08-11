@@ -19,7 +19,7 @@ class DemoContent {
    * Main function to create curated event nodes.
    */
   public static function createDemoContent() {
-    $event_tags = ['Special Event', 'Lecture Series'];
+    $event_tags = ['Demo Tag 1', 'Demo Tag 2'];
     $weight = 0;
     foreach ($event_tags as $term) {
       Term::create([
@@ -29,7 +29,7 @@ class DemoContent {
       ])->save();
       $weight++;
     }
-    $event_locations = ['Erwin Center', 'Main Mall'];
+    $event_locations = ['Demo Location 1', 'Demo Location 2'];
     $weight = 0;
     foreach ($event_locations as $term) {
       Term::create([
