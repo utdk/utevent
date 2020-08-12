@@ -138,8 +138,8 @@ class DemoData {
         'field_utevent_tags' => ['Demo Tag 1'],
         'field_utevent_status' => ['value' => 'EventScheduled'],
         'field_utevent_datetime' => [
-          'value' => strtotime('+2 days midnight + 9 hours + 30 minutes'),
-          'end_value' => strtotime('+2 days midnight + 10 hours'),
+          'value' => strtotime('next Monday midnight + 9 hours + 30 minutes'),
+          'end_value' => strtotime('next Monday midnight + 10 hours'),
           'duration' => '30',
           'rrule' => $everyMondayFiveTimes->id(),
         ],
