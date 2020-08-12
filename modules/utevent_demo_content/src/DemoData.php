@@ -55,7 +55,7 @@ class DemoData {
           'value' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
           'summary' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         ],
-        'field_utevent_location' => ['Demo Location 1', 'Demo Location 2'],
+        'field_utevent_location' => ['Demo Location 1'],
         'field_utevent_tags' => ['Demo Tag 1', 'Demo Tag 2'],
         'field_utevent_featured' => ['value' => TRUE],
         'field_utevent_status' => ['value' => 'EventMovedOnline'],
