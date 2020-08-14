@@ -138,10 +138,36 @@ class DemoData {
         'field_utevent_tags' => ['Demo Tag 1'],
         'field_utevent_status' => ['value' => 'EventScheduled'],
         'field_utevent_datetime' => [
-          'value' => strtotime('next Monday midnight + 9 hours + 30 minutes'),
-          'end_value' => strtotime('next Monday midnight + 10 hours'),
-          'duration' => '30',
-          'rrule' => $everyMondayFiveTimes->id(),
+          0 => [
+            'value' => strtotime('next Monday midnight + 9 hours + 30 minutes'),
+            'end_value' => strtotime('next Monday midnight + 10 hours'),
+            'duration' => '30',
+            'rrule' => $everyMondayFiveTimes->id(),
+          ],
+          1 => [
+            'value' => strtotime('next Monday midnight + 1 week + 9 hours + 30 minutes'),
+            'end_value' => strtotime('next Monday midnight + 1 week + 10 hours'),
+            'duration' => '30',
+            'rrule' => $everyMondayFiveTimes->id(),
+          ],
+          2 => [
+            'value' => strtotime('next Monday midnight + 2 weeks + 9 hours + 30 minutes'),
+            'end_value' => strtotime('next Monday midnight + 2 weeks + 10 hours'),
+            'duration' => '30',
+            'rrule' => $everyMondayFiveTimes->id(),
+          ],
+          3 => [
+            'value' => strtotime('next Monday midnight + 3 weeks + 9 hours + 30 minutes'),
+            'end_value' => strtotime('next Monday midnight + 3 weeks + 10 hours'),
+            'duration' => '30',
+            'rrule' => $everyMondayFiveTimes->id(),
+          ],
+          4 => [
+            'value' => strtotime('next Monday midnight + 4 weeks + 9 hours + 30 minutes'),
+            'end_value' => strtotime('next Monday midnight + 4 weeks + 10 hours'),
+            'duration' => '30',
+            'rrule' => $everyMondayFiveTimes->id(),
+          ],
         ],
       ],
       'Recurring, starting 2 weeks in the future and going every day for 7 days' => [
@@ -155,10 +181,48 @@ class DemoData {
         'field_utevent_tags' => ['Demo Tag 2'],
         'field_utevent_status' => ['value' => 'EventScheduled'],
         'field_utevent_datetime' => [
-          'value' => strtotime('+2 weeks midnight'),
-          'end_value' => strtotime('+2 weeks +1 day midnight') - 60,
-          'duration' => '1439',
-          'rrule' => $sevenDays->id(),
+          0 => [
+            'value' => strtotime('+2 weeks midnight'),
+            'end_value' => strtotime('+2 weeks +1 day midnight') - 60,
+            'duration' => '1439',
+            'rrule' => $sevenDays->id(),
+          ],
+          1 => [
+            'value' => strtotime('+2 weeks +1 day midnight'),
+            'end_value' => strtotime('+2 weeks +2 days midnight') - 60,
+            'duration' => '1439',
+            'rrule' => $sevenDays->id(),
+          ],
+          2 => [
+            'value' => strtotime('+2 weeks +2 days midnight'),
+            'end_value' => strtotime('+2 weeks +3 days midnight') - 60,
+            'duration' => '1439',
+            'rrule' => $sevenDays->id(),
+          ],
+          3 => [
+            'value' => strtotime('+2 weeks +3 days midnight'),
+            'end_value' => strtotime('+2 weeks +4 days midnight') - 60,
+            'duration' => '1439',
+            'rrule' => $sevenDays->id(),
+          ],
+          4 => [
+            'value' => strtotime('+2 weeks +4 days midnight'),
+            'end_value' => strtotime('+2 weeks +5 days midnight') - 60,
+            'duration' => '1439',
+            'rrule' => $sevenDays->id(),
+          ],
+          5 => [
+            'value' => strtotime('+2 weeks +5 days midnight'),
+            'end_value' => strtotime('+2 weeks +6 days midnight') - 60,
+            'duration' => '1439',
+            'rrule' => $sevenDays->id(),
+          ],
+          6 => [
+            'value' => strtotime('+2 weeks +6 days midnight'),
+            'end_value' => strtotime('+2 weeks +7 days midnight') - 60,
+            'duration' => '1439',
+            'rrule' => $sevenDays->id(),
+          ],
         ],
       ],
       'Single occurrence, 3 weeks in the future, spanning two days' => [
