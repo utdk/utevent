@@ -14,7 +14,7 @@
   },
   "require": {
     "composer/installers": "~1.0",
-    "drupal/smart_date" : "3.0.0-alpha2"
+    "drupal/smart_date" : "3.0.0-beta1"
   },
   "config": {
     "sort-packages": true
