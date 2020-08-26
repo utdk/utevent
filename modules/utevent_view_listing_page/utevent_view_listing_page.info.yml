@@ -15,6 +15,5 @@ dependencies:
   - 'drupal:views'
   - 'utevent:utevent'
   - 'utevent:utevent_content_type_event'
-  - 'utevent_content_type_event'
-  - 'utexas_image_styles'
+  - 'utexas:utexas_image_styles'
 core_incompatible: false
