@@ -408,7 +408,7 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: smartdate_recurring
+          type: utevent_smartdate_recurring
           settings:
             timezone_override: ''
             format: default
