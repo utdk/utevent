@@ -1,0 +1,7 @@
+utevent-listing-page:
+  version: 1.x
+  css:
+    theme:
+      css/listing-page.css: {}
+  dependencies:
+    - utevent_content_type_event/utevent-event-base

@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @file
+ * Module file for UTEvent listing page.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\utevent_view_listing_page\Form\ListingPageConfig;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements template_preprocess_views_view().
+ */
+function utevent_view_listing_page_preprocess_views_view(&$variables) {
+  $view = $variables['view'];
+  if ($view->storage->id() === 'utevent_listing_page') {
+    $variables['#attached']['library'][] = 'utevent_view_listing_page/utevent-listing-page';
+  }
+}
+
+/**
+ * Implements template_preprocess_views_view_field().
+ */
+function utevent_view_listing_page_preprocess_views_view_field(&$variables) {
+  $view = $variables['view'];
+  if ($view->id() == 'utevent_listing_page') {
+    // Do not display datetime narrative for non-recurring events.
+    if ($variables['field']->field == 'field_utevent_datetime' && $variables['field']->options['id'] === 'field_utevent_datetime_1') {
+      $date_object = $variables['field']->getItems($variables['row']);
+      $date_values = $date_object[0]['raw']->getValue();
+      if ($date_values['rrule'] === NULL) {
+        unset($variables['output']);
+      }
+      else {
+        $variables['output'] = strip_tags($variables['output']);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for the general config form.
+ */
+function utevent_view_listing_page_form_utevent_general_config_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Alter the general config form to include an the listing page title.
+  \Drupal::classResolver(ListingPageConfig::class)->alterForm($form, $form_state, $form_id);
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function utevent_view_listing_page_views_post_render(ViewExecutable $view) {
+  // Set the page title based on editor-provided value.
+  if ($view->id() !== 'utevent_listing_page') {
+    return;
+  }
+  $config = \Drupal::config('utevent_view_listing_page.config');
+  if ($title = $config->get('page_title')) {
+    // Set the view title.
+    $view->setTitle($title);
+    // Set the route title.
+    $route = \Drupal::routeMatch()->getCurrentRouteMatch()->getRouteObject();
+    $route->setDefault('_title', $title);
+  }
+}

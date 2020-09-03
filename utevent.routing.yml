@@ -1,0 +1,7 @@
+utevent.configuration:
+  path: '/admin/config/content/utevent'
+  defaults:
+    _form: '\Drupal\utevent\Form\UteventConfigurationForm'
+    _title: 'Event Feature'
+  requirements:
+    _permission: 'administer utevent'

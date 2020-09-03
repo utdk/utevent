@@ -1,0 +1,91 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.utevent_event.field_utevent_body
+    - field.field.node.utevent_event.field_utevent_datetime
+    - field.field.node.utevent_event.field_utevent_display_media
+    - field.field.node.utevent_event.field_utevent_featured
+    - field.field.node.utevent_event.field_utevent_location
+    - field.field.node.utevent_event.field_utevent_main_media
+    - field.field.node.utevent_event.field_utevent_metatags
+    - field.field.node.utevent_event.field_utevent_status
+    - field.field.node.utevent_event.field_utevent_tags
+    - image.style.utexas_image_style_280w_280h
+    - node.type.utevent_event
+  module:
+    - layout_builder
+    - media
+    - options
+    - text
+    - user
+    - utevent_content_type_event
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: node.utevent_event.full
+targetEntityType: node
+bundle: utevent_event
+mode: full
+content:
+  field_utevent_body:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_utevent_datetime:
+    weight: 3
+    label: above
+    settings:
+      timezone_override: ''
+      format: default
+      past_display: '100'
+      upcoming_display: '100'
+      force_chronological: 0
+      format_type: medium
+    third_party_settings: {  }
+    type: utevent_smartdate_recurring
+    region: content
+  field_utevent_location:
+    weight: 4
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_utevent_main_media:
+    type: media_thumbnail
+    weight: 1
+    label: hidden
+    settings:
+      image_style: utexas_image_style_280w_280h
+      image_link: ''
+    third_party_settings: {  }
+    region: content
+  field_utevent_status:
+    weight: 0
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_utevent_tags:
+    weight: 5
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  display_breadcrumbs: true
+  display_page_title: true
+  field_utevent_display_media: true
+  field_utevent_featured: true
+  field_utevent_metatags: true
+  links: true

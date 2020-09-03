@@ -1,0 +1,28 @@
+name: 'Content Type - Event'
+type: module
+description: 'Provides the base content type component for the Events add-on.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - breadcrumbs_visibility:breadcrumbs_visibility
+  - drupal:field
+  - drupal:media
+  - drupal:media_library
+  - drupal:menu_ui
+  - drupal:metatag
+  - drupal:node
+  - drupal:options
+  - drupal:path
+  - drupal:smart_date
+  - drupal:smart_date_recur
+  - drupal:taxonomy
+  - drupal:text
+  - drupal:user
+  - layout_builder:layout_builder
+  - page_title_visibility:page_title_visibility
+  - utevent:utevent_vocabulary_location
+  - utevent:utevent_vocabulary_tags
+  - utexas:utexas_image_styles
+  - utexas:utexas_media_types
+  - utexas_media_types:utexas_media_types
+package: 'UT Drupal Kit Event Add-on'

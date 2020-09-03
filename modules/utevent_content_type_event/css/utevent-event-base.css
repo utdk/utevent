@@ -1,0 +1,47 @@
+.utevent-event__content {
+  display: flex;
+  margin-left: -3vw;
+  margin-bottom: -2rem;
+}
+.utevent-event__content > * {
+  margin: 0 0 2rem 3vw;
+}
+
+.utevent-event-field__item > p:last-of-type {
+  margin-bottom:0;
+}
+
+.utevent-event-field--field-utevent-status .utevent-event-field__item {
+  background-color: #333f48;
+  border: 1px solid;
+  color: #fff;
+  display: inline-block;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 600;
+  padding: 8px 10px;
+}
+
+/* Styles used to visually hide status field when value is "scheduled" */
+.utevent-event-field--status-scheduled {
+  margin: 0;
+  padding: 0;
+}
+/** Based on core hidden.module.css */
+.utevent-event-field__item--scheduled {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+/** Based on core hidden.module.css */
+.utevent-event-field__item--scheduled:active,
+.utevent-event-field__item--scheduled:focus {
+  position: static !important;
+  clip: auto;
+  overflow: visible;
+  height: auto;
+  width: auto;
+}
