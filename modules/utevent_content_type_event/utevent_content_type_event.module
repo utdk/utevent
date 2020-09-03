@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @file
+ * Contains utevent content type .module file.
+ */
+
+use Drupal\utevent_content_type_event\EventContentTypeHelper;
+
+/**
+ * Contains utevent Event content type .module file.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function utevent_content_type_event_theme() {
+  return [
+    'node__utevent_event' => [
+      'template' => 'node--utevent-event',
+      'base hook' => 'node',
+    ],
+    'node__utevent_event__full' => [
+      'template' => 'node--utevent-event--full',
+      'base hook' => 'node',
+    ],
+    'node__utevent_event__teaser' => [
+      'template' => 'node--utevent-event--teaser',
+      'base hook' => 'node',
+    ],
+    'field__node__utevent_event' => [
+      'template' => 'field--node--utevent-event',
+      'base hook' => 'field',
+    ],
+    'field__node__field_utevent_main_media' => [
+      'template' => 'field--node--field-utevent-main-media',
+      'base hook' => 'field',
+    ],
+    'field__node__field_utevent_status' => [
+      'template' => 'field--node--field-utevent-status',
+      'base hook' => 'field',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function utevent_content_type_event_theme_suggestions_field(array $variables) {
+
+  $suggestions = [];
+
+  $element = $variables['element'];
+
+  $field_name = $element['#field_name'];
+  $view_mode = $element['#view_mode'];
+  $entity_type = $element['#entity_type'];
+  $bundle = $element['#bundle'];
+
+  $suggestions[] = 'field__' . $field_name . '__' . $view_mode;
+  $suggestions[] = 'field__' . $entity_type . '__' . $field_name . '__' . $view_mode;
+  $suggestions[] = 'field__' . $entity_type . '__' . $bundle . '__' . $field_name . '__' . $view_mode;
+
+  return $suggestions;
+}

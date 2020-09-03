@@ -2,6 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.full
     - field.field.node.utevent_event.field_utevent_body
     - field.field.node.utevent_event.field_utevent_datetime
     - field.field.node.utevent_event.field_utevent_display_media
@@ -14,15 +15,20 @@ dependencies:
     - image.style.utexas_image_style_280w_280h
     - node.type.utevent_event
   module:
+    - layout_builder
     - media
     - options
     - text
     - user
     - utevent_content_type_event
-id: node.utevent_event.default
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: node.utevent_event.full
 targetEntityType: node
 bundle: utevent_event
-mode: default
+mode: full
 content:
   field_utevent_body:
     weight: 2
@@ -46,7 +52,7 @@ content:
     region: content
   field_utevent_location:
     weight: 4
-    label: visually_hidden
+    label: above
     settings:
       link: false
     third_party_settings: {  }

@@ -2,15 +2,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_utevent_tags
-    - node.type.utevent_event
+    - block_content.type.utevent_event_listing
+    - field.storage.block_content.field_utevent_event_tags
     - taxonomy.vocabulary.utevent_tags
-id: node.utevent_event.field_utevent_tags
-field_name: field_utevent_tags
-entity_type: node
-bundle: utevent_event
-label: 'Event tags'
-description: 'Event tags are displayed on the event page and can be used as a filter in lists of events.'
+id: block_content.utevent_event_listing.field_utevent_event_tags
+field_name: field_utevent_event_tags
+entity_type: block_content
+bundle: utevent_event_listing
+label: 'Limit to events with the following tag(s):'
+description: ''
 required: false
 translatable: false
 default_value: {  }

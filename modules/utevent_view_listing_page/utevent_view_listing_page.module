@@ -10,6 +10,36 @@ use Drupal\utevent_view_listing_page\Form\ListingPageConfig;
 use Drupal\views\ViewExecutable;
 
 /**
+ * Implements template_preprocess_views_view().
+ */
+function utevent_view_listing_page_preprocess_views_view(&$variables) {
+  $view = $variables['view'];
+  if ($view->storage->id() === 'utevent_listing_page') {
+    $variables['#attached']['library'][] = 'utevent_view_listing_page/utevent-listing-page';
+  }
+}
+
+/**
+ * Implements template_preprocess_views_view_field().
+ */
+function utevent_view_listing_page_preprocess_views_view_field(&$variables) {
+  $view = $variables['view'];
+  if ($view->id() == 'utevent_listing_page') {
+    // Do not display datetime narrative for non-recurring events.
+    if ($variables['field']->field == 'field_utevent_datetime' && $variables['field']->options['id'] === 'field_utevent_datetime_1') {
+      $date_object = $variables['field']->getItems($variables['row']);
+      $date_values = $date_object[0]['raw']->getValue();
+      if ($date_values['rrule'] === NULL) {
+        unset($variables['output']);
+      }
+      else {
+        $variables['output'] = strip_tags($variables['output']);
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter() for the general config form.
  */
 function utevent_view_listing_page_form_utevent_general_config_alter(&$form, FormStateInterface $form_state, $form_id) {
