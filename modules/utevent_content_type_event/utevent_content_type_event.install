@@ -52,3 +52,13 @@ function utevent_content_type_event_uninstall() {
     $pattern->delete();
   }
 }
+
+/**
+ * Import upcoming and listing views with time sensitive cache plugin.
+ */
+function utevent_content_type_event_update_8101() {
+  \Drupal::service('features.manager')->import([
+    'utevent_block_type_event_listing',
+    'utevent_view_listing_page',
+  ], TRUE);
+}
