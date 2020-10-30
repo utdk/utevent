@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Event block listing installation file.
+ */
+
+/**
+ * Add ut-copy class to body field wrapper in listing block display.
+ */
+function utevent_block_type_event_listing_update_8101() {
+  \Drupal::service('features.manager')->import([
+    'utevent_block_type_event_listing',
+  ], TRUE);
+}
