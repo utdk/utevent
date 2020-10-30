@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Event listing page installation file.
+ */
+
+/**
+ * Add time sensitive cache plugin.
+ */
+function utevent_view_listing_page_update_8101() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
+
+/**
+ * Add ut-copy class to body field wrapper in listing page display.
+ */
+function utevent_view_listing_page_update_8102() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}

@@ -40,6 +40,10 @@ function utevent_content_type_event_theme() {
       'template' => 'field--node--field-utevent-status',
       'base hook' => 'field',
     ],
+    'field__node__field_utevent_body' => [
+      'template' => 'field--node--field-utevent-body',
+      'base hook' => 'field',
+    ],
   ];
 }
 
