@@ -6,11 +6,18 @@
  */
 
 /**
- * Add ut-copy class to body field wrapper in listing block display.
- *
  * Add time sensitive cache plugin.
  */
 function utevent_block_type_event_listing_update_8101() {
+  \Drupal::service('features.manager')->import([
+    'utevent_block_type_event_listing',
+  ], TRUE);
+}
+
+/**
+ * Add ut-copy class to body field wrapper in listing block display.
+ */
+function utevent_block_type_event_listing_update_8102() {
   \Drupal::service('features.manager')->import([
     'utevent_block_type_event_listing',
   ], TRUE);
