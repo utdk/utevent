@@ -2,7 +2,7 @@
 
 namespace Drupal\utevent\Plugin\views\cache;
 
-use Drupal\views\Plugin\views\cache\Tag;
+use Drupal\views\Plugin\views\cache\None;
 
 /**
  * Date-sensitive caching of query results for Views displays.
@@ -15,7 +15,7 @@ use Drupal\views\Plugin\views\cache\Tag;
  * help = @Translation("Tag-based caching of date-sensitive data. Caches will be cleared on each new day.")
  * )
  */
-class DateSensitiveTag extends Tag {
+class DateSensitiveTag extends None {
 
   /**
    * {@inheritdoc}
