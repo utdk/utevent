@@ -7,6 +7,8 @@
 
 /**
  * Add ut-copy class to body field wrapper in listing page display.
+ *
+ * Add time sensitive cache plugin.
  */
 function utevent_view_listing_page_update_8101() {
   \Drupal::service('features.manager')->import([
