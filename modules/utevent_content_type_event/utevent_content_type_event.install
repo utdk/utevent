@@ -62,3 +62,13 @@ function utevent_content_type_event_update_8101() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Add ut-copy class to body field wrapper in listing block and page displays.
+ */
+function utevent_content_type_event_update_8102() {
+  \Drupal::service('features.manager')->import([
+    'utevent_block_type_event_listing',
+    'utevent_view_listing_page',
+  ], TRUE);
+}
