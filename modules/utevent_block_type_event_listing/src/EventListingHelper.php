@@ -46,10 +46,10 @@ class EventListingHelper {
    */
   public static function generateFilters(BlockContent $block_content) {
     $user_defined_filters['field_utevent_location_target_id'] = [];
-    $user_defined_filters['field_utevent_event_tags_target_id'] = [];
+    $user_defined_filters['field_utevent_tags_target_id'] = [];
 
-    if ($block_content->hasField('field_utevent_location')) {
-      $groups = $block_content->get('field_utevent_location')->getValue();
+    if ($block_content->hasField('field_utevent_event_location')) {
+      $groups = $block_content->get('field_utevent_event_location')->getValue();
       foreach ($groups as $group) {
         $target_id = $group['target_id'];
         if (\Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($target_id)) {
@@ -62,7 +62,7 @@ class EventListingHelper {
       foreach ($groups as $group) {
         $target_id = $group['target_id'];
         if (\Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($target_id)) {
-          $user_defined_filters['field_utevent_event_tags_target_id'][] = $target_id;
+          $user_defined_filters['field_utevent_tags_target_id'][] = $target_id;
         }
       }
     }

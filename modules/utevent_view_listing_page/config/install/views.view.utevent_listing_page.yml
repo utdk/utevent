@@ -14,9 +14,10 @@ dependencies:
     - node
     - options
     - smart_date
-    - smart_date_recur
     - text
     - user
+    - utevent
+    - utevent_content_type_event
 id: utevent_listing_page
 label: 'Events Listing Page'
 module: views
@@ -36,7 +37,7 @@ display:
         options:
           perm: 'access content'
       cache:
-        type: tag
+        type: utevent_date_sensitive_tag
         options: {  }
       query:
         type: views_query
@@ -531,7 +532,7 @@ display:
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: ''
+          element_wrapper_class: ut-copy
           element_default_classes: true
           empty: 'no results'
           hide_empty: false

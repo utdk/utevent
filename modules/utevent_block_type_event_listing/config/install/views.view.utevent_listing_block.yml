@@ -19,6 +19,7 @@ dependencies:
     - taxonomy
     - text
     - user
+    - utevent
     - utevent_content_type_event
 id: utevent_listing_block
 label: 'Event listing block'
@@ -39,7 +40,7 @@ display:
         options:
           perm: 'access content'
       cache:
-        type: none
+        type: utevent_date_sensitive_tag
         options: {  }
       query:
         type: views_query
@@ -518,7 +519,7 @@ display:
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: ''
+          element_wrapper_class: ut-copy
           element_default_classes: true
           empty: ''
           hide_empty: false
