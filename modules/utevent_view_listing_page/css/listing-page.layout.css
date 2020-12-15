@@ -1,0 +1,11 @@
+/* Styles for Event Listing page views grid*/
+.utevent-listing-page .views-row {
+  border-top: 1px solid #d6d6d6;
+  padding-top: 30px;
+  margin-bottom: 32px;
+}
+.utevent-listing-page .views-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

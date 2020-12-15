@@ -1,14 +1,4 @@
-/* Styles for events listing page */
-.utevent-listing-page .views-row {
-  border-top: 1px solid #d6d6d6;
-  padding-top: 30px;
-  margin-bottom: 32px;
-}
-.utevent-listing-page .views-row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+/* Styles for Event Listing page views fields */
 .utevent-listing-page .views-field-title {
   font-size: 1.5rem;
 }
@@ -30,13 +20,4 @@
 }
 .utevent-listing-page .views-field-field-utevent-body p {
   margin-bottom: 0;
-}
-/** Based on core hidden.module.css */
-.utevent-listing-page .utevent-event-field--field-utevent-status .field__label {
-  position: absolute !important;
-  clip: rect(1px, 1px, 1px, 1px);
-  overflow: hidden;
-  height: 1px;
-  width: 1px;
-  word-wrap: normal;
 }

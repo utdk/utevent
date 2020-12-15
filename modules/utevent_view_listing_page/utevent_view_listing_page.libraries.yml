@@ -1,7 +1,11 @@
 utevent-listing-page:
-  version: 1.x
+  version: VERSION
   css:
-    theme:
-      css/listing-page.css: {}
+    layout:
+      css/listing-page.layout.css: {}
+    component:
+      css/listing-page.module.css: {}
+    state:
+      css/listing-page.state.css: {}
   dependencies:
     - utevent_content_type_event/utevent-event-base
