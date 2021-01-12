@@ -1,0 +1,10 @@
+/* Styles for Event Listing views field states */
+/** Based on core hidden.module.css */
+.utevent-listing-block .views-field-field-utevent-status .field__label {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
