@@ -8,6 +8,7 @@
 use Drupal\pathauto\Entity\PathautoPattern;
 use Drupal\metatag\Entity\MetatagDefaults;
 use Drupal\utexas_layout_builder_styles\StyleUpdateHelper;
+use Drupal\utevent\Permissions;
 
 use Symfony\Component\Yaml\Yaml;
 
@@ -41,6 +42,11 @@ function utevent_content_type_event_install() {
     $data = Yaml::parse(file_get_contents($config_path));
     \Drupal::configFactory()->getEditable($configuration)->setData($data)->save(TRUE);
   }
+
+  // Add standard permissions to "utexas_site_manager" & "utexas_content_editor"
+  // if those roles exist.
+  Permissions::assignPermissions('editor', 'utexas_content_editor');
+  Permissions::assignPermissions('manager', 'utexas_site_manager');
 }
 
 /**
