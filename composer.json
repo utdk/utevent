@@ -5,7 +5,7 @@
   "keywords": [
     "Drupal"
   ],
-  "license": "GPL-2.0-or-later",
+  "license": ["GPL-2.0-or-later"],
   "homepage": "https://github.austin.utexas.edu/eis1-wcs/utevent",
   "minimum-stability": "dev",
   "support": {
