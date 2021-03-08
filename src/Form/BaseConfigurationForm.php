@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Configure settings for the utevent module.
  */
-class UteventConfigurationForm extends ConfigFormBase {
+class BaseConfigurationForm extends ConfigFormBase {
 
   /**
    * The Config Factory.
@@ -69,6 +69,9 @@ class UteventConfigurationForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+
+    $form['intro']['#markup'] = $this->t('<h3>Introduction</h3><p>The Event add-on provides the ability to create single and recurring events that can be viewed individually and within listing blocks or the event page (<a href="/events">/events</a>). Full documentation can be found at <a href="https://drupalkit.its.utexas.edu/docs/content/events.html">https://drupalkit.its.utexas.edu/docs/content/events.html</a>.</p><p>Permissions associated with this add-on can be assigned to site roles via the <a href="/admin/config/content/utevent/permissions">Permissions configuration</a> tab.');
+
     return parent::buildForm($form, $form_state);
   }
 

@@ -4,12 +4,12 @@ namespace Drupal\utevent_view_listing_page\Form;
 
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\utevent\Form\UteventConfigurationForm;
+use Drupal\utevent\Form\BaseConfigurationForm;
 
 /**
  * Supplement form UI to add setting for which blocks & layouts are available.
  */
-class ListingPageConfig extends UteventConfigurationForm {
+class ListingPageConfig extends BaseConfigurationForm {
 
   /**
    * The actual form elements.
@@ -24,9 +24,6 @@ class ListingPageConfig extends UteventConfigurationForm {
         ':link' => \Drupal::request()->getSchemeAndHttpHost() . '/events',
       ]),
     ];
-    // Remove message from UteventConfigurationForm default which states
-    // there is no configuration available.
-    unset($form['placeholder']);
 
     $form['#submit'][] = [$this, 'submitListingConfig'];
   }
