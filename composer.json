@@ -1,7 +1,7 @@
 {
   "name": "utexas/utevent",
   "type": "drupal-module",
-  "description": "UTexas-focused feature to provide a generalized 'Events' content type and supporting components",
+  "description": "Drupal module that provides an event content type and supporting components for use with the UT Drupal Kit.",
   "keywords": [
     "Drupal"
   ],
