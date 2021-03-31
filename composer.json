@@ -1,6 +1,6 @@
 {
   "name": "utexas/utevent",
-  "type": "drupal-module",
+  "type": "drupal-custom-odule",
   "description": "Drupal module that provides an event content type and supporting components for use with the UT Drupal Kit.",
   "keywords": [
     "Drupal"
