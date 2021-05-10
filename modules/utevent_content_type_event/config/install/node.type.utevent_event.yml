@@ -12,6 +12,6 @@ name: Event
 type: utevent_event
 description: 'Use <em>events</em> to publicize your organization''s events.'
 help: ''
-new_revision: false
+new_revision: true
 preview_mode: 1
 display_submitted: true

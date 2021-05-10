@@ -1,11 +1,13 @@
 {
   "name": "utexas/utevent",
-  "type": "drupal-module",
-  "description": "UTexas-focused feature to provide a generalized 'Events' content type and supporting components",
+  "type": "drupal-custom-module",
+  "description": "Drupal module that provides an event content type and supporting components for use with the UT Drupal Kit.",
   "keywords": [
     "Drupal"
   ],
-  "license": ["GPL-2.0-or-later"],
+  "license": [
+    "GPL-2.0-or-later"
+  ],
   "homepage": "https://github.austin.utexas.edu/eis1-wcs/utevent",
   "minimum-stability": "dev",
   "support": {
@@ -13,8 +15,8 @@
     "source": "https://github.austin.utexas.edu/eis1-wcs/utevent"
   },
   "require": {
-    "drupal/smart_date": "3.1.1",
-    "utexas/utdk_profile": "^3.0.0-beta.7 || dev-develop"
+    "drupal/smart_date": "3.2.0",
+    "utexas/utdk_profile": "^3.0.0 || dev-develop"
   },
   "config": {
     "sort-packages": true

@@ -67,3 +67,14 @@ function utevent_content_type_event_uninstall() {
 function utevent_content_type_event_update_8101() {
   StyleUpdateHelper::modifyConfigValue('field.storage.node.field_utevent_tags', 'cardinality', '-1');
 }
+
+/**
+ * Set content type to revision by default (Issue #104).
+ */
+function utevent_content_type_event_update_8102() {
+  $config = \Drupal::service('config.factory')->getEditable('node.type.utevent_event');
+  if ($config->get('new_revision') != TRUE) {
+    $config->set('new_revision', TRUE);
+    $config->save();
+  }
+}
