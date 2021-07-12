@@ -6,6 +6,7 @@ use Drupal\Core\Routing\Access\AccessInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Access\AccessResult;
+use Drupal\node\NodeTypeInterface;
 use Drupal\utevent_readonly\ReadOnlyHelper;
 
 /**
@@ -66,7 +67,12 @@ class EventReadOnlyAccess implements AccessInterface {
       $id = $bundle;
     }
     elseif ($node_type = $this->routeMatch->getParameter('node_type')) {
-      $id = $node_type->id();
+      if (is_string($node_type)) {
+        $id = $node_type;
+      }
+      elseif ($node_type instanceof NodeTypeInterface) {
+        $id = $node_type->id();
+      }
     }
     elseif ($block_type = $this->routeMatch->getParameter('block_content_type')) {
       $id = $block_type->id();
