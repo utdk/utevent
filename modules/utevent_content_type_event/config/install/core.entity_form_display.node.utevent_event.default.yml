@@ -43,6 +43,13 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  display_updated:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_utevent_body:
     weight: 4
     settings:
@@ -58,7 +65,12 @@ content:
     settings:
       modal: true
       default_duration: 60
-      default_duration_increments: "30\n60|1 hour\n90\n120|2 hours\ncustom"
+      default_duration_increments: |-
+        30
+        60|1 hour
+        90
+        120|2 hours
+        custom
       default_tz: ''
       custom_tz: ''
     third_party_settings: {  }

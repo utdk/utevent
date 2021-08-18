@@ -72,6 +72,7 @@ content:
 hidden:
   display_breadcrumbs: true
   display_page_title: true
+  display_updated: true
   field_utevent_body: true
   field_utevent_display_media: true
   field_utevent_featured: true
