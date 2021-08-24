@@ -16,7 +16,7 @@ tags:
   twitter_cards_page_url: '[current-page:url]'
   twitter_cards_description: '[node:field_utevent_body:summary]'
   twitter_cards_image_alt: '[node:field_utevent_main_media:entity:field_utexas_media_image:alt]'
-  twitter_cards_type: summary_large_image
+  twitter_cards_type: summary
   twitter_cards_image_height: '480'
   twitter_cards_title: '[current-page:title]'
   schema_article_main_entity_of_page: '[current-page:url]'
