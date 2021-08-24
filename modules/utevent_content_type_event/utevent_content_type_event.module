@@ -6,6 +6,7 @@
  */
 
 use Drupal\utevent_content_type_event\EventContentTypeHelper;
+use Drupal\Core\Url;
 
 /**
  * Contains utevent Event content type .module file.
@@ -66,4 +67,23 @@ function utevent_content_type_event_theme_suggestions_field(array $variables) {
   $suggestions[] = 'field__' . $entity_type . '__' . $bundle . '__' . $field_name . '__' . $view_mode;
 
   return $suggestions;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function utevent_content_type_event_preprocess_node__utevent_event(&$variables) {
+  // Validate if there's a link value for the Event location field.
+  if (isset($variables['content']['field_utevent_location']) &&
+  isset($variables['content']['field_utevent_location'][0]) &&
+  filter_var($variables['content']['field_utevent_location'][0]['#plain_text'], FILTER_VALIDATE_URL)) {
+    // Convert the formatter of the field to Link.
+    $variables['content']['field_utevent_location'][0]['#type'] = 'link';
+    // Set the title of the link to be the plain text value.
+    $variables['content']['field_utevent_location'][0]['#title'] = $variables['content']['field_utevent_location'][0]['#plain_text'];
+    // Generate a URL object from the plain text value.
+    $variables['content']['field_utevent_location'][0]['#url'] = Url::fromUri($variables['content']['field_utevent_location'][0]['#plain_text']);
+    // Unset the plain_text value.
+    unset($variables['content']['field_utevent_location'][0]['#plain_text']);
+  }
 }
