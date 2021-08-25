@@ -22,3 +22,12 @@ function utevent_view_listing_page_update_8102() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Enable field template for event location to make it a link.
+ */
+function utevent_view_listing_page_update_8103() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
