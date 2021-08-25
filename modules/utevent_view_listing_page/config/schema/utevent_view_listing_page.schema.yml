@@ -5,3 +5,6 @@ utevent_view_listing_page.config:
     page_title:
       type: string
       label: 'Page Title'
+    display_past_events:
+      type: int
+      label: 'Display past events'
