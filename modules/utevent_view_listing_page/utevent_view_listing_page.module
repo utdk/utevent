@@ -43,7 +43,7 @@ function utevent_view_listing_page_preprocess_views_view_field(&$variables) {
  * Implements hook_form_FORM_ID_alter() for the general config form.
  */
 function utevent_view_listing_page_form_utevent_general_config_alter(&$form, FormStateInterface $form_state, $form_id) {
-  // Alter the general config form to include an the listing page title.
+  // Alter the general config form to include the listing page title.
   \Drupal::classResolver(ListingPageConfig::class)->alterForm($form, $form_state, $form_id);
 }
 
@@ -52,7 +52,7 @@ function utevent_view_listing_page_form_utevent_general_config_alter(&$form, For
  */
 function utevent_view_listing_page_views_post_render(ViewExecutable $view) {
   // Set the page title based on editor-provided value.
-  if ($view->id() !== 'utevent_listing_page') {
+  if ($view->id() !== 'utevent_listing_page' && $view->current_display !== 'upcoming') {
     return;
   }
   $config = \Drupal::config('utevent_view_listing_page.config');
@@ -62,5 +62,19 @@ function utevent_view_listing_page_views_post_render(ViewExecutable $view) {
     // Set the route title.
     $route = \Drupal::routeMatch()->getCurrentRouteMatch()->getRouteObject();
     $route->setDefault('_title', $title);
+  }
+}
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function utevent_view_listing_page_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  $config = \Drupal::config('utevent_view_listing_page.config');
+  if ($config->get('display_past_events')) {
+    return;
+  }
+  // Unset the past/upcoming toggle if past events are disabled.
+  if ($view->id() == 'utevent_listing_page' && $display_id === 'upcoming') {
+    $view->removeHandler('upcoming', 'header', 'area_text_custom');
   }
 }
