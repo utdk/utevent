@@ -82,9 +82,22 @@ function utevent_content_type_event_update_8102() {
 /**
  * Change metatag twitter_card_type to summary (Issue #124).
  */
-function utevent_content_type_event_update_8105() {
+function utevent_content_type_event_update_8103() {
   $metatag = MetatagDefaults::load('node__utevent_event');
   $tag = ['twitter_cards_type' => 'summary'];
+  $metatag->overwriteTags($tag);
+  $metatag->save();
+}
+
+/**
+ * Add schema.org location metatag (Issue #39).
+ */
+function utevent_content_type_event_update_8104() {
+  $metatag = MetatagDefaults::load('node__utevent_event');
+  $tag = ['schema_event_location' => serialize([
+    '@type' => 'Place',
+    'name' => '[node:field_utevent_location:entity:name]'
+  ])];
   $metatag->overwriteTags($tag);
   $metatag->save();
 }
