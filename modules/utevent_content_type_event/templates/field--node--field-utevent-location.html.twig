@@ -92,9 +92,9 @@
         {% block field_items_block %}
           {% for item in items %}
           {% if linked_location is defined %}
-            <div{{item.attributes.addClass('field__item', bem_block ~ '__item')}}>{{ linked_location }}</div>
+            <span{{item.attributes.addClass('field__item', bem_block ~ '__item')}}>{{ linked_location }}</span>
           {% else %}
-            <div{{item.attributes.addClass('field__item', bem_block ~ '__item')}}>{{ item.content }}</div>
+            <span{{item.attributes.addClass('field__item', bem_block ~ '__item')}}>{{ item.content }}</span>
           {% endif %}
           {% endfor %}
         {% endblock %}
@@ -106,7 +106,7 @@
     {% endif %}
   {% else %}
     <div{{attributes.addClass(classes)}}>
-      <div{{title_attributes.addClass(title_classes)}}>{{ label }}</div>
+      <span{{title_attributes.addClass(title_classes)}}>{{ label }}</span>
       {% if multiple %}
         <div class="field__items {{bem_block}}__items">
         {% endif %}
