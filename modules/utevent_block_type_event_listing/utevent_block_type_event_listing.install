@@ -84,3 +84,12 @@ function utevent_block_type_event_listing_update_8103() {
 function utevent_block_type_event_listing_update_8104() {
   StyleUpdateHelper::addStyleToBlock('utevent_event_listing', 'utexas_onecol');
 }
+
+/**
+ * Enable field template for event location to make it a link.
+ */
+function utevent_block_type_event_listing_update_8105() {
+  \Drupal::service('features.manager')->import([
+    'utevent_block_type_event_listing',
+  ], TRUE);
+}

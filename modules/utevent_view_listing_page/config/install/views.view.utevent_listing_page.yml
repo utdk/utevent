@@ -434,7 +434,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Location
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -488,7 +488,7 @@ display:
           delta_first_last: false
           multi_type: separator
           separator: ', '
-          field_api_classes: false
+          field_api_classes: true
           plugin_id: field
         field_utevent_body:
           id: field_utevent_body
