@@ -10,10 +10,14 @@
 }
 .utevent-listing-block .views-field-field-utevent-datetime {
   margin-bottom: .5rem;
+  font-style: italic;
+  line-height: 1.375;
 }
 .utevent-listing-block .views-field-field-utevent-datetime-1 {
   margin-top: -.5rem;
   margin-bottom: .5rem;
+  font-style: italic;
+  line-height: 1.375;
 }
 .utevent-listing-block .views-field-field-utevent-datetime-1 .field-content:empty {
   margin-top: 0;
@@ -25,4 +29,15 @@
 }
 .utevent-listing-block .views-field-field-utevent-body p {
   margin-bottom: 0;
+}
+.utevent__thumbnail img {
+  margin: 10px 0 5px 20px;
+}
+.views-field-title .ut-headline {
+  line-height: 1.25rem;
+}
+.views-field-field-utevent-location .utevent-event-field--field-utevent-location {
+  display: inline;
+  font-style: italic;
+  line-height: 1.375;
 }
