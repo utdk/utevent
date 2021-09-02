@@ -674,6 +674,12 @@ display:
           id: area_text_custom
           table: views
           field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: '<a href="/events" class="upcoming-btn ut-btn">Upcoming Events</a> <a href="/past-events" class="past-btn ut-btn--secondary">Past Events</a>'
           plugin_id: text_custom
       footer: {  }
       empty:
@@ -852,7 +858,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: '<a href="/events" class="ut-btn--secondary">Upcoming Events</a> <a href="/past-events" class="ut-btn">Past Events</a>'
+          content: '<a href="/events" class="upcoming-btn ut-btn--secondary">Upcoming Events</a> <a href="/past-events" class="past-btn ut-btn">Past Events</a>'
           plugin_id: text_custom
     cache_metadata:
       max-age: -1
@@ -877,20 +883,8 @@ display:
       display_extenders: {  }
       path: events
       display_description: ''
-      header:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          empty: true
-          tokenize: false
-          content: '<a href="/events" class="ut-btn">Upcoming Events</a> <a href="/past-events" class="ut-btn--secondary">Past Events</a>'
-          plugin_id: text_custom
       defaults:
-        header: false
+        header: true
     cache_metadata:
       max-age: -1
       contexts:
