@@ -31,7 +31,7 @@
   margin-bottom: 0;
 }
 .utevent__thumbnail img {
-  margin: 10px 0 5px 20px;
+  margin: 10px 0 5px 10px;
 }
 .views-field-title .ut-headline {
   line-height: 1.25rem;
@@ -40,4 +40,13 @@
   display: inline;
   font-style: italic;
   line-height: 1.375;
+}
+.utevent-listing-block .views-field-field-utevent-datetime .field-content,
+.utevent-listing-block .views-field-field-utevent-datetime-1 {
+  display: grid;
+  grid-template-columns: [col-start] 40px [col-end] auto;
+}
+.utevent-listing-block .views-field-field-utevent-datetime-1 .views-label-field-utevent-datetime-1,
+.utevent-listing-block .views-field-field-utevent-datetime-1 .field-content {
+  grid-column: col-end;
 }
