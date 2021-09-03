@@ -21,3 +21,7 @@
 .utevent-listing-page .views-field-field-utevent-body p {
   margin-bottom: 0;
 }
+.views-field-field-utevent-location .field--name-field-utevent-location {
+  margin-left: 5px;
+  display: inline;
+}

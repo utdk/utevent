@@ -298,8 +298,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '<span class="calendar-icon"></span> {{ field_utevent_datetime }}'
             make_link: false
             path: ''
             absolute: false
@@ -349,6 +349,7 @@ display:
             allday_label: 'All day'
             date_first: '1'
             ampm_reduce: 1
+            site_time_toggle: 1
           group_column: value
           group_columns: {  }
           group_rows: false
@@ -414,8 +415,11 @@ display:
             timezone_override: ''
             format: default
             force_chronological: 0
+            add_classes: 0
+            time_wrapper: 1
             past_display: '0'
             upcoming_display: '0'
+            show_next: 0
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -437,8 +441,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '<span class="location-icon"></span>{{ field_utevent_location }}'
             make_link: false
             path: ''
             absolute: false
@@ -465,9 +469,9 @@ display:
             html: false
           element_type: span
           element_class: ''
-          element_label_type: span
+          element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
