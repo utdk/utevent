@@ -5,7 +5,6 @@
  * Contains utevent content type .module file.
  */
 
-use Drupal\utevent_content_type_event\EventContentTypeHelper;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 
@@ -78,13 +77,6 @@ function utevent_content_type_event_theme_suggestions_field(array $variables) {
  * Implements hook_preprocess_HOOK().
  */
 function utevent_content_type_event_preprocess_field__node__field_utevent_location(&$variables) {
-  // Hide label by default.
-  $variables['label_hidden'] = TRUE;
-  // Validate if the current path is a node.
-  if (\Drupal::routeMatch()->getParameter('node') !== NULL) {
-    // Add label if current path is event node view.
-    $variables['label_hidden'] = \Drupal::routeMatch()->getParameter('node')->bundle() === 'utevent_event' ? FALSE : TRUE;
-  }
   // Validate that plain_text coming from the term is a link.
   if (isset($variables['items'][0]['content']['#plain_text']) && filter_var($variables['items'][0]['content']['#plain_text'], FILTER_VALIDATE_URL)) {
     // Generate a link and append it as a custom variable.
