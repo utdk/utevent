@@ -54,6 +54,7 @@
 }
 .views-field-field-utevent-location .location-icon::after {
   content: '';
+  margin-right: 5px;
   padding: 0 0.6em;
   vertical-align: middle;
   background-color: #9d4700;

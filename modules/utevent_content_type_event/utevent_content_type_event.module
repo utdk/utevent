@@ -33,10 +33,6 @@ function utevent_content_type_event_theme() {
       'template' => 'field--node--utevent-event',
       'base hook' => 'field',
     ],
-    'field__node__field_utevent_location' => [
-      'template' => 'field--node--field-utevent-location',
-      'base hook' => 'field',
-    ],
     'field__node__field_utevent_main_media' => [
       'template' => 'field--node--field-utevent-main-media',
       'base hook' => 'field',
@@ -71,15 +67,4 @@ function utevent_content_type_event_theme_suggestions_field(array $variables) {
   $suggestions[] = 'field__' . $entity_type . '__' . $bundle . '__' . $field_name . '__' . $view_mode;
 
   return $suggestions;
-}
-
-/**
- * Implements hook_preprocess_HOOK().
- */
-function utevent_content_type_event_preprocess_field__node__field_utevent_location(&$variables) {
-  // Validate that plain_text coming from the term is a link.
-  if (isset($variables['items'][0]['content']['#plain_text']) && filter_var($variables['items'][0]['content']['#plain_text'], FILTER_VALIDATE_URL)) {
-    // Generate a link and append it as a custom variable.
-    $variables['linked_location'] = Link::fromTextAndUrl($variables['items'][0]['content']['#plain_text'], Url::fromUri($variables['items'][0]['content']['#plain_text']))->toString();
-  }
 }
