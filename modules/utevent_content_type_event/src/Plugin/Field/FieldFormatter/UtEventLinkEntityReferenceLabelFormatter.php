@@ -3,6 +3,7 @@
 namespace Drupal\utevent_content_type_event\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 
@@ -39,6 +40,15 @@ class UtEventLinkEntityReferenceLabelFormatter extends EntityReferenceLabelForma
     }
 
     return $elements;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function isApplicable(FieldDefinitionInterface $field_definition) {
+    // Do not allow formatter to be used for any entities except the
+    // utevent_event node bundle.
+    return $field_definition->getTargetBundle() === 'utevent_event';
   }
 
 }
