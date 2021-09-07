@@ -275,76 +275,6 @@ display:
           separator: ', '
           field_api_classes: true
           plugin_id: field
-        field_utevent_datetime_1:
-          id: field_utevent_datetime_1
-          table: node__field_utevent_datetime
-          field: field_utevent_datetime
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Recurs
-          exclude: true
-          alter:
-            alter_text: false
-            text: '<span class="calendar-icon"></span>{{ field_utevent_datetime }} Recurs: {{ field_utevent_datetime }}'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: span
-          element_class: ''
-          element_label_type: span
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: utevent_smartdate_recurring
-          settings:
-            timezone_override: ''
-            format: default
-            force_chronological: 0
-            add_classes: 0
-            time_wrapper: 1
-            past_display: '0'
-            upcoming_display: '0'
-            show_next: 0
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ''
-          field_api_classes: false
-          plugin_id: field
         field_utevent_datetime:
           id: field_utevent_datetime
           table: node__field_utevent_datetime
@@ -356,7 +286,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<span class=\"calendar-icon\"></span>{{ field_utevent_datetime }} \r\n<span class=\"recurs-label\">Recurs: </span>{{ field_utevent_datetime_1 }}"
+            text: '<span class="calendar-icon"></span> {{ field_utevent_datetime }}'
             make_link: false
             path: ''
             absolute: false
@@ -418,6 +348,76 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        field_utevent_datetime_1:
+          id: field_utevent_datetime_1
+          table: node__field_utevent_datetime
+          field: field_utevent_datetime
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Recurs
+          exclude: false
+          alter:
+            alter_text: false
+            text: '<span class="calendar-icon"></span>{{ field_utevent_datetime }} Recurs: {{ field_utevent_datetime }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: span
+          element_class: ''
+          element_label_type: span
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: utevent_smartdate_recurring
+          settings:
+            timezone_override: ''
+            format: default
+            force_chronological: 0
+            add_classes: 0
+            time_wrapper: 1
+            past_display: '0'
+            upcoming_display: '0'
+            show_next: 0
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ''
+          field_api_classes: false
+          plugin_id: field
         field_utevent_location:
           id: field_utevent_location
           table: node__field_utevent_location
@@ -467,9 +467,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
-          type: utevent_link_entity_reference_label
+          type: entity_reference_label
           settings:
-            link: 0
+            link: false
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -479,7 +479,7 @@ display:
           delta_first_last: false
           multi_type: separator
           separator: ', '
-          field_api_classes: false
+          field_api_classes: true
           plugin_id: field
         field_utevent_body:
           id: field_utevent_body
