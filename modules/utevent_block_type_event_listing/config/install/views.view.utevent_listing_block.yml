@@ -429,7 +429,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<span class="location-icon"></span>{{ field_utevent_location }}'
+            text: '<span class="location-icon"></span><span class="location-text">{{ field_utevent_location }}</span>'
             make_link: false
             path: ''
             absolute: false
