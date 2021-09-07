@@ -42,4 +42,18 @@
 .utexas-fourcol .utevent-listing-block .views-view-grid > div {
   --ipr-grid-num-columns: 4;
 }
+
+/* Grid styles to align icons and content */
+.utevent-listing-block .views-field-field-utevent-datetime .field-content,
+.utevent-listing-block .views-field-field-utevent-location .field-content {
+  display: grid;
+  grid-template-columns: [col-start] 30px [col-end] auto;
+}
+.utevent-listing-block .views-field-field-utevent-location .field-content {
+  align-items: center;
+}
+.utevent-listing-block .views-field-field-utevent-datetime .recurring-output--wrapper {
+  grid-column: col-end;
+}
+
 /* ****************************** */
