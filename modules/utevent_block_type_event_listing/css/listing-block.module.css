@@ -18,6 +18,7 @@
   margin-bottom: .5rem;
   font-style: italic;
   line-height: 1.375;
+  margin-left: 30px;
 }
 .utevent-listing-block .views-field-field-utevent-datetime-1 .field-content:empty {
   margin-top: 0;
@@ -47,11 +48,9 @@
   display: grid;
   grid-template-columns: [col-start] 30px [col-end] auto;
 }
-.views-field-field-utevent-datetime .recurring-output--wrapper,
-.views-field-field-utevent-datetime .recurs-label {
-  grid-column: col-end;
+.utevent-listing-block .views-field-field-utevent-location .field-content {
+  align-items: center;
 }
-.utevent-listing-block .views-field-field-utevent-location .field-content .field--name-field-utevent-location .field__item {
-  vertical-align: middle;
-  vertical-align: -webkit-baseline-middle;
+.views-field-field-utevent-datetime .recurring-output--wrapper {
+  grid-column: col-end;
 }
