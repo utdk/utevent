@@ -25,4 +25,8 @@
   color: #56544e;
   margin: 0 -3px;
   border-radius: 0;
+  font-weight: normal;
+}
+.utevent-listing-page .upcoming-btn + .past-btn {
+  border-left: solid 2px #9d4700;
 }

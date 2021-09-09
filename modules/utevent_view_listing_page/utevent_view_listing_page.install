@@ -44,3 +44,12 @@ function utevent_view_listing_page_update_8104() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Update styles to include icons.
+ */
+function utevent_view_listing_page_update_8105() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
