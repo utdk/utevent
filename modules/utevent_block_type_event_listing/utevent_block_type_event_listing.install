@@ -93,3 +93,12 @@ function utevent_block_type_event_listing_update_8105() {
     'utevent_block_type_event_listing',
   ], TRUE);
 }
+
+/**
+ * Update styles to include icons.
+ */
+function utevent_block_type_event_listing_update_8106() {
+  \Drupal::service('features.manager')->import([
+    'utevent_block_type_event_listing',
+  ], TRUE);
+}
