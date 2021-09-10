@@ -14,7 +14,7 @@
 .utevent-listing-page .ut-btn:visited {
   background-color: #f2f1ed;
   border-color: #9d4700;
-  color: #9d4700;
+  color: #9d4700 !important;
   font-weight: bold;
   margin: 0 -3px;
   border-radius: 0;
