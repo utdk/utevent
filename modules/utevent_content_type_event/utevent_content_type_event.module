@@ -5,7 +5,8 @@
  * Contains utevent content type .module file.
  */
 
-use Drupal\utevent_content_type_event\EventContentTypeHelper;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
 
 /**
  * Contains utevent Event content type .module file.

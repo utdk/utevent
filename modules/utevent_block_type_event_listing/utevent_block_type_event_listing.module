@@ -63,22 +63,31 @@ function utevent_block_type_event_listing_preprocess_block(&$variables) {
 }
 
 /**
- * Implements template_preprocess_views_view_field().
+ * Implements hook_preprocess_views_view_fields().
  */
-function utevent_block_type_event_listing_preprocess_views_view_field(&$variables) {
+function utevent_block_type_event_listing_preprocess_views_view_fields(&$variables) {
   $view = $variables['view'];
-  if ($view->id() == 'utevent_listing_block') {
-    // Do not display datetime narrative for non-recurring events.
-    if ($variables['field']->field == 'field_utevent_datetime' && $variables['field']->options['id'] === 'field_utevent_datetime_1') {
-      $date_object = $variables['field']->getItems($variables['row']);
-      $date_values = $date_object[0]['raw']->getValue();
-      if ($date_values['rrule'] === NULL) {
-        unset($variables['output']);
-      }
-      else {
-        $variables['output'] = strip_tags($variables['output']);
-      }
-    }
+  if ($view->id() !== 'utevent_listing_block') {
+    return;
+  }
+
+  if (!isset($variables['fields']['field_utevent_datetime_1'])) {
+    return;
+  }
+
+  // Strip tags to get raw rendered value.
+  $variables['fields']['field_utevent_datetime_1']->content = strip_tags($variables['fields']['field_utevent_datetime_1']->content);
+
+  // Do not display datetime narrative for non-recurring events.
+  /** @var \Drupal\views\Plugin\views\field\EntityField $field_handler */
+  $field_handler = $variables['fields']['field_utevent_datetime_1']->handler;
+  $field_items = $field_handler->getItems($variables['row']);
+  $field_item = reset($field_items);
+  /** @var \Drupal\smart_date\Plugin\Field\FieldType\SmartDateItem $smart_date_item */
+  $smart_date_item = $field_item['raw'];
+  $smart_date_item_values = $smart_date_item->getValue();
+  if ($smart_date_item_values['rrule'] === NULL) {
+    unset($variables['fields']['field_utevent_datetime_1']);
   }
 }
 

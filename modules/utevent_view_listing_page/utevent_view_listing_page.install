@@ -22,3 +22,34 @@ function utevent_view_listing_page_update_8102() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Display past events.
+ */
+function utevent_view_listing_page_update_8103() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+
+  $config = \Drupal::service('config.factory')->getEditable('utevent_view_listing_page.config');
+  $config->set('display_past_events', 1);
+  $config->save();
+}
+
+/**
+ * Enable field template for event location to make it a link.
+ */
+function utevent_view_listing_page_update_8104() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
+
+/**
+ * Update styles to include icons.
+ */
+function utevent_view_listing_page_update_8105() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
