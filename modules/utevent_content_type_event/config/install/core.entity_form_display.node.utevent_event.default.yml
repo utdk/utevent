@@ -17,6 +17,7 @@ dependencies:
     - metatag
     - path
     - smart_date
+    - smart_date_recur
     - text
 id: node.utevent_event.default
 targetEntityType: node
@@ -63,7 +64,12 @@ content:
   field_utevent_datetime:
     weight: 1
     settings:
-      modal: true
+      show_extra: true
+      default_tz: ''
+      custom_tz: America/Chicago
+      hide_date: false
+      allowed_timezones: {  }
+      modal: false
       default_duration: 60
       default_duration_increments: |-
         30
@@ -71,9 +77,16 @@ content:
         90
         120|2 hours
         custom
-      default_tz: ''
-      custom_tz: ''
-    third_party_settings: {  }
+    third_party_settings:
+      smart_date_recur:
+        modal: true
+        allowed_recur_freq_values:
+          DAILY: DAILY
+          WEEKLY: WEEKLY
+          MONTHLY: MONTHLY
+          YEARLY: YEARLY
+          MINUTELY: '0'
+          HOURLY: '0'
     type: smartdate_timezone
     region: content
   field_utevent_display_media:
