@@ -15,7 +15,7 @@
     "source": "https://github.austin.utexas.edu/eis1-wcs/utevent"
   },
   "require": {
-    "drupal/smart_date": "3.4.2",
+    "drupal/smart_date": "3.4.3",
     "utexas/utdk_profile": "^3.2.0 || dev-develop"
   },
   "config": {
