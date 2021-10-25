@@ -16,7 +16,7 @@
   },
   "require": {
     "drupal/smart_date": "3.4.3",
-    "utexas/utdk_profile": "^3.2.0 || dev-develop"
+    "utexas/utdk_profile": "^3.3.0 || dev-develop"
   },
   "config": {
     "sort-packages": true
