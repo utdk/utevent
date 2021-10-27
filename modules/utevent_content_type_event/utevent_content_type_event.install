@@ -101,3 +101,12 @@ function utevent_content_type_event_update_8104() {
   $metatag->overwriteTags($tag);
   $metatag->save();
 }
+
+/**
+ * Make end date visible again (#167).
+ */
+function utevent_content_type_event_update_8105() {
+  \Drupal::service('features.manager')->import([
+    'utevent_content_type_event',
+  ], TRUE);
+}
