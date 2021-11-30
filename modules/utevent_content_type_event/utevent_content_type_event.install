@@ -110,3 +110,17 @@ function utevent_content_type_event_update_8105() {
     'utevent_content_type_event',
   ], TRUE);
 }
+
+
+/**
+ * Add to Calendar functionality (#19).
+ */
+function utevent_content_type_event_update_8106() {
+  $module = 'addtocal_augment';
+  if (\Drupal::moduleHandler()->moduleExists($module) === FALSE) {
+    \Drupal::service('module_installer')->install([$module]);
+  }
+  \Drupal::service('features.manager')->import([
+    'utevent_content_type_event',
+  ], TRUE);
+}

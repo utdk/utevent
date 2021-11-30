@@ -35,7 +35,7 @@ class UtEventSmartDateRecurrenceFormatter extends SmartDateRecurrenceFormatter {
   }
 
   /**
-   * Creates a formatted date value as a string.
+   * Creates an AP-style date as a string.
    *
    * Override method from trait.
    *
@@ -84,6 +84,39 @@ class UtEventSmartDateRecurrenceFormatter extends SmartDateRecurrenceFormatter {
     }
 
     return $output;
+  }
+
+  /**
+   * Explicitly declare support for the Date Augmenter API.
+   *
+   * Override method from trait. This is not useless.
+   *
+   * @return array
+   *   The keys and labels for the sets of configuration.
+   */
+  public function supportsDateAugmenter() {
+    return parent::supportsDateAugmenter();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getThirdPartySettings($module = NULL) {
+    if ($module) {
+      if ($module === 'date_augmenter') {
+        // Provide fallback date augmenter behavior when used
+        // without view mode declaration (Views fields).
+        if (!isset($this->thirdPartySettings[$module])) {
+          $settings = [
+            'instances' => [],
+            'rule' => [],
+          ];
+          return $settings;
+        }
+      }
+      return isset($this->thirdPartySettings[$module]) ? $this->thirdPartySettings[$module] : [];
+    }
+    return $this->thirdPartySettings;
   }
 
 }

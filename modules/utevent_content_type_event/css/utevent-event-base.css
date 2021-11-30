@@ -84,3 +84,23 @@
   -webkit-mask-size: cover;
   mask-size: cover;
 }
+
+/* Customized 'text button' style for modal trigger */
+button.addtocal-trigger {
+  color: #bf5700;
+  display: inline-block;
+  margin-left: 0.25rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+button.addtocal-trigger:hover {
+  text-decoration: underline;
+}
+button.addtocal-trigger:focus {
+  outline: 2px dotted #aeb0b5;
+  outline-offset: 3px;
+}

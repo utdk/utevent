@@ -1,0 +1,11 @@
+{%
+set classes = [
+  'add-to-calendar',
+  'modal'
+]
+%}
+{% set id = 'addtocal-' ~ random(1000..10000)|clean_id %}
+<button class="addtocal-trigger" id="{{ id }}">Add to calendar</button>
+<div{{ attributes.addClass(classes) }} data-type="add_to_cal_modal" data-target="{{ id }}" role="dialog" aria-labelledby="{{ id }}Label">
+  <a href="{{ google }}" target="_blank">Google</a> | <a href="{{ ical }}" download="event.ics">Outlook</a> | <a href="{{ ical }}" download="event.ics">iCal</a>
+</div>

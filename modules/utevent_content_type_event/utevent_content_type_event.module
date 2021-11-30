@@ -45,6 +45,12 @@ function utevent_content_type_event_theme() {
       'template' => 'field--node--field-utevent-body',
       'base hook' => 'field',
     ],
+    'addtocal_links' => [
+      'variables' => [
+        'ical' => NULL,
+        'google' => NULL,
+      ],
+    ],
   ];
 }
 
