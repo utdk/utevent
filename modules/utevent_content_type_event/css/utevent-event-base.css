@@ -86,7 +86,8 @@
 }
 
 /* Customized 'text button' style for modal trigger */
-button.addtocal-trigger {
+.utevent-event-field--field-utevent-datetime button,
+.utevent-event-field--field-utevent-datetime button {
   color: #bf5700;
   display: inline-block;
   margin-left: 0.25rem;
@@ -97,10 +98,12 @@ button.addtocal-trigger {
   cursor: pointer;
   outline: inherit;
 }
-button.addtocal-trigger:hover {
+.utevent-event-field--field-utevent-datetime button:hover,
+.utevent-event-field--field-utevent-datetime button:hover {
   text-decoration: underline;
 }
-button.addtocal-trigger:focus {
+.utevent-event-field--field-utevent-datetime button:focus,
+.utevent-event-field--field-utevent-datetime button:focus {
   outline: 2px dotted #aeb0b5;
   outline-offset: 3px;
 }
