@@ -58,6 +58,7 @@ function utevent_readonly_entity_operation_alter(array &$operations, EntityInter
         ]
       ];
       break;
+
     case 'taxonomy_vocabulary':
       // Partially lock Taxonomy, but still leave listing and adding terms.
       foreach ($operations as $key => $value) {
