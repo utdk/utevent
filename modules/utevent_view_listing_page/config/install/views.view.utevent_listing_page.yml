@@ -670,6 +670,7 @@ display:
           exposed: false
           expose:
             label: ''
+            field_identifier: field_utevent_datetime_value
           granularity: second
           plugin_id: date
       title: Events
@@ -738,6 +739,7 @@ display:
           exposed: false
           expose:
             label: ''
+            field_identifier: field_utevent_datetime_value
           granularity: second
           plugin_id: date
       defaults:
