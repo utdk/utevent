@@ -15,8 +15,9 @@
     "source": "https://github.austin.utexas.edu/eis1-wcs/utevent"
   },
   "require": {
+    "drupal/addtocal_augment": "1.0.0",
     "drupal/smart_date": "3.4.3",
-    "utexas/utdk_profile": "^3.3.0 || dev-develop"
+    "utexas/utdk_profile": "^3.4.0 || dev-develop"
   },
   "config": {
     "sort-packages": true

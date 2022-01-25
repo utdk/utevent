@@ -14,6 +14,7 @@ dependencies:
     - image.style.utexas_image_style_280w_280h
     - node.type.utevent_event
   module:
+    - date_augmenter
     - media
     - options
     - text
@@ -37,11 +38,48 @@ content:
     settings:
       timezone_override: ''
       format: default
+      time_wrapper: '1'
       past_display: '100'
       upcoming_display: '100'
       force_chronological: 0
+      add_classes: 0
+      show_next: 0
+      current_upcoming: 0
       format_type: medium
-    third_party_settings: {  }
+    third_party_settings:
+      date_augmenter:
+        instances:
+          weights:
+            order:
+              addtocal:
+                weight: '0'
+          settings:
+            addtocal:
+              event_title: '[node:title]'
+              location: '[node:field_utevent_location:entity:name]'
+              description: '[node:field_utevent_body:summary]'
+              max_desc: '0'
+              past_events: 0
+          status:
+            addtocal: 0
+          augmenter_settings:
+            fields__field_utevent_datetime__settings_edit_form__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
+        rule:
+          weights:
+            order:
+              addtocal:
+                weight: '0'
+          settings:
+            addtocal:
+              event_title: '[node:title]'
+              location: '[node:field_utevent_location:entity:name]'
+              description: '[node:field_utevent_body:summary]'
+              max_desc: '0'
+              past_events: 0
+          status:
+            addtocal: 0
+          augmenter_settings:
+            fields__field_utevent_datetime__settings_edit_form__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
     type: utevent_smartdate_recurring
     region: content
   field_utevent_location:

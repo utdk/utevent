@@ -84,3 +84,26 @@
   -webkit-mask-size: cover;
   mask-size: cover;
 }
+
+/* Customized 'text button' style for modal trigger */
+.utevent-event-field--field-utevent-datetime button,
+.utevent-event-field--field-utevent-datetime button {
+  color: #bf5700;
+  display: inline-block;
+  margin-left: 0.25rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+.utevent-event-field--field-utevent-datetime button:hover,
+.utevent-event-field--field-utevent-datetime button:hover {
+  text-decoration: underline;
+}
+.utevent-event-field--field-utevent-datetime button:focus,
+.utevent-event-field--field-utevent-datetime button:focus {
+  outline: 2px dotted #aeb0b5;
+  outline-offset: 3px;
+}
