@@ -614,7 +614,7 @@ display:
           operator: '='
           value: All
           group: 1
-          exposed: true
+          exposed: false
           expose:
             operator_id: ''
             label: 'Featured event'
@@ -655,7 +655,7 @@ display:
           operator: or
           value: {  }
           group: 1
-          exposed: true
+          exposed: false
           expose:
             operator_id: field_utevent_tags_target_id_op
             label: 'Event Tags'
@@ -703,7 +703,7 @@ display:
           operator: or
           value: {  }
           group: 1
-          exposed: true
+          exposed: false
           expose:
             operator_id: field_utevent_location_target_id_op
             label: 'Event Location'

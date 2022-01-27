@@ -102,3 +102,12 @@ function utevent_block_type_event_listing_update_8106() {
     'utevent_block_type_event_listing',
   ], TRUE);
 }
+
+/**
+ * Issue #182: Exposed filters showing on event listing blocks.
+ */
+function utevent_block_type_event_listing_update_8107() {
+  \Drupal::service('features.manager')->import([
+    'utevent_block_type_event_listing',
+  ], TRUE);
+}
