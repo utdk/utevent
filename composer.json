@@ -16,7 +16,7 @@
   },
   "require": {
     "drupal/addtocal_augment": "1.0.0",
-    "drupal/smart_date": "3.4.3",
+    "drupal/smart_date": "3.5.1",
     "utexas/utdk_profile": "^3.4.0 || dev-develop"
   },
   "config": {
