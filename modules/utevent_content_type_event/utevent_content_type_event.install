@@ -125,12 +125,3 @@ function utevent_content_type_event_update_8106() {
     'utevent_content_type_event',
   ], TRUE);
 }
-
-/**
- * HOTFIX: Allow field_utprof_basic_media node field to... (#198).
- */
-function utevent_content_type_event_update_8107() {
-  \Drupal::service('features.manager')->import([
-    'utevent_content_type_event',
-  ], TRUE);
-}
