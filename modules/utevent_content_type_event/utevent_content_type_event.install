@@ -94,10 +94,12 @@ function utevent_content_type_event_update_8103() {
  */
 function utevent_content_type_event_update_8104() {
   $metatag = MetatagDefaults::load('node__utevent_event');
-  $tag = ['schema_event_location' => serialize([
-    '@type' => 'Place',
-    'name' => '[node:field_utevent_location:entity:name]'
-  ])];
+  $tag = [
+    'schema_event_location' => serialize([
+      '@type' => 'Place',
+      'name' => '[node:field_utevent_location:entity:name]',
+    ]),
+  ];
   $metatag->overwriteTags($tag);
   $metatag->save();
 }
@@ -110,7 +112,6 @@ function utevent_content_type_event_update_8105() {
     'utevent_content_type_event',
   ], TRUE);
 }
-
 
 /**
  * Add to Calendar functionality (#19).
