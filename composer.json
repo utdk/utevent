@@ -15,9 +15,18 @@
     "source": "https://github.austin.utexas.edu/eis1-wcs/utevent"
   },
   "require": {
+    "cweagans/composer-patches": "~1.0",
     "drupal/addtocal_augment": "1.0.0",
+    "drupal/date_ap_style": "^1",
     "drupal/smart_date": "3.5.1",
     "utexas/utdk_profile": "^3.5.0 || dev-develop"
+  },
+  "extra": {
+    "patches": {
+      "drupal/date_ap_style": {
+        "Show 'all day' field formatter setting not working correctly": "https://drupalkit.its.utexas.edu/patches/193-time-not-showing-utevent.patch"
+      }
+    }
   },
   "config": {
     "sort-packages": true
