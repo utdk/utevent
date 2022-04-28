@@ -4,6 +4,9 @@
   padding-top: 30px;
   margin-bottom: 32px;
 }
+.utevent-listing-page .views-row:first-child {
+  border-top: 0px;
+}
 .utevent-listing-page .views-row:after {
   content: "";
   display: table;

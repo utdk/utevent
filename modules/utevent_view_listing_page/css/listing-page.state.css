@@ -8,25 +8,3 @@
   width: 1px;
   word-wrap: normal;
 }
-
-/* Button toggling (#140) */
-.utevent-listing-page .ut-btn:link,
-.utevent-listing-page .ut-btn:visited {
-  background-color: #f2f1ed;
-  border-color: #9d4700;
-  color: #9d4700 !important;
-  font-weight: bold;
-  margin: 0 -3px;
-  border-radius: 0;
-}
-.utevent-listing-page .ut-btn--secondary:link,
-.utevent-listing-page .ut-btn--secondary:visited {
-  border: solid 2px #8f8f8f;
-  color: #56544e;
-  margin: 0 -3px;
-  border-radius: 0;
-  font-weight: normal;
-}
-.utevent-listing-page .upcoming-btn + .past-btn {
-  border-left: solid 2px #9d4700;
-}

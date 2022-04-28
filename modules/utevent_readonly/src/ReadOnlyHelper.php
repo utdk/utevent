@@ -19,6 +19,7 @@ class ReadOnlyHelper {
     'utevent_tags',
     'utevent_listing_block',
     'utevent_listing_page',
+    'utevent_calendar_page',
   ];
 
   /**

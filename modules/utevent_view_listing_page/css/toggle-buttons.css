@@ -1,0 +1,21 @@
+/* Button toggling (#140) */
+.utevent-button-wrapper .ut-btn:link,
+.utevent-button-wrapper .ut-btn:visited {
+  background-color: #f2f1ed;
+  border-color: #9d4700;
+  color: #9d4700 !important;
+  font-weight: bold;
+  margin: 0 -3px;
+  border-radius: 0;
+}
+.utevent-button-wrapper .ut-btn--secondary:link,
+.utevent-button-wrapper .ut-btn--secondary:visited {
+  border: solid 2px #8f8f8f;
+  color: #56544e;
+  margin: 0 -3px;
+  border-radius: 0;
+  font-weight: normal;
+}
+.utevent-button-wrapper .upcoming-btn+.past-btn {
+  border-left: solid 2px #9d4700;
+}

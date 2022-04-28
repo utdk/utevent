@@ -53,3 +53,25 @@ function utevent_view_listing_page_update_8105() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Enable FullCalendar View module for calendar display.
+ */
+function utevent_view_listing_page_update_8106() {
+  if (\Drupal::moduleHandler()->moduleExists('fullcalendar_view') === FALSE) {
+    \Drupal::service('module_installer')->install(['fullcalendar_view']);
+  }
+}
+
+/**
+ * Add option to display calendar.
+ */
+function utevent_view_listing_page_update_8108() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+  // Disable calendar for existing sites.
+  $config = \Drupal::service('config.factory')->getEditable('utevent_view_listing_page.config');
+  $config->set('display_calendar', 0);
+  $config->save();
+}

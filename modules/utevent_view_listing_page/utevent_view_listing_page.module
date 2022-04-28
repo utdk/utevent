@@ -14,8 +14,17 @@ use Drupal\views\ViewExecutable;
  */
 function utevent_view_listing_page_preprocess_views_view(&$variables) {
   $view = $variables['view'];
-  if ($view->storage->id() === 'utevent_listing_page') {
-    $variables['#attached']['library'][] = 'utevent_view_listing_page/utevent-listing-page';
+  switch ($view->storage->id()) {
+    case 'utevent_listing_page':
+      $variables['#attached']['library'][] = 'utevent_view_listing_page/utevent-listing-page';
+      break;
+
+    case 'utevent_calendar_page':
+      $variables['#attached']['library'][] = 'utevent_view_listing_page/calendar';
+      break;
+
+    default:
+      break;
   }
 }
 
@@ -78,11 +87,44 @@ function utevent_view_listing_page_views_post_render(ViewExecutable $view) {
  */
 function utevent_view_listing_page_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
   $config = \Drupal::config('utevent_view_listing_page.config');
-  if ($config->get('display_past_events')) {
-    return;
-  }
-  // Unset the past/upcoming toggle if past events are disabled.
-  if ($view->id() == 'utevent_listing_page' && $display_id === 'upcoming') {
-    $view->removeHandler('upcoming', 'header', 'area_text_custom');
+  $display_past = $config->get('display_past_events');
+  $display_calendar = $config->get('display_calendar');
+  switch ($view->id()) {
+    case 'utevent_listing_page':
+      if (!$display_calendar) {
+        // Remove the 'Calendar' button.
+        if ($display_id == 'upcoming') {
+          $view->removeHandler('upcoming', 'header', 'area_text_custom_2');
+        }
+        if ($display_id == 'past') {
+          $view->removeHandler('past', 'header', 'area_text_custom_1');
+        }
+      }
+      if ($display_id == 'upcoming') {
+        if ($display_past) {
+          // Remove the display that doesn't show the 'Past Events' button.
+          $view->removeHandler('upcoming', 'header', 'area_text_custom_1');
+        }
+        else {
+          // Remove both displays that show the 'Past Events' button.
+          $view->removeHandler('upcoming', 'header', 'area_text_custom_1');
+          $view->removeHandler('upcoming', 'header', 'area_text_custom');
+        }
+      }
+      break;
+
+    case 'utevent_calendar_page':
+      if ($display_past) {
+        // Remove the display that doesn't show the 'Past Events' button.
+        $view->removeHandler('calendar', 'header', 'area_text_custom_1');
+      }
+      else {
+        // Remove the display that does show the 'Past Events' button.
+        $view->removeHandler('calendar', 'header', 'area_text_custom');
+      }
+      break;
+
+    default:
+      break;
   }
 }
