@@ -15,7 +15,7 @@ settings:
       label: Scheduled
     -
       value: EventCancelled
-      label: Cancelled
+      label: Canceled
     -
       value: EventMovedOnline
       label: 'Moved online'
