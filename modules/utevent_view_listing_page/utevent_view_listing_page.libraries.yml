@@ -5,7 +5,14 @@ utevent-listing-page:
       css/listing-page.layout.css: {}
     component:
       css/listing-page.module.css: {}
+      css/toggle-buttons.css: {}
     state:
       css/listing-page.state.css: {}
   dependencies:
     - utevent_content_type_event/utevent-event-base
+calendar:
+  version: 1.0
+  css:
+    component:
+      css/calendar.css: {}
+      css/toggle-buttons.css: {}

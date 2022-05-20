@@ -125,3 +125,13 @@ function utevent_content_type_event_update_8106() {
     'utevent_content_type_event',
   ], TRUE);
 }
+
+/**
+ * Re-import feature to set label change on "EventCancelled" 
+ * status (#206).
+ */
+function utevent_content_type_event_update_8107() {
+  \Drupal::service('features.manager')->import([
+    'utevent_content_type_event',
+  ], TRUE);
+}
