@@ -20,7 +20,7 @@
     "drupal/date_ap_style": "^1",
     "drupal/fullcalendar_view": "5.1.5",
     "drupal/smart_date": "3.5.1",
-    "utexas/utdk_profile": "^3.5.0 || dev-develop"
+    "utexas/utdk_profile": "^3.6.0 || dev-develop"
   },
   "extra": {
     "patches": {
