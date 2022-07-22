@@ -17,10 +17,10 @@
   "require": {
     "cweagans/composer-patches": "~1.0",
     "drupal/addtocal_augment": "1.0.0",
-    "drupal/date_ap_style": "^1",
+    "drupal/date_ap_style": "1.5.0",
     "drupal/fullcalendar_view": "5.1.5",
     "drupal/smart_date": "3.5.1",
-    "utexas/utdk_profile": "^3.6.0 || dev-develop"
+    "utexas/utdk_profile": "^3.7.0 || dev-develop"
   },
   "extra": {
     "patches": {
@@ -30,7 +30,13 @@
     }
   },
   "config": {
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "cweagans/composer-patches": true,
+      "drupal/core-composer-scaffold": true,
+      "composer/installers": true,
+      "oomphinc/composer-installers-extender": true
+    }
   },
   "prefer-stable": true
 }
