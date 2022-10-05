@@ -207,7 +207,7 @@ class AddToCal extends DateAugmenterPluginBase implements PluginFormInterface, C
 
     // Build output.
     $ical_link = ['data:text/calendar;charset=utf8,BEGIN:VCALENDAR'];
-    $ical_link[] = 'PRODID:' . $this->configFactory->get('system.site')->get('name');
+    $ical_link[] = 'PRODID:' . rawurlencode($this->configFactory->get('system.site')->get('name'));
     if ($timezone) {
       $offset_from = $start->format('O', $timezone);
       $offset_to = $end->format('O', $timezone);
@@ -222,7 +222,7 @@ class AddToCal extends DateAugmenterPluginBase implements PluginFormInterface, C
     $ical_link[] = 'UID:' . $uuid;
 
     // Title.
-    $ical_link[] = 'SUMMARY:' . $label;
+    $ical_link[] = 'SUMMARY:' . rawurlencode($label);
     $google_link['text'] = $label;
 
     // Dates.
@@ -249,13 +249,13 @@ class AddToCal extends DateAugmenterPluginBase implements PluginFormInterface, C
 
     // Description.
     if ($description) {
-      $ical_link[] = 'DESCRIPTION:' . $description;
+      $ical_link[] = 'DESCRIPTION:' . rawurlencode($description);
       $google_link['details'] = $description;
     }
 
     // Location.
     if ($location) {
-      $ical_link[] = 'LOCATION:' . $location;
+      $ical_link[] = 'LOCATION:' . rawurlencode($location);
       $google_link['location'] = $location;
     }
     $ical_link[] = 'END:VEVENT';
