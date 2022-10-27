@@ -56,3 +56,12 @@ function utevent_update_8102() {
     \Drupal::service('module_installer')->install(['utevent_overrides']);
   }
 }
+
+/**
+ * Enable the datetime_range module (Issue #216).
+ */
+function utevent_update_8103() {
+  if (\Drupal::moduleHandler()->moduleExists('datetime_range') === FALSE) {
+    \Drupal::service('module_installer')->install(['datetime_range']);
+  }
+}
