@@ -30,7 +30,7 @@ class UtEventSmartDateRecurrenceFormatter extends SmartDateRecurrenceFormatter {
    *
    * Override method from trait. This is not useless.
    */
-  public function viewElements(FieldItemListInterface $items, $langcode) {
+  public function viewElements(FieldItemListInterface $items, $langcode, $format = '') {
     return parent::viewElements($items, $langcode);
   }
 
