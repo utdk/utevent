@@ -18,7 +18,7 @@
     "cweagans/composer-patches": "~1.0",
     "drupal/addtocal_augment": "1.0.0",
     "drupal/date_ap_style": "1.5.0",
-    "drupal/fullcalendar_view": "5.1.7",
+    "drupal/fullcalendar_view": "5.1.8",
     "drupal/smart_date": "3.6.1",
     "utexas/utdk_profile": "^3.9.0 || dev-develop"
   },
