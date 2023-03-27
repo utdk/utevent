@@ -100,6 +100,8 @@ class DemoContent {
    *   The MID of a single Drupal Media entity.
    */
   public static function createMediaItem() {
+    /** @var \Drupal\file\FileRepositoryInterface $file_repository */
+    $file_repository = \Drupal::service('file.repository');
     $module_handler = \Drupal::service('module_handler');
     $module_path = $module_handler->getModule('utevent_demo_content')->getPath();
     $image_metadata = [
@@ -119,7 +121,7 @@ class DemoContent {
     $destination_dir = 'public://generated_sample';
     $file_system->prepareDirectory($destination_dir, FileSystemInterface::CREATE_DIRECTORY);
     $destination = $destination_dir . '/' . basename($image_metadata['filepath']);
-    $file = file_copy($image, $destination);
+    $file = $file_repository->copy($image, $destination);
     $image_media = Media::create([
       'name' => $image_metadata['filename'],
       'bundle' => 'utexas_image',

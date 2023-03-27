@@ -2,8 +2,7 @@ name: 'Vocabulary - Event Location'
 description: "Provides the 'Location' vocabulary component for the 'UT Event' module."
 package: 'UT Drupal Kit Event Add-on'
 type: module
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^8 || ^9 || ^10
 dependencies:
   - drupal:taxonomy
   - utevent:utevent
