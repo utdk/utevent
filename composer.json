@@ -27,10 +27,6 @@
     "patches": {
       "drupal/date_ap_style": {
         "Show 'all day' field formatter setting not working correctly": "https://drupalkit.its.utexas.edu/patches/193-time-not-showing-utevent.patch"
-      },
-      "drupal/smart_date": {
-        "Make Smart Date compatible with Symfony 6.": "https://drupalkit.its.utexas.edu/patches/259-smart-date-d10.patch",
-        "smart_date_recur does not perform accessCheck required for Drupal 10": "https://drupalkit.its.utexas.edu/patches/268-smart-date-access-check.patch"
       }
     }
   },
