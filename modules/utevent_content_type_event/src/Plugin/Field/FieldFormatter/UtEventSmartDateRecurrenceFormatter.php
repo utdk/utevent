@@ -53,7 +53,7 @@ class UtEventSmartDateRecurrenceFormatter extends SmartDateRecurrenceFormatter {
    * @return string|array
    *   A formatted date range using the chosen format.
    */
-  public static function formatSmartDate($start_ts, $end_ts, array $settings = [], $timezone = NULL, $return_type = '') {
+  public static function formatSmartDate($start_ts, $end_ts, mixed $settings = [], $timezone = NULL, $return_type = '') {
 
     $date_options_all = [
       'always_display_year' => 1,
