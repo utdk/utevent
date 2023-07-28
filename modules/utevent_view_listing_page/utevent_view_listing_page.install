@@ -75,3 +75,12 @@ function utevent_view_listing_page_update_8108() {
   $config->set('display_calendar', 0);
   $config->save();
 }
+
+/**
+ * Event listing page doesn't include periods for "a.m." and "p.m." (#262).
+ */
+function utevent_view_listing_page_update_8109() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}

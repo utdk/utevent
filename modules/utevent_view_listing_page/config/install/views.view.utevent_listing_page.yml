@@ -10,6 +10,7 @@ dependencies:
     - image.style.utexas_image_style_280w_280h
     - node.type.utevent_event
   module:
+    - date_ap_style
     - media
     - node
     - options
@@ -274,19 +275,19 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: smartdate_custom
+          type: daterange_ap_style
           settings:
-            separator: ' - '
-            date_format: 'l F j, Y'
-            custom_date_format: ''
+            always_display_year: 0
+            use_today: 1
+            cap_today: 1
+            display_day: 1
+            display_time: 1
+            time_before_date: 0
+            use_all_day: 1
+            display_noon_and_midnight: 0
+            capitalize_noon_and_midnight: 0
+            separator: endash
             timezone: ''
-            join: ', '
-            time_format: 'g:ia'
-            time_hour_format: 'g:ia'
-            allday_label: 'All day'
-            date_first: '1'
-            ampm_reduce: 1
-            site_time_toggle: 1
           group_column: value
           group_columns: {  }
           group_rows: false
