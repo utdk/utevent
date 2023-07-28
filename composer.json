@@ -27,6 +27,7 @@
     "patches": {
       "drupal/date_ap_style": {
         "Show 'all day' field formatter setting not working correctly": "https://drupalkit.its.utexas.edu/patches/193-time-not-showing-utevent.patch"
+        "Support ability to display day of week in RangeFormatter": "https://drupalkit.its.utexas.edu/patches/262-utevent-date_ap_style-day-of-week-rangeformatter.patch"
       }
     }
   },
