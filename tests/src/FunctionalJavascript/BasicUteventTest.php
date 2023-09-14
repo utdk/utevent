@@ -2,15 +2,14 @@
 
 namespace Drupal\Tests\utevent\FunctionalJavascript;
 
-use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
-
 use Drupal\Core\Language\Language;
 use Drupal\file\Entity\File;
 use Drupal\file\FileInterface;
+use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
 use Drupal\media\Entity\Media;
 use Drupal\Tests\ckeditor5\Traits\CKEditor5TestTrait;
-use Drupal\Tests\TestFileCreationTrait;
 use Drupal\Tests\node\Traits\NodeCreationTrait;
+use Drupal\Tests\TestFileCreationTrait;
 use Drupal\utevent\Permissions as UteventPermissions;
 use Drupal\utexas\Permissions as UtexasPermissions;
 
@@ -89,14 +88,14 @@ class BasicUteventTest extends WebDriverTestBase {
 
     $this->drupalLogin($this->user);
 
-    // Add an event location term 
+    // Add an event location term.
     $this->drupalGet('/admin/structure/taxonomy/manage/utevent_location/add');
-    $page->fillField('name[0][value]','Event location test');
+    $page->fillField('name[0][value]', 'Event location test');
     $page->pressButton('Save');
 
-    // Add an event tag
+    // Add an event tag.
     $this->drupalGet('/admin/structure/taxonomy/manage/utevent_tags/add');
-    $page->fillField('name[0][value]','Event tag test');
+    $page->fillField('name[0][value]', 'Event tag test');
     $page->pressButton('Save');
 
     // Navigate to node edit screen.
@@ -112,7 +111,8 @@ class BasicUteventTest extends WebDriverTestBase {
     // Access media library.
     $page->pressButton('edit-field-utevent-main-media-open-button');
     // Wait for media library to load.
-    $this->assertNotEmpty($assert->waitForText('Add or Select Media'));
+    sleep(10);
+    $this->assertTrue($assert->waitForText('Add or select media', 20000));
     // Select the test media item ("Image 1" with file name "test-image.png").
     $assert->elementExists('css', 'img[src*="' . $this->testMediaImageFilename . '"]')->click();
     $assert->elementExists('css', '.ui-dialog-buttonset')->pressButton('Insert selected');
@@ -126,7 +126,6 @@ class BasicUteventTest extends WebDriverTestBase {
     $this->fillCkeditorField('.form-item--field-utevent-body-0-value', $text);
 
     // Populate other fields on edit below.
-
     // Create the node.
     $page->pressButton('Save');
 
@@ -138,18 +137,17 @@ class BasicUteventTest extends WebDriverTestBase {
     // (The screenshot generated during the test run will be in the web/ dir).
     $this->assertTrue($this->filesAreEqual($utevent . '/tests/fixtures/' . $screenshot1, getcwd() . '/' . $screenshot1), "The screenshot in web/$screenshot1 should match the baseline in tests/fixtures/$screenshot1");
 
-
     // Make a change to the event and verify the node can be saved and
     // that the change is reflected in the output by another visual regression
     // test.
     $this->drupalLogin($this->user);
     $this->drupalGet('/node/1/edit');
 
-    $page->fillField('field_utevent_display_media[value]','0');
-    $page->fillField('field_utevent_location[target_id]','Event location test');
-    $page->fillField('field_utevent_tags[target_id]','Event tag test');
-    $page->fillField('field_utevent_status','EventMovedOnline');
-    $page->fillField('field_utevent_featured[value]','1');
+    $page->fillField('field_utevent_display_media[value]', '0');
+    $page->fillField('field_utevent_location[target_id]', 'Event location test');
+    $page->fillField('field_utevent_tags[target_id]', 'Event tag test');
+    $page->fillField('field_utevent_status', 'EventMovedOnline');
+    $page->fillField('field_utevent_featured[value]', '1');
 
     $page->pressButton('Save');
 
@@ -161,15 +159,15 @@ class BasicUteventTest extends WebDriverTestBase {
     // (The screenshot generated during the test run will be in the web/ dir).
     $this->assertTrue($this->filesAreEqual($utevent . '/tests/fixtures/' . $screenshot2, getcwd() . '/' . $screenshot2), "The screenshot in web/$screenshot2 should match the baseline in tests/fixtures/$screenshot2");
 
-    // Perform a visual regression test of /events
+    // Perform a visual regression test of /events.
     $this->drupalGet('/events');
     $screenshot3 = 'events-list.png';
     $this->createScreenshot($screenshot3);
     // Perform a visual regression test of the node display.
     // (The screenshot generated during the test run will be in the web/ dir).
     $this->assertTrue($this->filesAreEqual($utevent . '/tests/fixtures/' . $screenshot3, getcwd() . '/' . $screenshot3), "The screenshot in web/$screenshot3 should match the baseline in tests/fixtures/$screenshot3");
-    
-    // Perform a visual regression test of /past-events
+
+    // Perform a visual regression test of /past-events.
     $this->drupalGet('/past-events');
     $screenshot4 = 'past-events-list.png';
     $this->createScreenshot($screenshot4);
@@ -189,7 +187,7 @@ class BasicUteventTest extends WebDriverTestBase {
   /**
    * Set the value of a complex CKEditor enabled field.
    *
-   * @param string $field
+   * @param string $target
    *   The html name of the field that implements the editor.
    * @param string $value
    *   The value to enter into the field.
