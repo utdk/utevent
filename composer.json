@@ -17,19 +17,11 @@
   "require": {
     "cweagans/composer-patches": "~1.0",
     "drupal/addtocal_augment": "1.1.0-beta2",
-    "drupal/date_ap_style": "1.5.0",
-    "drupal/date_augmenter": "1.1.0-beta1",
-    "drupal/fullcalendar_view": "5.1.12",
-    "drupal/smart_date":"4.0.3",
+    "drupal/date_ap_style": "1.7.0",
+    "drupal/date_augmenter": "1.1.0",
+    "drupal/fullcalendar_view": "5.1.13",
+    "drupal/smart_date": "4.0.3",
     "utexas/utdk_profile": "^3.13.0 || dev-develop"
-  },
-  "extra": {
-    "patches": {
-      "drupal/date_ap_style": {
-        "Show 'all day' field formatter setting not working correctly": "https://drupalkit.its.utexas.edu/patches/193-time-not-showing-utevent.patch",
-        "Support ability to display day of week in RangeFormatter": "https://drupalkit.its.utexas.edu/patches/262-utevent-date_ap_style-day-of-week-rangeformatter.patch"
-      }
-    }
   },
   "config": {
     "sort-packages": true,
