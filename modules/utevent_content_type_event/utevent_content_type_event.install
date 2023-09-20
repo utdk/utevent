@@ -5,12 +5,23 @@
  * Event content type installation file.
  */
 
-use Drupal\pathauto\Entity\PathautoPattern;
 use Drupal\metatag\Entity\MetatagDefaults;
-use Drupal\utexas_layout_builder_styles\StyleUpdateHelper;
+use Drupal\pathauto\Entity\PathautoPattern;
 use Drupal\utevent\Permissions;
-
+use Drupal\utexas_layout_builder_styles\StyleUpdateHelper;
 use Symfony\Component\Yaml\Yaml;
+
+/**
+ * Implements hook_update_dependencies().
+ */
+function utevent_content_type_event_update_dependencies() {
+  // Indicate that the utevent_content_type_event_update_8109() function
+  // provided by this module must run after the utexas_update_8150() function.
+  $dependencies['utevent_content_type_event'][8109] = [
+    'utexas' => 8150,
+  ];
+  return $dependencies;
+}
 
 /**
  * Implements hook_install().
@@ -47,6 +58,10 @@ function utevent_content_type_event_install() {
   // if those roles exist.
   Permissions::assignPermissions('editor', 'utexas_content_editor');
   Permissions::assignPermissions('manager', 'utexas_site_manager');
+
+  // Add 'Standard workflow' to Event content type (#289).
+  // This function is defined in the utevent_content_type_event.module file.
+  _utevent_content_type_event_add_standard_workflow();
 }
 
 /**
@@ -127,8 +142,7 @@ function utevent_content_type_event_update_8106() {
 }
 
 /**
- * Re-import feature to set label change on "EventCancelled" 
- * status (#206).
+ * Re-import feature to set label change on "EventCancelled" status (#206).
  */
 function utevent_content_type_event_update_8107() {
   \Drupal::service('features.manager')->import([
@@ -161,4 +175,12 @@ function utevent_content_type_event_update_8108() {
       }
     }
   }
+}
+
+/**
+ * Add 'Standard workflow' to Event content type (#289).
+ */
+function utevent_content_type_event_update_8109() {
+  // This function is defined in the utevent_content_type_event.module file.
+  _utevent_content_type_event_add_standard_workflow();
 }

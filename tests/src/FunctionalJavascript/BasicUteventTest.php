@@ -131,6 +131,8 @@ class BasicUteventTest extends WebDriverTestBase {
 
     $this->drupalLogout();
     $this->drupalGet('/events/test-event-1');
+    // Wait for image derivative to be built.
+    sleep(5);
     $screenshot1 = '1-node-view.png';
     $this->createScreenshot($screenshot1);
     // Perform a visual regression test of the node display.
@@ -153,6 +155,8 @@ class BasicUteventTest extends WebDriverTestBase {
 
     $this->drupalLogout();
     $this->drupalGet('/events/test-event-1');
+    // Wait for image derivative to be built.
+    sleep(5);
     $screenshot2 = '2-node-view.png';
     $this->createScreenshot($screenshot2);
     // Perform a visual regression test of the node display.
@@ -161,6 +165,8 @@ class BasicUteventTest extends WebDriverTestBase {
 
     // Perform a visual regression test of /events.
     $this->drupalGet('/events');
+    // Wait for image derivative to be built.
+    sleep(5);
     $screenshot3 = 'events-list.png';
     $this->createScreenshot($screenshot3);
     // Perform a visual regression test of the node display.
