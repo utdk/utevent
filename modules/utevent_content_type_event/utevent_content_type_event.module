@@ -5,9 +5,6 @@
  * Contains utevent content type .module file.
  */
 
-use Drupal\Core\Url;
-use Drupal\Core\Link;
-
 /**
  * Contains utevent Event content type .module file.
  */
@@ -67,4 +64,23 @@ function utevent_content_type_event_theme_suggestions_field(array $variables) {
   $suggestions[] = 'field__' . $entity_type . '__' . $bundle . '__' . $field_name . '__' . $view_mode;
 
   return $suggestions;
+}
+
+/**
+ * Helper function to add the "Standard workflow" to the content type.
+ */
+function _utevent_content_type_event_add_standard_workflow() {
+  // Mutable Config (Read / Write).
+  $config = \Drupal::service('config.factory')->getEditable('workflows.workflow.standard_workflow');
+  if (empty($config)) {
+    // This site does not use the standard_workflow from utdk_profile. Move on.
+    return;
+  }
+  $type_settings = $config->get('type_settings');
+  $new_type_settings = $type_settings;
+  $new_type_settings['entity_types']['node'][] = 'utevent_event';
+  $config->set('type_settings', $new_type_settings);
+  $config->save();
+  // A cache rebuild is required for this configuration change to show.
+  drupal_flush_all_caches();
 }
