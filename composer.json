@@ -16,7 +16,7 @@
   },
   "require": {
     "cweagans/composer-patches": "~1.0",
-    "drupal/addtocal_augment": "1.1.0-beta4",
+    "drupal/addtocal_augment": "1.1.0-beta5",
     "drupal/date_ap_style": "2.0.0",
     "drupal/date_augmenter": "1.1.0",
     "drupal/fullcalendar_view": "5.1.13",
