@@ -36,6 +36,8 @@
 .utevent-listing-block .views-field-field-utevent-location {
   font-style: italic;
   line-height: 1.375;
+  margin-top: .875rem;
+  font-size: .875rem;
 }
 .utevent-listing-block .utevent-event-field--field-utevent-status .utevent-event-field__item {
   margin-bottom: 15px;
