@@ -184,3 +184,29 @@ function utevent_content_type_event_update_8109() {
   // This function is defined in the utevent_content_type_event.module file.
   _utevent_content_type_event_add_standard_workflow();
 }
+
+/**
+ * Add 'Event link' to Event content type (#217).
+ */
+function utevent_content_type_event_update_8110() {
+
+  $config = \Drupal::service('config.factory')->getEditable('core.entity_view_display.node.utevent_event.full');
+  $date_aug = "content.field_utevent_datetime.third_party_settings.date_augmenter.";
+
+  $settings = [
+    "instances.settings.addtocal.",
+    "rule.settings.addtocal.",
+  ];
+
+  foreach ($settings as $setting) {
+    $description_setting = $date_aug . $setting . "description";
+    $retain_spacing_setting = $date_aug . $setting . "retain_spacing";
+
+    $description = $config->get($description_setting);
+    $config->set($description_setting, $description . "\n\nEvent link: [node:url:absolute]");
+    $config->set($retain_spacing_setting, TRUE);
+  }
+
+  $config->save();
+
+}
