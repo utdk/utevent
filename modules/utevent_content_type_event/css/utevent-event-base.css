@@ -98,9 +98,15 @@
   cursor: pointer;
   outline: inherit;
 }
+
+/** We must use !important here to override forty_acres' own !important
+declaration on <button> HTML **/
 .utevent-event-field--field-utevent-datetime button:hover,
-.utevent-event-field--field-utevent-datetime button:hover {
-  text-decoration: underline;
+.utevent-event-field--field-utevent-datetime button:focus {
+  color: #9d4700 !important;
+  text-decoration: underline !important;
+  border: 0;
+  background-color: inherit;
 }
 .utevent-event-field--field-utevent-datetime button:focus,
 .utevent-event-field--field-utevent-datetime button:focus {
