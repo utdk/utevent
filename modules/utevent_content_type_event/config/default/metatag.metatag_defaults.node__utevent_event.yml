@@ -5,6 +5,7 @@ id: node__utevent_event
 label: 'Event content type metatags'
 tags:
   title: '[current-page:title] | [site:name]'
+  description: '[node:field_utevent_body:summary]'
   canonical_url: '[current-page:url]'
   og_description: '[node:field_utevent_body:summary]'
   og_url: '[current-page:url]'
