@@ -1,5 +1,4 @@
 utevent-listing-page:
-  version: VERSION
   css:
     layout:
       css/listing-page.layout.css: {}
@@ -11,7 +10,6 @@ utevent-listing-page:
   dependencies:
     - utevent_content_type_event/utevent-event-base
 calendar:
-  version: 1.0
   css:
     component:
       css/calendar.css: {}
