@@ -3,7 +3,6 @@ utevent-event-base:
     theme:
       css/utevent-event-base.css: {}
 view-mode-full:
-  version: 1.x
   css:
     theme:
       css/view-mode-full.css: {}
