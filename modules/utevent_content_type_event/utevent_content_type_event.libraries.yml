@@ -1,5 +1,4 @@
 utevent-event-base:
-  version: 1.x
   css:
     theme:
       css/utevent-event-base.css: {}
