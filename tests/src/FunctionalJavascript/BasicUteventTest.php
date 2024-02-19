@@ -82,7 +82,6 @@ class BasicUteventTest extends WebDriverTestBase {
   public function testUtevent() {
     $page = $this->getSession()->getPage();
     $assert = $this->assertSession();
-    $utevent = \Drupal::service('extension.list.module')->getPath('utevent');
     // Enlarge the viewport so that everything is clickable.
     $this->getSession()->resizeWindow(1200, 3000);
 
@@ -131,17 +130,16 @@ class BasicUteventTest extends WebDriverTestBase {
 
     $this->drupalLogout();
     $this->drupalGet('/events/test-event-1');
-    // Wait for image derivative to be built.
-    sleep(5);
-    $screenshot1 = '1-node-view.png';
-    $this->createScreenshot($screenshot1);
-    // Perform a visual regression test of the node display.
-    // (The screenshot generated during the test run will be in the web/ dir).
-    $this->assertTrue($this->filesAreEqual($utevent . '/tests/fixtures/' . $screenshot1, getcwd() . '/' . $screenshot1), "The screenshot in web/$screenshot1 should match the baseline in tests/fixtures/$screenshot1");
+    $assert->elementTextEquals('css', 'h1', 'Test Event 1');
+    $assert->elementTextEquals('css', '.field--name-field-utevent-status .field__item', 'Scheduled');
+    $assert->elementTextEquals('css', '.field--name-field-utevent-datetime .field__item', 'July 31, 2023, 5 to 6 p.m.');
+    $assert->responseNotContains('Location:');
+    $assert->responseNotContains('Event tags:');
+    $this->assertEquals('<p>Pellentesque tristique senectus <strong>et netus</strong> et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Vestibulum auctor dapibus neque.</li></ul>', $page->find('css', '.field--name-field-utevent-body .field__item')->getHTML());
+    $this->assertNotEmpty($assert->waitForElementVisible('css', '.field--name-field-utevent-main-media'));
 
     // Make a change to the event and verify the node can be saved and
-    // that the change is reflected in the output by another visual regression
-    // test.
+    // that the change is reflected in the output.
     $this->drupalLogin($this->user);
     $this->drupalGet('/node/1/edit');
 
@@ -155,31 +153,22 @@ class BasicUteventTest extends WebDriverTestBase {
 
     $this->drupalLogout();
     $this->drupalGet('/events/test-event-1');
-    // Wait for image derivative to be built.
-    sleep(5);
-    $screenshot2 = '2-node-view.png';
-    $this->createScreenshot($screenshot2);
-    // Perform a visual regression test of the node display.
-    // (The screenshot generated during the test run will be in the web/ dir).
-    $this->assertTrue($this->filesAreEqual($utevent . '/tests/fixtures/' . $screenshot2, getcwd() . '/' . $screenshot2), "The screenshot in web/$screenshot2 should match the baseline in tests/fixtures/$screenshot2");
 
-    // Perform a visual regression test of /events.
+    $assert->elementTextEquals('css', '.field--name-field-utevent-location .field__item', 'Event location test');
+    $assert->elementTextEquals('css', '.field--name-field-utevent-tags .field__item', 'Event tag test');
+    $assert->elementTextEquals('css', '.field--name-field-utevent-status .field__item', 'Moved online');
+
+    // Check event listing response.
     $this->drupalGet('/events');
-    // Wait for image derivative to be built.
-    sleep(5);
-    $screenshot3 = 'events-list.png';
-    $this->createScreenshot($screenshot3);
-    // Perform a visual regression test of the node display.
-    // (The screenshot generated during the test run will be in the web/ dir).
-    $this->assertTrue($this->filesAreEqual($utevent . '/tests/fixtures/' . $screenshot3, getcwd() . '/' . $screenshot3), "The screenshot in web/$screenshot3 should match the baseline in tests/fixtures/$screenshot3");
+    $assert->pageTextContains('No events at this time.');
 
-    // Perform a visual regression test of /past-events.
+    // Check past event listing.
     $this->drupalGet('/past-events');
-    $screenshot4 = 'past-events-list.png';
-    $this->createScreenshot($screenshot4);
-    // Perform a visual regression test of the node display.
-    // (The screenshot generated during the test run will be in the web/ dir).
-    $this->assertTrue($this->filesAreEqual($utevent . '/tests/fixtures/' . $screenshot4, getcwd() . '/' . $screenshot4), "The screenshot in web/$screenshot4 should match the baseline in tests/fixtures/$screenshot4");
+    $assert->linkExists('Test Event 1');
+    $assert->elementTextEquals('css', '.views-field-field-utevent-datetime', 'July 31, 2023, 5 to 6 p.m.');
+    $assert->elementTextEquals('css', '.views-field-field-utevent-location', 'Event location test');
+    $assert->elementTextEquals('css', '.views-field-field-utevent-body', 'Summary text here');
+    $this->assertNotEmpty($assert->waitForElementVisible('css', '.views-field-field-utevent-main-media'));
 
     // Confirm that an event node can be deleted from the system.
     $this->drupalLogin($this->user);
@@ -187,7 +176,6 @@ class BasicUteventTest extends WebDriverTestBase {
     $this->assertTrue($assert->waitForText('Are you sure you want to delete the content item Test Event 1?'));
     $page->pressButton('Delete');
     $this->assertTrue($assert->waitForText('The Event Test Event 1 has been deleted.'));
-
   }
 
   /**
