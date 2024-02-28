@@ -9,12 +9,15 @@ dependencies:
     - field.storage.node.field_utevent_status
     - image.style.utexas_image_style_280w_280h
     - node.type.utevent_event
+    - taxonomy.vocabulary.utevent_location
+    - taxonomy.vocabulary.utevent_tags
   module:
     - date_ap_style
     - media
     - node
     - options
     - smart_date
+    - taxonomy
     - text
     - user
     - utevent_content_type_event
@@ -518,8 +521,8 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
-          reset_button: false
+          submit_button: Search
+          reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
@@ -661,6 +664,104 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_utevent_location_target_id:
+          id: field_utevent_location_target_id
+          table: node__field_utevent_location
+          field: field_utevent_location_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_utevent_location_target_id_op
+            label: Location
+            description: ''
+            use_operator: false
+            operator: field_utevent_location_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: location
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              utexas_content_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: utevent_location
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_utevent_tags_target_id:
+          id: field_utevent_tags_target_id
+          table: node__field_utevent_tags
+          field: field_utevent_tags_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_utevent_tags_target_id_op
+            label: Type
+            description: ''
+            use_operator: false
+            operator: field_utevent_tags_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              utexas_content_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: utevent_tags
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: grid
         options:
@@ -709,7 +810,9 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -841,6 +944,100 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_utevent_location_target_id:
+          id: field_utevent_location_target_id
+          table: node__field_utevent_location
+          field: field_utevent_location_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_utevent_location_target_id_op
+            label: Location
+            description: ''
+            use_operator: false
+            operator: field_utevent_location_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: location
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              utexas_content_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: utevent_location
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_utevent_tags_target_id:
+          id: field_utevent_tags_target_id
+          table: node__field_utevent_tags
+          field: field_utevent_tags_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_utevent_tags_target_id_op
+            label: Type
+            description: ''
+            use_operator: false
+            operator: field_utevent_tags_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              utexas_content_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: utevent_tags
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
       filter_groups:
         operator: AND
         groups:
@@ -882,7 +1079,9 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -941,7 +1140,9 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
