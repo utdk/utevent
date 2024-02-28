@@ -2,6 +2,7 @@ utevent-listing-page:
   css:
     layout:
       css/listing-page.layout.css: {}
+      css/calendar.css: {}
     component:
       css/listing-page.module.css: {}
       css/toggle-buttons.css: {}
