@@ -135,16 +135,17 @@ function utevent_view_listing_page_views_pre_view(ViewExecutable $view, $display
 function utevent_view_listing_page_form_views_exposed_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
   $view = $form_state->getStorage('view');
   if ($view['view']->id() == 'utevent_listing_page') {
-    $location_count = count($form['field_utevent_location_target_id']['#options']);
-    $tag_count = count($form['field_utevent_tags_target_id']['#options']);
+    $location_count = count($form['location']['#options']);
+    $tag_count = count($form['type']['#options']);
     if ($location_count <= 1) {
-      $form['field_utevent_location_target_id']['#access'] = FALSE;
+      $form['location']['#access'] = FALSE;
     }
     if ($tag_count <= 1) {
-      $form['field_utevent_tags_target_id']['#access'] = FALSE;
+      $form['type']['#access'] = FALSE;
     }
     if ($location_count <= 1 && $tag_count <= 1) {
       $form['actions']['#access'] = FALSE;
     }
+
   }
 }
