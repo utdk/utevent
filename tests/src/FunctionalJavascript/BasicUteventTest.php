@@ -160,7 +160,7 @@ class BasicUteventTest extends WebDriverTestBase {
 
     // Check event listing response.
     $this->drupalGet('/events');
-    $assert->pageTextContains('No events at this time.');
+    $assert->pageTextContains('No events match the criteria.');
 
     // Check past event listing.
     $this->drupalGet('/past-events');

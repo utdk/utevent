@@ -2,8 +2,9 @@ name: 'View - Event Listing Page'
 description: 'Provides the "Event" listing page'
 package: 'UT Drupal Kit Event Add-on'
 type: module
-core_version_requirement: ^8.9 || ^9 || ^10
+core_version_requirement: '^9.4 || ^10'
 dependencies:
+  - 'date_ap_style:date_ap_style'
   - 'drupal:media'
   - 'drupal:node'
   - 'drupal:options'
@@ -16,6 +17,7 @@ dependencies:
   - 'fullcalendar_view:fullcalendar_view'
   - 'utevent:utevent'
   - 'utevent:utevent_content_type_event'
+  - 'utevent_vocabulary_location:utevent_vocabulary_location'
   - 'utevent_vocabulary_tags:utevent_vocabulary_tags'
   - 'utexas:utexas_image_styles'
 core_incompatible: false

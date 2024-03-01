@@ -84,3 +84,12 @@ function utevent_view_listing_page_update_8109() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Add filters for upcoming event listing page.
+ */
+function utevent_view_listing_page_update_8110() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}

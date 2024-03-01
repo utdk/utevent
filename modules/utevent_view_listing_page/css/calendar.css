@@ -1,28 +1,37 @@
-.utevent__calendar form {
+.utevent__calendar form
+.utevent-listing-page form {
   text-align: center;
 }
 
 .utevent__calendar .form-item,
 .utevent__calendar input[type=submit],
-.utevent__calendar .form-actions {
+.utevent__calendar .form-actions,
+.utevent-listing-page .form-item,
+.utevent-listing-page input[type=submit],
+.utevent-listing-page .form-actions {
   display: inline-block;
   width: auto;
+  margin-right: 2rem;
 }
 
-.utevent__calendar input[type=submit] {
+.utevent__calendar input[type=submit],
+.utevent-listing-page input[type=submit] {
   border: 1px solid #bf5700;
   background-color: #bf5700;
   color: #fff;
   border-radius: 4px;
 }
 
-.utevent__calendar input[data-drupal-selector="edit-reset"] {
+.utevent__calendar input[data-drupal-selector="edit-reset"],
+.utevent-listing-page input[data-drupal-selector="edit-reset"] {
   background-color: #fff;
   color: #000;
 }
 
 .utevent__calendar select,
-.utevent__calendar select:focus {
+.utevent__calendar select:focus,
+.utevent-listing-page select,
+.utevent-listing-page select:focus {
   border: 1px solid #bf5700;
   border-radius: 4px;
 }
