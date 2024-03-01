@@ -1033,7 +1033,7 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          vid: utevent_location
+          vid: utevent_tags
           type: select
           hierarchy: false
           limit: true
