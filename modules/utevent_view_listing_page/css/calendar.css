@@ -12,6 +12,7 @@
   display: inline-block;
   width: auto;
   margin-right: 2rem;
+  margin-bottom: 1rem;
 }
 
 .utevent__calendar input[type=submit],
@@ -34,6 +35,9 @@
 .utevent-listing-page select:focus {
   border: 1px solid #bf5700;
   border-radius: 4px;
+}
+.fc-unthemed {
+  padding-top: 48px;
 }
 
 .fc-unthemed .fc-button-primary {
@@ -73,12 +77,8 @@
 }
 
 .utevent__calendar .form-item label {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  white-space: nowrap;
-  border: 0;
+  display: block;
+  max-width: 46rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.5rem;
 }
