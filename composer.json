@@ -16,12 +16,12 @@
   },
   "require": {
     "cweagans/composer-patches": "~1.0",
-    "drupal/addtocal_augment": "1.1.0-beta5",
+    "drupal/addtocal_augment": "1.1.0-beta6",
     "drupal/date_ap_style": "2.0.0",
     "drupal/date_augmenter": "1.1.0",
     "drupal/fullcalendar_view": "5.1.13",
     "drupal/smart_date": "4.0.3",
-    "utexas/utdk_profile": "^3.16.0 || dev-develop"
+    "utexas/utdk_profile": "^3.17.0 || dev-develop"
   },
   "config": {
     "sort-packages": true,

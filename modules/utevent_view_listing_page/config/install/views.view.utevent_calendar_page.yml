@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.storage.node.field_utevent_datetime
     - node.type.utevent_event
+    - taxonomy.vocabulary.utevent_location
     - taxonomy.vocabulary.utevent_tags
   module:
     - fullcalendar_view
@@ -149,7 +150,7 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: 'Filter by tag'
+          submit_button: Search
           reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
@@ -189,9 +190,57 @@ display:
           plugin_id: bundle
           value:
             utevent_event: utevent_event
+          group: 1
           expose:
             operator_limit_selection: false
             operator_list: {  }
+        field_utevent_location_target_id:
+          id: field_utevent_location_target_id
+          table: node__field_utevent_location
+          field: field_utevent_location_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_utevent_location_target_id_op
+            label: Location
+            description: ''
+            use_operator: false
+            operator: field_utevent_location_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: location
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              utexas_content_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: utevent_location
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
         field_utevent_tags_target_id:
           id: field_utevent_tags_target_id
           table: node__field_utevent_tags
@@ -206,13 +255,13 @@ display:
           exposed: true
           expose:
             operator_id: field_utevent_tags_target_id_op
-            label: 'Filter by tag'
+            label: Type
             description: ''
             use_operator: false
             operator: field_utevent_tags_target_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: tags
+            identifier: type
             required: false
             remember: false
             multiple: false
@@ -239,6 +288,10 @@ display:
           hierarchy: false
           limit: true
           error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: fullcalendar_view_display
         options:
@@ -261,7 +314,7 @@ display:
           dialogWindow: 0
           openEntityInNewTab: 0
           createEventLink: 0
-          eventLimit: 0
+          eventLimit: '0'
           tax_field: ''
           vocabularies: ''
           color_bundle:
@@ -319,7 +372,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -338,7 +390,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
