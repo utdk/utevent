@@ -66,23 +66,6 @@ function utevent_view_listing_page_form_utevent_general_config_alter(&$form, For
 }
 
 /**
- * Implements hook_views_post_render().
- */
-function utevent_view_listing_page_views_post_render(ViewExecutable $view) {
-  // Set the page title based on editor-provided value.
-  if ($view->id() === 'utevent_listing_page' && $view->current_display === 'upcoming') {
-    $config = \Drupal::config('utevent_view_listing_page.config');
-    if ($title = $config->get('page_title')) {
-      // Set the view title.
-      $view->setTitle($title);
-      // Set the route title.
-      $route = \Drupal::routeMatch()->getCurrentRouteMatch()->getRouteObject();
-      $route->setDefault('_title', $title);
-    }
-  }
-}
-
-/**
  * Implements hook_views_pre_view().
  */
 function utevent_view_listing_page_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
@@ -130,7 +113,7 @@ function utevent_view_listing_page_views_pre_view(ViewExecutable $view, $display
 }
 
 /**
- * Implements hook_form_alter().
+ * Implements hook_form_FORM_ID_alter().
  */
 function utevent_view_listing_page_form_views_exposed_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
   $view = $form_state->getStorage('view');
