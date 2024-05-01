@@ -210,3 +210,19 @@ function utevent_content_type_event_update_8110() {
   $config->save();
 
 }
+
+/**
+ * Update schema.org date to ISO 8601 format (#239).
+ */
+function utevent_content_type_event_update_8111() {
+  $config = \Drupal::configFactory()->getEditable('metatag.metatag_defaults.node__utevent_event');
+  // Only update the schema.org values if the site has the configuration object.
+  // The date values are acceptable to overwrite on existing sites since they
+  // are currently nonfunctional.
+  if (isset($config)) {
+    $tags = $config->get('tags');
+    $tags['schema_event_start_date'] = '[node:field_utevent_datetime:0:value-custom:c]';
+    $tags['schema_event_end_date'] = '[node:field_utevent_datetime:0:end_value-custom:c]';
+    $config->set('tags', $tags)->save();
+  }
+}
