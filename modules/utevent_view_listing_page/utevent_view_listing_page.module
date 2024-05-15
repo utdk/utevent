@@ -131,3 +131,21 @@ function utevent_view_listing_page_form_views_exposed_form_alter(array &$form, F
     }
   }
 }
+
+/**
+ * Implements hook_js_settings_alter().
+ *
+ * Prepend date to event title for display in FullCalendar views.
+ */
+function utevent_view_listing_page_js_settings_alter(array &$settings) {
+  if (!isset($settings['fullCalendarView'][0]['calendar_options'])) {
+    return;
+  }
+  $calendar_options = json_decode($settings['fullCalendarView'][0]['calendar_options'], TRUE);
+  foreach ($calendar_options['events'] as $key => $event) {
+    $title = $event['title'];
+    $start = date('F d', strtotime($event['start']));
+    $calendar_options['events'][$key]['title'] = '<span class="visually-hidden">' . $start . ':</span> ' . $title;
+  }
+  $settings['fullCalendarView'][0]['calendar_options'] = json_encode($calendar_options);
+}
