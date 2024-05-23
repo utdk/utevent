@@ -2,7 +2,6 @@
 
 namespace Drupal\utevent_view_listing_page\Form;
 
-use Drupal\Core\Cache\Cache;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\utevent\Form\BaseConfigurationForm;
 
@@ -59,12 +58,7 @@ class ListingPageConfig extends BaseConfigurationForm {
     $config->set('display_past_events', $display_past_events);
     $config->set('display_calendar', $display_calendar);
     $config->save();
-    // Ensure that this change invalidates the view cache.
-    Cache::invalidateTags([
-      'config:views.view.utevent_listing_page',
-      'config:views.view.utevent_calendar_page',
-    ]);
-    \Drupal::service('router.builder')->rebuild();
+    drupal_flush_all_caches();
   }
 
 }

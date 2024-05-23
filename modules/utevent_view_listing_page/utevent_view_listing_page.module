@@ -66,23 +66,6 @@ function utevent_view_listing_page_form_utevent_general_config_alter(&$form, For
 }
 
 /**
- * Implements hook_views_post_render().
- */
-function utevent_view_listing_page_views_post_render(ViewExecutable $view) {
-  // Set the page title based on editor-provided value.
-  if ($view->id() === 'utevent_listing_page' && $view->current_display === 'upcoming') {
-    $config = \Drupal::config('utevent_view_listing_page.config');
-    if ($title = $config->get('page_title')) {
-      // Set the view title.
-      $view->setTitle($title);
-      // Set the route title.
-      $route = \Drupal::routeMatch()->getCurrentRouteMatch()->getRouteObject();
-      $route->setDefault('_title', $title);
-    }
-  }
-}
-
-/**
  * Implements hook_views_pre_view().
  */
 function utevent_view_listing_page_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
@@ -130,7 +113,7 @@ function utevent_view_listing_page_views_pre_view(ViewExecutable $view, $display
 }
 
 /**
- * Implements hook_form_alter().
+ * Implements hook_form_FORM_ID_alter().
  */
 function utevent_view_listing_page_form_views_exposed_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
   $view = $form_state->getStorage('view');
@@ -147,4 +130,22 @@ function utevent_view_listing_page_form_views_exposed_form_alter(array &$form, F
       $form['actions']['#access'] = FALSE;
     }
   }
+}
+
+/**
+ * Implements hook_js_settings_alter().
+ *
+ * Prepend date to event title for display in FullCalendar views.
+ */
+function utevent_view_listing_page_js_settings_alter(array &$settings) {
+  if (!isset($settings['fullCalendarView'][0]['calendar_options'])) {
+    return;
+  }
+  $calendar_options = json_decode($settings['fullCalendarView'][0]['calendar_options'], TRUE);
+  foreach ($calendar_options['events'] as $key => $event) {
+    $title = $event['title'];
+    $start = date('F d', strtotime($event['start']));
+    $calendar_options['events'][$key]['title'] = '<span class="visually-hidden">' . $start . ':</span> ' . $title;
+  }
+  $settings['fullCalendarView'][0]['calendar_options'] = json_encode($calendar_options);
 }

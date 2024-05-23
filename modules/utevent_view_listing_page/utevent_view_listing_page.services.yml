@@ -3,3 +3,7 @@ services:
     class: Drupal\utevent_view_listing_page\Routing\RouteSubscriber
     tags:
       - { name: event_subscriber }
+  utevent_view_listing_page.overrider:
+    class: Drupal\utevent_view_listing_page\Config\Overrider
+    tags:
+      - {name: config.factory.override, priority: 5}
