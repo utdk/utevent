@@ -102,3 +102,12 @@ function utevent_view_listing_page_update_8111() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Add mechanism for invalidating page cache on upcoming/past events (#341).
+ */
+function utevent_view_listing_page_update_8112() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
