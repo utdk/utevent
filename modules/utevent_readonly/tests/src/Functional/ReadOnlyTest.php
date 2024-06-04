@@ -45,7 +45,7 @@ class ReadOnlyTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     $this->strictConfigSchema = NULL;
     parent::setUp();
     $available_permissions = \Drupal::service('user.permissions')->getPermissions();
