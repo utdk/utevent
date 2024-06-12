@@ -86,3 +86,19 @@ function _utevent_content_type_event_add_standard_workflow() {
   // A cache rebuild is required for this configuration change to show.
   drupal_flush_all_caches();
 }
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function utevent_content_type_event_preprocess_node(&$variables) {
+  $node = $variables['elements']['#node'];
+  $type = $node->getType();
+  $utevent_status = $node->field_utevent_status->value;
+  if ($utevent_status == 'EventCancelled') {
+    $variables['canceled'] = TRUE;
+  }
+
+  if ($type !== 'utevent_event') {
+    return;
+  }
+}
