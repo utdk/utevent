@@ -113,3 +113,7 @@ declaration on <button> HTML **/
   outline: 2px dotted #aeb0b5;
   outline-offset: 3px;
 }
+
+.event-status--canceled .utevent-event-field button {
+  display: none;
+}
