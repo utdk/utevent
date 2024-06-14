@@ -93,14 +93,13 @@ function _utevent_content_type_event_add_standard_workflow() {
 function utevent_content_type_event_preprocess_node(&$variables) {
   $node = $variables['elements']['#node'];
   $type = $node->getType();
-  if ($node->hasField('field_utevent_status')) {
-    $utevent_status = $node->get('field_utevent_status')->getValue();
-    if ($utevent_status == 'EventCancelled') {
-      $variables['canceled'] = TRUE;
-    }
-  }
 
-  if ($type !== 'utevent_event') {
-    return;
+  if ($type == 'utevent_event') {
+    if ($node->hasField('field_utevent_status')) {
+      $utevent_status = $node->get('field_utevent_status')->getValue();
+      if ($utevent_status == 'EventCancelled') {
+        $variables['canceled'] = TRUE;
+      }
+    }
   }
 }
