@@ -94,6 +94,7 @@ function utevent_content_type_event_preprocess_node(&$variables) {
   $node = $variables['elements']['#node'];
   $type = $node->getType();
 
+  // If the event is cancelled, hide the "Add to calendar" functionality (#347).
   if ($type == 'utevent_event') {
     if ($node->hasField('field_utevent_status')) {
       $utevent_status = $node->get('field_utevent_status')->getValue();
