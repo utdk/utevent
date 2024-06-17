@@ -98,7 +98,7 @@ function utevent_content_type_event_preprocess_node(&$variables) {
   if ($type === 'utevent_event') {
     if ($node->hasField('field_utevent_status')) {
       $utevent_status = $node->get('field_utevent_status')->getValue();
-      if ($utevent_status == 'EventCancelled') {
+      if ($utevent_status === 'EventCancelled') {
         $variables['canceled'] = TRUE;
       }
     }
