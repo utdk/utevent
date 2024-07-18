@@ -1,2 +1,5 @@
 bundle: utevent
 required: false
+excluded:
+  - metatag.metatag_defaults.node__utevent_event
+  - pathauto.pattern.utevent_event
