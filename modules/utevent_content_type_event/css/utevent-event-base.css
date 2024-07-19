@@ -30,12 +30,9 @@
 }
 
 /* Styles used to visually hide status field when value is "scheduled" */
-.utevent-event-field--status-scheduled {
-  margin: 0;
-  padding: 0;
-}
 /** Based on core hidden.module.css */
-.utevent-event-field__item--scheduled {
+.utevent-event-field__item--scheduled,
+.utevent-event-field--status-scheduled {
   position: absolute !important;
   clip: rect(1px, 1px, 1px, 1px);
   overflow: hidden;
