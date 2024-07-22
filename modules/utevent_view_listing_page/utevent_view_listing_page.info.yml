@@ -2,7 +2,7 @@ name: 'View - Event Listing Page'
 description: 'Provides the "Event" listing page'
 package: 'UT Drupal Kit Event Add-on'
 type: module
-core_version_requirement: '^9.4 || ^10'
+core_version_requirement: ^10 || ^11
 dependencies:
   - 'date_ap_style:date_ap_style'
   - 'drupal:media'

@@ -20,6 +20,7 @@ dependencies:
     - taxonomy
     - text
     - user
+    - utevent
     - utevent_content_type_event
 id: utevent_listing_page
 label: 'Events Listing Page'
@@ -533,7 +534,7 @@ display:
         options:
           perm: 'access content'
       cache:
-        type: none
+        type: utevent_date_sensitive_tag
         options: {  }
       empty:
         area_text_custom:
@@ -812,7 +813,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1081,7 +1081,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1142,7 +1141,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:

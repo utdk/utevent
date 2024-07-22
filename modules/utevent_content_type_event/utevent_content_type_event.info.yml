@@ -1,7 +1,7 @@
 name: 'Content Type - Event'
 type: module
 description: 'Provides the base content type component for the Events add-on.'
-core_version_requirement: ^8.9 || ^9 || ^10
+core_version_requirement: ^10 || ^11
 dependencies:
   - 'addtocal_augment:addtocal_augment'
   - 'breadcrumbs_visibility:breadcrumbs_visibility'
