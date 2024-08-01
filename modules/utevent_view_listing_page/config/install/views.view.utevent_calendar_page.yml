@@ -303,6 +303,8 @@ display:
           left_buttons: 'prev,next today'
           right_buttons: 'dayGridMonth,timeGridWeek,timeGridDay'
           default_view: dayGridMonth
+          default_mobile_view: dayGridMonth
+          mobile_width: '768'
           firstDay: '1'
           nav_links: 1
           timeFormat: '[ ]'
