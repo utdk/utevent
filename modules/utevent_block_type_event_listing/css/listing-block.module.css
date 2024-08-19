@@ -26,10 +26,7 @@
   margin-bottom: 0;
 }
 .utevent-listing-block .utevent__thumbnail img {
-  margin: 10px 0 5px 10px;
-}
-.utevent-listing-block .views-field-title .ut-headline {
-  line-height: 1;
+  margin: 1rem 0 5px 10px;
 }
 .utevent-listing-block .views-field-field-utevent-datetime,
 .utevent-listing-block .views-field-field-utevent-datetime-1,
