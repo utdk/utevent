@@ -110,7 +110,6 @@
   a child template.#}
 {% set classes = classes|merge(classes_additional|default([])) %}
 
-{{ attach_library('utevent_content_type_event/utevent-event-base') }}
 <article{{ attributes.addClass(classes) }}>
 
     {% block node_title %}

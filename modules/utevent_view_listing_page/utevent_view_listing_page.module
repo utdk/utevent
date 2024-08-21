@@ -10,25 +10,6 @@ use Drupal\utevent_view_listing_page\Form\ListingPageConfig;
 use Drupal\views\ViewExecutable;
 
 /**
- * Implements template_preprocess_views_view().
- */
-function utevent_view_listing_page_preprocess_views_view(&$variables) {
-  $view = $variables['view'];
-  switch ($view->storage->id()) {
-    case 'utevent_listing_page':
-      $variables['#attached']['library'][] = 'utevent_view_listing_page/utevent-listing-page';
-      break;
-
-    case 'utevent_calendar_page':
-      $variables['#attached']['library'][] = 'utevent_view_listing_page/calendar';
-      break;
-
-    default:
-      break;
-  }
-}
-
-/**
  * Implements template_preprocess_views_view_field().
  */
 function utevent_view_listing_page_preprocess_views_view_fields(&$variables) {
