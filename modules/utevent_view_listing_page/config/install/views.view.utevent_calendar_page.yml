@@ -208,7 +208,7 @@ display:
           exposed: true
           expose:
             operator_id: field_utevent_location_target_id_op
-            label: Location
+            label: Filter by location
             description: ''
             use_operator: false
             operator: field_utevent_location_target_id_op
@@ -255,7 +255,7 @@ display:
           exposed: true
           expose:
             operator_id: field_utevent_tags_target_id_op
-            label: Type
+            label: Filter by type
             description: ''
             use_operator: false
             operator: field_utevent_tags_target_id_op

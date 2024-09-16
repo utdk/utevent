@@ -120,3 +120,12 @@ function utevent_view_listing_page_update_8113() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Relocate event filters adjacent to events buttons (634b) (Issue #365).
+ */
+function utevent_view_listing_page_update_8114() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
