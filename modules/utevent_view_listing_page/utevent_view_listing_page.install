@@ -129,3 +129,12 @@ function utevent_view_listing_page_update_8114() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Set date range separator to "to" (Issue #369).
+ */
+function utevent_view_listing_page_update_8115() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}

@@ -290,7 +290,7 @@ display:
             use_all_day: 1
             display_noon_and_midnight: 0
             capitalize_noon_and_midnight: 0
-            separator: endash
+            separator: to
             timezone: ''
           group_column: value
           group_columns: {  }
