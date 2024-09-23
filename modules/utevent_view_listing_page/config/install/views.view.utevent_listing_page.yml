@@ -290,7 +290,7 @@ display:
             use_all_day: 1
             display_noon_and_midnight: 0
             capitalize_noon_and_midnight: 0
-            separator: endash
+            separator: to
             timezone: ''
           group_column: value
           group_columns: {  }
@@ -502,6 +502,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 10
           total_pages: null
           id: 0
@@ -679,7 +680,7 @@ display:
           exposed: true
           expose:
             operator_id: field_utevent_location_target_id_op
-            label: Location
+            label: 'Filter by location'
             description: ''
             use_operator: false
             operator: field_utevent_location_target_id_op
@@ -726,7 +727,7 @@ display:
           exposed: true
           expose:
             operator_id: field_utevent_tags_target_id_op
-            label: Type
+            label: 'Filter by type'
             description: ''
             use_operator: false
             operator: field_utevent_tags_target_id_op
@@ -958,7 +959,7 @@ display:
           exposed: true
           expose:
             operator_id: field_utevent_location_target_id_op
-            label: Location
+            label: Filter by location
             description: ''
             use_operator: false
             operator: field_utevent_location_target_id_op
@@ -1005,7 +1006,7 @@ display:
           exposed: true
           expose:
             operator_id: field_utevent_tags_target_id_op
-            label: Type
+            label: Filter by type
             description: ''
             use_operator: false
             operator: field_utevent_tags_target_id_op

@@ -208,7 +208,7 @@ display:
           exposed: true
           expose:
             operator_id: field_utevent_location_target_id_op
-            label: Location
+            label: Filter by location
             description: ''
             use_operator: false
             operator: field_utevent_location_target_id_op
@@ -255,7 +255,7 @@ display:
           exposed: true
           expose:
             operator_id: field_utevent_tags_target_id_op
-            label: Type
+            label: Filter by type
             description: ''
             use_operator: false
             operator: field_utevent_tags_target_id_op
@@ -303,6 +303,8 @@ display:
           left_buttons: 'prev,next today'
           right_buttons: 'dayGridMonth,timeGridWeek,timeGridDay'
           default_view: dayGridMonth
+          default_mobile_view: dayGridMonth
+          mobile_width: '768'
           firstDay: '1'
           nav_links: 1
           timeFormat: '[ ]'

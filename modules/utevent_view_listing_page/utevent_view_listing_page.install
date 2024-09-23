@@ -111,3 +111,30 @@ function utevent_view_listing_page_update_8112() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Calendar view changes to full year list on mobile screens (#355).
+ */
+function utevent_view_listing_page_update_8113() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
+
+/**
+ * Relocate event filters adjacent to events buttons (634b) (Issue #365).
+ */
+function utevent_view_listing_page_update_8114() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
+
+/**
+ * Set date range separator to "to" (Issue #369).
+ */
+function utevent_view_listing_page_update_8115() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}

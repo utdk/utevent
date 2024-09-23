@@ -5,6 +5,8 @@
  * Contains utevent content type .module file.
  */
 
+use Drupal\utevent_content_type_event\EventContentTypeHelper;
+
 /**
  * Contains utevent Event content type .module file.
  */
@@ -101,6 +103,37 @@ function utevent_content_type_event_preprocess_node(&$variables) {
       if ($utevent_status === 'EventCancelled') {
         $variables['canceled'] = TRUE;
       }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function utevent_content_type_event_preprocess_field(&$variables, $hook) {
+  // Convert taxonomy terms to link to `/events?<term>.
+  if (\Drupal::moduleHandler()->moduleExists('utevent_view_listing_page') !== FALSE) {
+    switch ($variables['element']['#field_name']) {
+      case 'field_utevent_location':
+        foreach ($variables['items'] as &$item) {
+          if (isset($item['content']['#entity'])) {
+            unset($item['content']['#plain_text']);
+            $item['content']['#markup'] = EventContentTypeHelper::prepareEventTaxonomy($item['content']['#entity'], 'location');
+          }
+        }
+        break;
+
+      case 'field_utevent_tags':
+        foreach ($variables['items'] as &$item) {
+          if (isset($item['content']['#entity'])) {
+            unset($item['content']['#plain_text']);
+            $item['content']['#markup'] = EventContentTypeHelper::prepareEventTaxonomy($item['content']['#entity'], 'type');
+          }
+        }
+        break;
+
+      default:
+        return;
     }
   }
 }

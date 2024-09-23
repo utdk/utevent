@@ -1,8 +1,0 @@
-utevent-event-base:
-  css:
-    theme:
-      css/utevent-event-base.css: {}
-view-mode-full:
-  css:
-    theme:
-      css/view-mode-full.css: {}
