@@ -138,3 +138,12 @@ function utevent_view_listing_page_update_8115() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Distinguish no results (#374).
+ */
+function utevent_view_listing_page_update_8116() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}

@@ -159,6 +159,11 @@ class BasicUteventTest extends WebDriverTestBase {
     $assert->elementTextEquals('css', '.field--name-field-utevent-tags .field__item', 'Event tag test');
     $assert->elementTextEquals('css', '.field--name-field-utevent-status .field__item', 'Moved online');
 
+
+    // Check event listing response.
+    $this->drupalGet('/events');
+    $assert->pageTextContains('No upcoming events match the criteria.');
+
     // Verify the Add To Calendar button is operable.
     $page->pressButton('Add to calendar');
     $this->assertNotEmpty($assert->waitForElementVisible('css', '.add-to-calendar.modal'));
@@ -170,7 +175,7 @@ class BasicUteventTest extends WebDriverTestBase {
 
     // Check past event listing response.
     $this->drupalGet('/past-events');
-    $assert->pageTextContains('No events match the criteria.');
+    $assert->pageTextContains('No past events match the criteria.');
 
     // Check event listing.
     $this->drupalGet('/events');
