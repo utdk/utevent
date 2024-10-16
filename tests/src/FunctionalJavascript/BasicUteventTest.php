@@ -3,13 +3,13 @@
 namespace Drupal\Tests\utevent\FunctionalJavascript;
 
 use Drupal\Core\Language\Language;
-use Drupal\file\Entity\File;
-use Drupal\file\FileInterface;
 use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
-use Drupal\media\Entity\Media;
+use Drupal\Tests\TestFileCreationTrait;
 use Drupal\Tests\ckeditor5\Traits\CKEditor5TestTrait;
 use Drupal\Tests\node\Traits\NodeCreationTrait;
-use Drupal\Tests\TestFileCreationTrait;
+use Drupal\file\Entity\File;
+use Drupal\file\FileInterface;
+use Drupal\media\Entity\Media;
 use Drupal\utevent\Permissions as UteventPermissions;
 use Drupal\utexas\Permissions as UtexasPermissions;
 
