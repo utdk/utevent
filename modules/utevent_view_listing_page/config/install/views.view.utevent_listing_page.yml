@@ -285,13 +285,15 @@ display:
             use_today: 1
             cap_today: 1
             display_day: 1
+            month_only: 0
             display_time: 1
+            hide_date: 0
             time_before_date: 0
-            use_all_day: 1
-            display_noon_and_midnight: 0
+            display_noon_and_midnight: 1
             capitalize_noon_and_midnight: 0
-            separator: to
+            use_all_day: 1
             timezone: ''
+            separator: to
           group_column: value
           group_columns: {  }
           group_rows: false
