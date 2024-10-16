@@ -95,6 +95,7 @@ class UtEventSmartDateRecurrenceFormatter extends SmartDateRecurrenceFormatter {
    * @return array
    *   The keys and labels for the sets of configuration.
    */
+  /* phpcs:ignore */
   public function supportsDateAugmenter() {
     return parent::supportsDateAugmenter();
   }
