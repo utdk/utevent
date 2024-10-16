@@ -147,3 +147,12 @@ function utevent_view_listing_page_update_8116() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Events time for "midnight" or "noon" show incorrect times (#383).
+ */
+function utevent_view_listing_page_update_8117() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
