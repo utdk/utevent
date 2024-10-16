@@ -97,6 +97,10 @@ class BasicUteventTest extends WebDriverTestBase {
     $page->fillField('name[0][value]', 'Event tag test');
     $page->pressButton('Save');
 
+    // Check past event listing response.
+    $this->drupalGet('/events');
+    $assert->pageTextContains('No upcoming events match the criteria.');
+
     // Navigate to node edit screen.
     $this->drupalGet('node/add/utevent_event');
 
@@ -158,11 +162,6 @@ class BasicUteventTest extends WebDriverTestBase {
     $assert->elementTextEquals('css', '.field--name-field-utevent-location .field__item', 'Event location test');
     $assert->elementTextEquals('css', '.field--name-field-utevent-tags .field__item', 'Event tag test');
     $assert->elementTextEquals('css', '.field--name-field-utevent-status .field__item', 'Moved online');
-
-
-    // Check event listing response.
-    $this->drupalGet('/events');
-    $assert->pageTextContains('No upcoming events match the criteria.');
 
     // Verify the Add To Calendar button is operable.
     $page->pressButton('Add to calendar');
