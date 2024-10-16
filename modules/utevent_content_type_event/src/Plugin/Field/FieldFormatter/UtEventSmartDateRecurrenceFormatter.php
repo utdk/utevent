@@ -73,7 +73,7 @@ class UtEventSmartDateRecurrenceFormatter extends SmartDateRecurrenceFormatter {
       $date_options_all,
       NULL,
       Language::LANGCODE_NOT_SPECIFIED,
-      'smartdate',
+      smartdate',
     );
 
     if ($return_type == 'string') {
