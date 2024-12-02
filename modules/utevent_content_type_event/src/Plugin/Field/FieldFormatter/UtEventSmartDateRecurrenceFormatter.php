@@ -2,10 +2,10 @@
 
 namespace Drupal\utevent_content_type_event\Plugin\Field\FieldFormatter;
 
-use Drupal\smart_date_recur\Plugin\Field\FieldFormatter\SmartDateRecurrenceFormatter;
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\smart_date\SmartDateTrait;
 use Drupal\Core\Language\Language;
+use Drupal\smart_date\SmartDateTrait;
+use Drupal\smart_date_recur\Plugin\Field\FieldFormatter\SmartDateRecurrenceFormatter;
 
 /**
  * Plugin for a recurrence-optimized formatter for 'smartdate' fields.
@@ -72,7 +72,8 @@ class UtEventSmartDateRecurrenceFormatter extends SmartDateRecurrenceFormatter {
       $range,
       $date_options_all,
       NULL,
-      Language::LANGCODE_NOT_SPECIFIED
+      Language::LANGCODE_NOT_SPECIFIED,
+      'smartdate'
     );
 
     if ($return_type == 'string') {
@@ -94,6 +95,7 @@ class UtEventSmartDateRecurrenceFormatter extends SmartDateRecurrenceFormatter {
    * @return array
    *   The keys and labels for the sets of configuration.
    */
+  /* phpcs:ignore */
   public function supportsDateAugmenter() {
     return parent::supportsDateAugmenter();
   }
@@ -114,7 +116,7 @@ class UtEventSmartDateRecurrenceFormatter extends SmartDateRecurrenceFormatter {
           return $settings;
         }
       }
-      return isset($this->thirdPartySettings[$module]) ? $this->thirdPartySettings[$module] : [];
+      return $this->thirdPartySettings[$module] ?? [];
     }
     return $this->thirdPartySettings;
   }

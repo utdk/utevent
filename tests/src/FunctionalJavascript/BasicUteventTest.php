@@ -3,13 +3,13 @@
 namespace Drupal\Tests\utevent\FunctionalJavascript;
 
 use Drupal\Core\Language\Language;
-use Drupal\file\Entity\File;
-use Drupal\file\FileInterface;
 use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
-use Drupal\media\Entity\Media;
+use Drupal\Tests\TestFileCreationTrait;
 use Drupal\Tests\ckeditor5\Traits\CKEditor5TestTrait;
 use Drupal\Tests\node\Traits\NodeCreationTrait;
-use Drupal\Tests\TestFileCreationTrait;
+use Drupal\file\Entity\File;
+use Drupal\file\FileInterface;
+use Drupal\media\Entity\Media;
 use Drupal\utevent\Permissions as UteventPermissions;
 use Drupal\utexas\Permissions as UtexasPermissions;
 
@@ -97,14 +97,19 @@ class BasicUteventTest extends WebDriverTestBase {
     $page->fillField('name[0][value]', 'Event tag test');
     $page->pressButton('Save');
 
+    // Check past event listing response.
+    $this->drupalGet('/events');
+    $assert->pageTextContains('No upcoming events match the criteria.');
+
     // Navigate to node edit screen.
     $this->drupalGet('node/add/utevent_event');
 
     // Add field values.
+    $next_year = date('Y') + 1;
     $page->fillField('title[0][value]', 'Test Event 1');
-    $page->fillField('field_utevent_datetime[0][time_wrapper][value][date]', '07-31-2023');
+    $page->fillField('field_utevent_datetime[0][time_wrapper][value][date]', '07-31-' . $next_year);
     $page->fillField('field_utevent_datetime[0][time_wrapper][value][time]', '17:00:00');
-    $page->fillField('field_utevent_datetime[0][time_wrapper][end_value][date]', '07-31-2023');
+    $page->fillField('field_utevent_datetime[0][time_wrapper][end_value][date]', '07-31-' . $next_year);
     $page->fillField('field_utevent_datetime[0][time_wrapper][end_value][time]', '18:00:00');
 
     // Access media library.
@@ -132,7 +137,7 @@ class BasicUteventTest extends WebDriverTestBase {
     $this->drupalGet('/events/test-event-1');
     $assert->elementTextEquals('css', 'h1', 'Test Event 1');
     $assert->elementTextEquals('css', '.field--name-field-utevent-status .field__item', 'Scheduled');
-    $assert->elementTextEquals('css', '.field--name-field-utevent-datetime .field__item', 'July 31, 2023, 5 to 6 p.m.');
+    $assert->elementTextEquals('css', '.field--name-field-utevent-datetime .field__item', 'July 31, ' . $next_year . ', 5 to 6 p.m. Add to calendar');
     $assert->responseNotContains('Location:');
     $assert->responseNotContains('Event tags:');
     $this->assertEquals('<p>Pellentesque tristique senectus <strong>et netus</strong> et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Vestibulum auctor dapibus neque.</li></ul>', $page->find('css', '.field--name-field-utevent-body .field__item')->getHTML());
@@ -158,14 +163,23 @@ class BasicUteventTest extends WebDriverTestBase {
     $assert->elementTextEquals('css', '.field--name-field-utevent-tags .field__item', 'Event tag test');
     $assert->elementTextEquals('css', '.field--name-field-utevent-status .field__item', 'Moved online');
 
-    // Check event listing response.
-    $this->drupalGet('/events');
-    $assert->pageTextContains('No events match the criteria.');
+    // Verify the Add To Calendar button is operable.
+    $page->pressButton('Add to calendar');
+    $this->assertNotEmpty($assert->waitForElementVisible('css', '.add-to-calendar.modal'));
+    $assert->elementTextEquals('css', '.addtocal__link.addtocal__google', 'Google');
+    $assert->elementTextEquals('css', '.addtocal__link.addtocal__outlook', 'Outlook');
+    $assert->elementTextEquals('css', '.addtocal__link.addtocal__ical', 'iCal');
+    $page->pressButton('X');
+    $assert->pageTextNotContains('Google');
 
-    // Check past event listing.
+    // Check past event listing response.
     $this->drupalGet('/past-events');
+    $assert->pageTextContains('No past events match the criteria.');
+
+    // Check event listing.
+    $this->drupalGet('/events');
     $assert->linkExists('Test Event 1');
-    $assert->elementTextEquals('css', '.views-field-field-utevent-datetime', 'July 31, 2023, 5 to 6 p.m.');
+    $assert->elementTextEquals('css', '.views-field-field-utevent-datetime', 'July 31, ' . $next_year . ', 5 to 6 p.m.');
     $assert->elementTextEquals('css', '.views-field-field-utevent-location', 'Event location test');
     $assert->elementTextEquals('css', '.views-field-field-utevent-body', 'Summary text here');
     $this->assertNotEmpty($assert->waitForElementVisible('css', '.views-field-field-utevent-main-media'));

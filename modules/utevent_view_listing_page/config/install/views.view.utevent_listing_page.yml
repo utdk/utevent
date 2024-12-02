@@ -285,13 +285,15 @@ display:
             use_today: 1
             cap_today: 1
             display_day: 1
+            month_only: 0
             display_time: 1
+            hide_date: 0
             time_before_date: 0
-            use_all_day: 1
-            display_noon_and_midnight: 0
+            display_noon_and_midnight: 1
             capitalize_noon_and_midnight: 0
-            separator: to
+            use_all_day: 1
             timezone: ''
+            separator: to
           group_column: value
           group_columns: {  }
           group_rows: false
@@ -547,7 +549,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: 'No events match the criteria.'
+          content: '<div class="no-results">No past events match the criteria.</div>'
           tokenize: false
       sorts:
         field_utevent_datetime_value:
@@ -959,7 +961,7 @@ display:
           exposed: true
           expose:
             operator_id: field_utevent_location_target_id_op
-            label: Filter by location
+            label: 'Filter by location'
             description: ''
             use_operator: false
             operator: field_utevent_location_target_id_op
@@ -1006,7 +1008,7 @@ display:
           exposed: true
           expose:
             operator_id: field_utevent_tags_target_id_op
-            label: Filter by type
+            label: 'Filter by type'
             description: ''
             use_operator: false
             operator: field_utevent_tags_target_id_op
@@ -1096,7 +1098,20 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: '<div class="no-results">No upcoming events match the criteria.</div>'
+          tokenize: false
       defaults:
+        empty: false
         header: false
       display_description: ''
       header:
