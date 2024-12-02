@@ -2,7 +2,7 @@ name: Event
 type: module
 description: Provides the generalized 'Event' content type and supporting components.
 core_version_requirement: ^10 || ^11
-version: '3.20.1'
+version: '3.21.0'
 package: UT Drupal Kit Event Add-on
 
 configure: utevent.configuration
