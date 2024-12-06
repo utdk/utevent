@@ -2,12 +2,9 @@
 
 namespace Drupal\utevent_content_type_event\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Localist CSV endpoint.
@@ -43,7 +40,18 @@ class LocalistCSV extends ControllerBase {
     $file_name = 'localist.csv';
     $csv_file_path = $file_directory . $file_name;
     $csv_file = fopen($csv_file_path, 'w');
-    $header = ['Title', 'Description', 'Date From', 'Start Time', 'Date To', 'End Time', 'Location', 'Tags', 'Event Website', 'Photo URL'];
+    $header = [
+      'Title',
+      'Description',
+      'Date From',
+      'Start Time',
+      'Date To',
+      'End Time',
+      'Location',
+      'Tags',
+      'Event Website',
+      'Photo URL',
+    ];
     fputcsv($csv_file, $header);
     foreach ($rows as $row) {
       fputcsv($csv_file, $row);
