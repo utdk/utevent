@@ -35,6 +35,7 @@ class LocalistCSV extends ControllerBase {
       $rows[$rid][] = $view->field['field_utevent_tags']->advancedRender($row);
       $rows[$rid][] = $view->field['view_node']->advancedRender($row);
       $rows[$rid][] = $view->field['field_utexas_media_image']->advancedRender($row) ? $base_url . '/' . $view->field['field_utexas_media_image']->advancedRender($row)->__toString() : '';
+      $rows[$rid][] = $view->field['field_utexas_media_image_1']->advancedRender($row);
     }
     $file_directory = 'public://';
     $file_name = 'localist.csv';
@@ -51,6 +52,7 @@ class LocalistCSV extends ControllerBase {
       'Tags',
       'Event Website',
       'Photo URL',
+      'Photo Description',
     ];
     fputcsv($csv_file, $header);
     foreach ($rows as $row) {
