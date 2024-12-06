@@ -10,8 +10,8 @@ third_party_settings:
     parent: 'main:'
 name: Event
 type: utevent_event
-description: 'Use <em>events</em> to publicize your organization''s events.'
-help: ''
+description: "Use <em>events</em> to publicize your organization's events."
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: true

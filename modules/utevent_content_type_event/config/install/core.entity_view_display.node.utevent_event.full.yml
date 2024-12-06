@@ -67,9 +67,9 @@ content:
               event_title: '[node:title]'
               location: '[node:field_utevent_location:entity:name]'
               description: |-
-               [node:field_utevent_body:summary]
+                [node:field_utevent_body:summary]
 
-               Event link: [node:url:absolute]
+                Event link: [node:url:absolute]
               retain_spacing: true
               max_desc: '0'
               target: modal
@@ -89,9 +89,9 @@ content:
               event_title: '[node:title]'
               location: '[node:field_utevent_location:entity:name]'
               description: |-
-               [node:field_utevent_body:summary]
+                [node:field_utevent_body:summary]
 
-               Event link: [node:url:absolute]
+                Event link: [node:url:absolute]
               retain_spacing: true
               max_desc: '0'
               target: modal

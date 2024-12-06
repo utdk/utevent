@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.utevent_event.field_utevent_tags
     - node.type.utevent_event
   module:
+    - content_moderation
     - media_library
     - metatag
     - path
@@ -143,6 +144,12 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete_tags
     region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
   path:
     type: path
     weight: 15
