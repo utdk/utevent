@@ -228,7 +228,7 @@ function utevent_content_type_event_update_8111() {
 }
 
 /**
- * Add Localist CSV endpoint
+ * Add Localist CSV endpoint.
  */
 function utevent_content_type_event_update_8112() {
   \Drupal::service('features.manager')->import([
