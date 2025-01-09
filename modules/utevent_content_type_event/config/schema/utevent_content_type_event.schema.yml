@@ -1,0 +1,7 @@
+utevent_content_type_event.config:
+  type: config_entity
+  label: 'UTEvent Content Configuration'
+  mapping:
+    department:
+      type: string
+      label: 'Department for calendar.utexas.edu'

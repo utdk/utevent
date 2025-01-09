@@ -226,3 +226,12 @@ function utevent_content_type_event_update_8111() {
     $config->set('tags', $tags)->save();
   }
 }
+
+/**
+ * Add Localist CSV endpoint.
+ */
+function utevent_content_type_event_update_8112() {
+  \Drupal::service('features.manager')->import([
+    'utevent_content_type_event',
+  ], TRUE);
+}

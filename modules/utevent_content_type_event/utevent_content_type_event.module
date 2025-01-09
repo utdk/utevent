@@ -5,7 +5,9 @@
  * Contains utevent content type .module file.
  */
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\utevent_content_type_event\EventContentTypeHelper;
+use Drupal\utevent_content_type_event\Form\ContentConfig;
 
 /**
  * Contains utevent Event content type .module file.
@@ -136,4 +138,12 @@ function utevent_content_type_event_preprocess_field(&$variables, $hook) {
         return;
     }
   }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for the general config form.
+ */
+function utevent_content_type_event_form_utevent_general_config_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Alter the general config form to include the content configuration.
+  \Drupal::classResolver(ContentConfig::class)->alterForm($form, $form_state, $form_id);
 }
