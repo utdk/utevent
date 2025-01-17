@@ -28,6 +28,26 @@ class ContentConfig extends BaseConfigurationForm {
         ':survey' => 'https://utexas.qualtrics.com/jfe/form/SV_0jNfR9GXvYv69V4',
       ]),
     ];
+    $automatically_archive_on = $config->get('automatically_archive_on');
+    $form['automatically_archive_on'] = [
+      '#title' => $this->t('Automatically archive past events'),
+      '#type' => 'checkbox',
+      '#default_value' => $automatically_archive_on ?? FALSE,
+      '#description' => $this->t('Set past events to archived state after a specified number of days in the past.'),
+    ];
+    $automatically_archive_days = $config->get('automatically_archive_days');
+    $form['automatically_archive_days'] = [
+      '#title' => $this->t('Archive events whose end date is older than this many days in the past.'),
+      '#type' => 'number',
+      '#min' => '1',
+      '#max' => '365',
+      '#default_value' => $automatically_archive_days ?? '30',
+      '#states' => [
+        'disabled' => [
+          ':input[name="automatically_archive_on"]' => ['checked' => FALSE],
+        ],
+      ],
+    ];
     $form['#submit'][] = [$this, 'submitContentConfig'];
   }
 
@@ -36,8 +56,12 @@ class ContentConfig extends BaseConfigurationForm {
    */
   public function submitContentConfig(&$form, FormStateInterface $form_state) {
     $department = $form_state->getValue('department');
+    $automatically_archive_on = $form_state->getValue('automatically_archive_on');
+    $automatically_archive_days = $form_state->getValue('automatically_archive_days');
     $config = $this->configFactory->getEditable('utevent_content_type_event.config');
     $config->set('department', $department);
+    $config->set('automatically_archive_on', $automatically_archive_on);
+    $config->set('automatically_archive_days', $automatically_archive_days);
     $config->save();
   }
 

@@ -10,6 +10,42 @@ use Drupal\utevent_content_type_event\EventContentTypeHelper;
 use Drupal\utevent_content_type_event\Form\ContentConfig;
 
 /**
+ * Implements hook_cron().
+ */
+function utevent_content_type_event_cron() {
+  // Option to archive past events.
+  $config_id = 'utevent_content_type_event.config';
+  $config = \Drupal::config($config_id);
+  if ($config->get('automatically_archive_on')) {
+    $day_offset = $config->get('automatically_archive_days') ?? '30';
+    // Get current time minus the number of days (in seconds) to delay.
+    // e.g., only archive if the event end value is less than today minus
+    // N days.
+    $time_offset = time() - $day_offset * 86400;
+    \Drupal::logger('utevent_content_type_event')->notice('Checking for past events to archive...');
+    $published_events = \Drupal::entityTypeManager()->getStorage('node')
+      ->loadByProperties(['type' => 'utevent_event', 'status' => 1]);
+    /** @var \Drupal\entity\node $event */
+    foreach ($published_events as $event) {
+      $instances = $event->get('field_utevent_datetime')->getValue();
+      $has_upcoming = FALSE;
+      foreach ($instances as $instance) {
+        // If the end value is greater than the time offset, there is still
+        // an upcoming event, so don't archive.
+        if ($instance['end_value'] > $time_offset) {
+          $has_upcoming = TRUE;
+        }
+      }
+      if (!$has_upcoming) {
+        \Drupal::logger('utevent_content_type_event')->notice('Archiving event "%event"', ['%event' => $event->getTitle()]);
+        $event->set('moderation_state', 'archived');
+        $event->setUnpublished()->save();
+      }
+    }
+  }
+}
+
+/**
  * Contains utevent Event content type .module file.
  */
 
