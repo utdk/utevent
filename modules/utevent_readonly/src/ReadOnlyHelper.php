@@ -20,6 +20,7 @@ class ReadOnlyHelper {
     'utevent_listing_block',
     'utevent_listing_page',
     'utevent_calendar_page',
+    'utevent_localist',
   ];
 
   /**

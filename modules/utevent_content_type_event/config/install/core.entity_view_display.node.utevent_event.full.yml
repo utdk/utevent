@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.utevent_event.field_utevent_datetime
     - field.field.node.utevent_event.field_utevent_display_media
     - field.field.node.utevent_event.field_utevent_featured
+    - field.field.node.utevent_event.field_utevent_localist_unlisted
     - field.field.node.utevent_event.field_utevent_location
     - field.field.node.utevent_event.field_utevent_main_media
     - field.field.node.utevent_event.field_utevent_metatags
@@ -24,22 +25,27 @@ dependencies:
     - utevent_content_type_event
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: node.utevent_event.full
 targetEntityType: node
 bundle: utevent_event
 mode: full
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_utevent_body:
-    weight: 2
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 2
     region: content
   field_utevent_datetime:
-    weight: 3
+    type: utevent_smartdate_recurring
     label: above
     settings:
       timezone_override: ''
@@ -56,81 +62,81 @@ content:
       date_augmenter:
         instances:
           status:
-            addtocal: '1'
+            addtocal: true
           weights:
             order:
               addtocal:
-                weight: '0'
+                weight: 0
           settings:
             addtocal:
               label: 'Add to calendar'
               event_title: '[node:title]'
               location: '[node:field_utevent_location:entity:name]'
               description: |-
-               [node:field_utevent_body:summary]
+                [node:field_utevent_body:summary]
 
-               Event link: [node:url:absolute]
+                Event link: [node:url:absolute]
               retain_spacing: true
-              max_desc: '0'
+              max_desc: 0
+              past_events: false
               target: modal
-              past_events: 0
           augmenter_settings:
             fields__field_utevent_datetime__settings_edit_form__third_party_settings__date_augmenter__instances__augmenter_settings__active_tab: ''
         rule:
           status:
-            addtocal: '1'
+            addtocal: true
           weights:
             order:
               addtocal:
-                weight: '0'
+                weight: 0
           settings:
             addtocal:
               label: 'Add series to calendar'
               event_title: '[node:title]'
               location: '[node:field_utevent_location:entity:name]'
               description: |-
-               [node:field_utevent_body:summary]
+                [node:field_utevent_body:summary]
 
-               Event link: [node:url:absolute]
+                Event link: [node:url:absolute]
               retain_spacing: true
-              max_desc: '0'
+              max_desc: 0
+              past_events: false
               target: modal
-              past_events: 0
           augmenter_settings:
             fields__field_utevent_datetime__settings_edit_form__third_party_settings__date_augmenter__rule__augmenter_settings__active_tab: ''
-    type: utevent_smartdate_recurring
+    weight: 3
     region: content
   field_utevent_location:
-    weight: 4
+    type: entity_reference_label
     label: above
     settings:
       link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 4
     region: content
   field_utevent_main_media:
     type: media_thumbnail
-    weight: 1
     label: hidden
     settings:
-      image_style: utexas_image_style_280w_280h
       image_link: ''
+      image_style: utexas_image_style_280w_280h
     third_party_settings: {  }
+    weight: 1
     region: content
   field_utevent_status:
-    weight: 0
+    type: list_default
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    weight: 0
     region: content
   field_utevent_tags:
-    weight: 5
+    type: entity_reference_label
     label: above
     settings:
       link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 5
     region: content
 hidden:
   display_breadcrumbs: true
@@ -138,5 +144,6 @@ hidden:
   display_updated: true
   field_utevent_display_media: true
   field_utevent_featured: true
+  field_utevent_localist_unlisted: true
   field_utevent_metatags: true
   links: true

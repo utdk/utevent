@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.utevent_event.field_utevent_datetime
     - field.field.node.utevent_event.field_utevent_display_media
     - field.field.node.utevent_event.field_utevent_featured
+    - field.field.node.utevent_event.field_utevent_localist_unlisted
     - field.field.node.utevent_event.field_utevent_location
     - field.field.node.utevent_event.field_utevent_main_media
     - field.field.node.utevent_event.field_utevent_metatags
@@ -24,10 +25,13 @@ targetEntityType: node
 bundle: utevent_event
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_utevent_datetime:
     type: utevent_smartdate_recurring
-    weight: 0
-    region: content
     label: visually_hidden
     settings:
       format: default
@@ -37,38 +41,40 @@ content:
       past_display: '2'
       upcoming_display: '2'
     third_party_settings: {  }
+    weight: 0
+    region: content
   field_utevent_location:
     type: entity_reference_label
-    weight: 3
-    region: content
     label: visually_hidden
     settings:
       link: false
     third_party_settings: {  }
+    weight: 3
+    region: content
   field_utevent_main_media:
     type: media_thumbnail
-    weight: 1
-    region: content
     label: hidden
     settings:
-      image_style: utexas_image_style_280w_280h
       image_link: ''
+      image_style: utexas_image_style_280w_280h
     third_party_settings: {  }
+    weight: 1
+    region: content
   field_utevent_status:
     type: list_default
-    weight: 2
-    region: content
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 2
+    region: content
   field_utevent_tags:
     type: entity_reference_label
-    weight: 4
-    region: content
     label: hidden
     settings:
       link: false
     third_party_settings: {  }
+    weight: 4
+    region: content
 hidden:
   display_breadcrumbs: true
   display_page_title: true
@@ -76,5 +82,6 @@ hidden:
   field_utevent_body: true
   field_utevent_display_media: true
   field_utevent_featured: true
+  field_utevent_localist_unlisted: true
   field_utevent_metatags: true
   links: true
