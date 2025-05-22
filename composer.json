@@ -21,7 +21,7 @@
     "drupal/date_augmenter": "1.1.1",
     "drupal/fullcalendar_view": "5.2.4",
     "drupal/smart_date": "4.2.3",
-    "utexas/utdk_profile": "^3.23.0 || dev-develop"
+    "utexas/utdk_profile": "^3.24.0 || dev-develop"
   },
   "config": {
     "sort-packages": true,
