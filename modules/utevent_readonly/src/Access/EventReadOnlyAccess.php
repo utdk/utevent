@@ -80,6 +80,9 @@ class EventReadOnlyAccess implements AccessInterface {
     elseif ($vocab = $this->routeMatch->getParameter('taxonomy_vocabulary')) {
       $id = $vocab->id();
     }
+    elseif ($feeds = $this->routeMatch->getParameter('feeds_feed_type')) {
+      $id = $feeds->id();
+    }
     if ($id) {
       if (!ReadOnlyHelper::matchesReadOnlyPattern($id)) {
         return FALSE;

@@ -156,3 +156,12 @@ function utevent_view_listing_page_update_8117() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Install utevent_export view.
+ */
+function utevent_view_listing_page_update_8118() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}

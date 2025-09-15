@@ -16,6 +16,22 @@ class Permissions {
    */
   public static $manager = [
     'administer utevent',
+    // Feeds.
+    'create utevent_import_json feeds',
+    'create utevent_import_xml feeds',
+    'delete utevent_import_json feeds',
+    'delete utevent_import_xml feeds',
+    'import utevent_import_json feeds',
+    'import utevent_import_xml feeds',
+    'schedule_import utevent_import_json feeds',
+    'schedule_import utevent_import_xml feeds',
+    'unlock utevent_import_json feeds',
+    'unlock utevent_import_xml feeds',
+    'update utevent_import_json feeds',
+    'update utevent_import_xml feeds',
+    'view utevent_import_json feeds',
+    'view utevent_import_xml feeds',
+    'access feed overview',
   ];
 
   /**
