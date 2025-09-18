@@ -156,3 +156,18 @@ function utevent_view_listing_page_update_8117() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Install utevent_export view.
+ */
+function utevent_view_listing_page_update_8118() {
+  if (\Drupal::moduleHandler()->moduleExists('rest') === FALSE) {
+    \Drupal::service('module_installer')->install(['rest']);
+  }
+  if (\Drupal::moduleHandler()->moduleExists('serialization') === FALSE) {
+    \Drupal::service('module_installer')->install(['serialization']);
+  }
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}

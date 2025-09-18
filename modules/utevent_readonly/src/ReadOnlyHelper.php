@@ -21,6 +21,9 @@ class ReadOnlyHelper {
     'utevent_listing_page',
     'utevent_calendar_page',
     'utevent_localist',
+    'utevent_export',
+    'utevent_import_json',
+    'utevent_import_xml',
   ];
 
   /**
@@ -91,6 +94,15 @@ class ReadOnlyHelper {
    * @var array
    */
   public static $restrictableRoutes = [
+    // Feeds.
+    'entity.feeds_feed_type.mapping',
+    'entity.feeds_feed_type.sources',
+    'entity.feeds_feed_type.source_edit',
+    'entity.feeds_feed_type.source_delete',
+    'entity.feeds_feed_type.tamper',
+    'entity.feeds_feed_type.tamper_add',
+    'entity.feeds_feed_type.tamper_edit',
+    'entity.feeds_feed_type.tamper_delete',
     // Nodes.
     'entity.entity_form_display.node.default',
     'entity.entity_form_display.node.form_mode',
