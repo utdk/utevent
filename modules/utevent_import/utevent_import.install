@@ -27,3 +27,12 @@ function utevent_import_install() {
   }
 
 }
+
+/**
+ * Add html entity decode on title field import.
+ */
+function utevent_import_update_10000() {
+  \Drupal::service('features.manager')->import([
+    'utevent_import',
+  ], TRUE);
+}
