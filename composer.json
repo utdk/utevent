@@ -15,7 +15,6 @@
     "source": "https://github.austin.utexas.edu/eis1-wcs/utevent"
   },
   "require": {
-    "cweagans/composer-patches": "~1.0",
     "drupal/addtocal_augment": "1.2.4",
     "drupal/date_ap_style": "2.0.2",
     "drupal/date_augmenter": "1.1.2",
