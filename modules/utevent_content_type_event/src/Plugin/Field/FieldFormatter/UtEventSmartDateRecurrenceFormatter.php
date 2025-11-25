@@ -56,14 +56,14 @@ class UtEventSmartDateRecurrenceFormatter extends SmartDateRecurrenceFormatter {
   public static function formatSmartDate($start_ts, $end_ts, mixed $settings = [], $timezone = NULL, $return_type = '') {
 
     $date_options_all = [
-      'always_display_year' => 1,
-      'display_noon_and_midnight' => 1,
+      'always_display_year' => TRUE,
+      'display_noon_and_midnight' => TRUE,
       'timezone' => $timezone,
-      'display_day' => 1,
-      'display_time' => 1,
-      'time_before_date' => 0,
-      'use_all_day' => 1,
-      'capitalize_noon_and_midnight' => 0,
+      'display_day' => TRUE,
+      'display_time' => TRUE,
+      'time_before_date' => FALSE,
+      'use_all_day' => TRUE,
+      'capitalize_noon_and_midnight' => FALSE,
     ];
 
     $range['start'] = $start_ts;

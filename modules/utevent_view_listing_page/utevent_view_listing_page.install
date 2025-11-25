@@ -180,3 +180,12 @@ function utevent_view_listing_page_update_8119() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Update data types for AP date fields in View (#424).
+ */
+function utevent_view_listing_page_update_8120() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
