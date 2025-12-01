@@ -29,22 +29,32 @@ third_party_settings:
         source: utevent_end_xml
         weight: 0
         label: 'String to Unix Timestamp'
-      d082ec1a-b776-44a2-ab8d-ab9dc6fb9eb1:
-        separator: ;
-        limit: null
-        uuid: d082ec1a-b776-44a2-ab8d-ab9dc6fb9eb1
-        plugin: explode
-        source: utevent_location_xml
-        weight: 0
-        label: Explode
       9cc5e7ff-718d-4da6-9a1b-cd5c28a4b93a:
-        separator: ;
+        separator: '|'
         limit: null
         uuid: 9cc5e7ff-718d-4da6-9a1b-cd5c28a4b93a
         plugin: explode
         source: utevent_tags_xml
         weight: 0
         label: Explode
+      0a9bc52a-f7f7-4821-9271-0f35585c3c9e:
+        uuid: 0a9bc52a-f7f7-4821-9271-0f35585c3c9e
+        plugin: html_entity_decode
+        source: utevent_title_xml
+        weight: 0
+        label: 'HTML entity decode'
+      bf897bab-c1a6-4933-946a-2cc2a6572b9d:
+        uuid: bf897bab-c1a6-4933-946a-2cc2a6572b9d
+        plugin: html_entity_decode
+        source: utevent_location_xml
+        weight: 1
+        label: 'HTML entity decode'
+      7fd14beb-cbb9-441e-98b1-8def207c9041:
+        uuid: 7fd14beb-cbb9-441e-98b1-8def207c9041
+        plugin: html_entity_decode
+        source: utevent_tags_xml
+        weight: 1
+        label: 'HTML entity decode'
 label: 'Events import XML'
 id: utevent_import_xml
 description: 'Imports an XML file to the Event content type.'

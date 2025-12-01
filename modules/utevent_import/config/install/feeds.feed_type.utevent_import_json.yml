@@ -30,23 +30,33 @@ third_party_settings:
         weight: 0
         label: 'String to Unix Timestamp'
       2ce21c56-d907-4e09-a22f-021c21472483:
-        separator: ;
+        separator: '|'
         limit: null
         uuid: 2ce21c56-d907-4e09-a22f-021c21472483
         plugin: explode
         source: utevent_tags_json
         weight: 0
         label: Explode
-      a8fa8eca-5372-4713-a2b9-1ad8fa4fe12f:
-        separator: ;
-        limit: null
-        uuid: a8fa8eca-5372-4713-a2b9-1ad8fa4fe12f
-        plugin: explode
-        source: utevent_ocation_json
+      695143b5-4f46-4594-a055-3cff42356572:
+        uuid: 695143b5-4f46-4594-a055-3cff42356572
+        plugin: html_entity_decode
+        source: utevent_title_json
         weight: 0
-        label: Explode
-id: utevent_import_json
+        label: 'HTML entity decode'
+      547448a6-8239-4f4d-b4fa-2acf521763f8:
+        uuid: 547448a6-8239-4f4d-b4fa-2acf521763f8
+        plugin: html_entity_decode
+        source: utevent_ocation_json
+        weight: 1
+        label: 'HTML entity decode'
+      56199663-fb02-4300-9d9e-99611f0a2906:
+        uuid: 56199663-fb02-4300-9d9e-99611f0a2906
+        plugin: html_entity_decode
+        source: utevent_tags_json
+        weight: 1
+        label: 'HTML entity decode'
 label: 'Events import JSON'
+id: utevent_import_json
 description: 'Imports a JSON file to the Event content type.'
 help: ''
 import_period: 3600

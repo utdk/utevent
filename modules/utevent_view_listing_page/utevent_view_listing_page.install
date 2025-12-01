@@ -171,3 +171,21 @@ function utevent_view_listing_page_update_8118() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Update event export separator (#418).
+ */
+function utevent_view_listing_page_update_8119() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
+
+/**
+ * Update data types for AP date fields in View (#424).
+ */
+function utevent_view_listing_page_update_8120() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}
