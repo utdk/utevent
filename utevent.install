@@ -25,8 +25,8 @@ function utevent_requirements($phase) {
  * Implements hook_install().
  */
 function utevent_install() {
-  // Enable this add-on's read-only functionality. We do this in a hook_install()
-  // implementation so that the module may be uninstalled.
+  // Enable this add-on's read-only functionality. We do this in a
+  // hook_install() implementation so that the module may be uninstalled.
   if (\Drupal::moduleHandler()->moduleExists('utevent_readonly') === FALSE) {
     \Drupal::service('module_installer')->install(['utevent_readonly']);
   }

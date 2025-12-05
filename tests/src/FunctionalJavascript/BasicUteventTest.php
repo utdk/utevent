@@ -179,8 +179,8 @@ class BasicUteventTest extends WebDriverTestBase {
     // Check event listing.
     $this->drupalGet('/events');
     $assert->linkExists('Test Event 1');
-    $assert->elementTextEquals('css', '.views-field-field-utevent-datetime', 'July 31, ' . $next_year . ', 5 to 6 p.m.');
-    $assert->elementTextEquals('css', '.views-field-field-utevent-location', 'Event location test');
+    $assert->elementTextEquals('css', '.views-field-field-utevent-datetime', 'Date and time: July 31, ' . $next_year . ', 5 to 6 p.m.');
+    $assert->elementTextEquals('css', '.views-field-field-utevent-location', 'Location: Event location test');
     $assert->elementTextEquals('css', '.views-field-field-utevent-body', 'Summary text here');
     $this->assertNotEmpty($assert->waitForElementVisible('css', '.views-field-field-utevent-main-media'));
 

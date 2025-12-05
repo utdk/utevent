@@ -240,7 +240,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<span class="calendar-icon"></span> {{ field_utevent_datetime }}'
+            text: '<span class="field__label visually-hidden">Date and time:</span><span class="calendar-icon"></span> {{ field_utevent_datetime }}'
             make_link: false
             path: ''
             absolute: false
@@ -281,16 +281,26 @@ display:
           type: smartdate_custom
           settings:
             separator: ' - '
+            time_diff:
+              enabled: 0
+              future_format: '@interval hence'
+              past_format: '@interval ago'
+              granularity: '2'
+              refresh: '60'
+              description: ''
             date_format: 'l F j, Y'
             custom_date_format: ''
             timezone: ''
+            tooltip:
+              date_format: ''
+              custom_date_format: ''
             join: ', '
             time_format: 'g:i a'
             time_hour_format: 'g:i a'
             allday_label: 'All day'
             date_first: '1'
             ampm_reduce: 0
-            site_time_toggle: 1
+            site_time_toggle: '1'
           group_column: value
           group_columns: {  }
           group_rows: false
@@ -383,7 +393,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<span class="location-icon"></span><span class="location-text">{{ field_utevent_location }}</span>'
+            text: '<span class="field__label visually-hidden">Location:</span><span class="location-icon"></span><span class="location-text">{{ field_utevent_location }}</span>'
             make_link: false
             path: ''
             absolute: false
@@ -821,8 +831,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -843,8 +851,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
