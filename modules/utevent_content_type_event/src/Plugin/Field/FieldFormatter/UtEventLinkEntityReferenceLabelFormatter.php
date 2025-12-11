@@ -2,25 +2,23 @@
 
 namespace Drupal\utevent_content_type_event\Plugin\Field\FieldFormatter;
 
-use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Field\Attribute\FieldFormatter;
 use Drupal\Core\Field\FieldDefinitionInterface;
-use Drupal\Core\Url;
-use Drupal\Core\Link;
-
+use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceLabelFormatter;
+use Drupal\Core\Link;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Url;
 
 /**
  * Plugin implementation of the 'Event entity reference label link' formatter.
- *
- * @FieldFormatter(
- *   id = "utevent_link_entity_reference_label",
- *   label = @Translation("UT Event Label Link"),
- *   description = @Translation("Convert the label of the referenced entities to a link if it is a url."),
- *   field_types = {
- *     "entity_reference"
- *   }
- * )
  */
+#[FieldFormatter(
+  id: 'utevent_link_entity_reference_label',
+  label: new TranslatableMarkup('UT Event Label Link'),
+  description: new TranslatableMarkup('Convert the label of the referenced entities to a link if it is a url.'),
+  field_types: ['entity_reference']
+)]
 class UtEventLinkEntityReferenceLabelFormatter extends EntityReferenceLabelFormatter {
 
   /**
