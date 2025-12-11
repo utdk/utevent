@@ -7,9 +7,9 @@ use Drupal\file\Entity\File;
 use Drupal\file\FileInterface;
 use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
 use Drupal\media\Entity\Media;
-use Drupal\Tests\TestFileCreationTrait;
 use Drupal\Tests\ckeditor5\Traits\CKEditor5TestTrait;
 use Drupal\Tests\node\Traits\NodeCreationTrait;
+use Drupal\Tests\TestFileCreationTrait;
 use Drupal\utevent\Permissions as UteventPermissions;
 use Drupal\utexas\Permissions as UtexasPermissions;
 
@@ -36,7 +36,35 @@ class BasicUteventTest extends WebDriverTestBase {
    *
    * @var string
    */
-  protected $defaultTheme = 'forty_acres';
+  protected $defaultTheme = 'speedway';
+
+  /**
+   * The entity manager service.
+   *
+   * @var Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * The test media ID.
+   *
+   * @var int
+   */
+  protected $testMediaImageId = 0;
+
+  /**
+   * The test media filename.
+   *
+   * @var string
+   */
+  protected $testMediaImageFilename = "";
+
+  /**
+   * A user with permissions to create Event content.
+   *
+   * @var \Drupal\user\UserInterface
+   */
+  protected $user;
 
   /**
    * Modules to enable.
