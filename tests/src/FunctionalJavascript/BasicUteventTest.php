@@ -168,7 +168,10 @@ class BasicUteventTest extends WebDriverTestBase {
     $assert->elementTextEquals('css', '.field--name-field-utevent-datetime .field__item', 'July 31, ' . $next_year . ', 5 to 6 p.m. Add to calendar');
     $assert->responseNotContains('Location:');
     $assert->responseNotContains('Event tags:');
-    $this->assertEquals('<p>Pellentesque tristique senectus <strong>et netus</strong> et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Vestibulum auctor dapibus neque.</li></ul>', $page->find('css', '.field--name-field-utevent-body .field__item')->getHTML());
+    $actual = $page->find('css', '.field--name-field-utevent-body .field__item')->getHTML();
+    // Remove random-generated data-list-item-id values.
+    $actual_clean = preg_replace('/\sdata-list-item-id="[A-Za-z0-9]*"/', '', $actual);
+    $this->assertEquals($text, $actual_clean);
     $this->assertNotEmpty($assert->waitForElementVisible('css', '.field--name-field-utevent-main-media'));
 
     // Make a change to the event and verify the node can be saved and
