@@ -3,13 +3,13 @@
 namespace Drupal\Tests\utevent\FunctionalJavascript;
 
 use Drupal\Core\Language\Language;
-use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
-use Drupal\Tests\TestFileCreationTrait;
-use Drupal\Tests\ckeditor5\Traits\CKEditor5TestTrait;
-use Drupal\Tests\node\Traits\NodeCreationTrait;
 use Drupal\file\Entity\File;
 use Drupal\file\FileInterface;
+use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
 use Drupal\media\Entity\Media;
+use Drupal\Tests\ckeditor5\Traits\CKEditor5TestTrait;
+use Drupal\Tests\node\Traits\NodeCreationTrait;
+use Drupal\Tests\TestFileCreationTrait;
 use Drupal\utevent\Permissions as UteventPermissions;
 use Drupal\utexas\Permissions as UtexasPermissions;
 
@@ -36,7 +36,35 @@ class BasicUteventTest extends WebDriverTestBase {
    *
    * @var string
    */
-  protected $defaultTheme = 'forty_acres';
+  protected $defaultTheme = 'speedway';
+
+  /**
+   * The entity manager service.
+   *
+   * @var Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * The test media ID.
+   *
+   * @var int
+   */
+  protected $testMediaImageId = 0;
+
+  /**
+   * The test media filename.
+   *
+   * @var string
+   */
+  protected $testMediaImageFilename = "";
+
+  /**
+   * A user with permissions to create Event content.
+   *
+   * @var \Drupal\user\UserInterface
+   */
+  protected $user;
 
   /**
    * Modules to enable.
@@ -140,7 +168,10 @@ class BasicUteventTest extends WebDriverTestBase {
     $assert->elementTextEquals('css', '.field--name-field-utevent-datetime .field__item', 'July 31, ' . $next_year . ', 5 to 6 p.m. Add to calendar');
     $assert->responseNotContains('Location:');
     $assert->responseNotContains('Event tags:');
-    $this->assertEquals('<p>Pellentesque tristique senectus <strong>et netus</strong> et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p><ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li><li>Aliquam tincidunt mauris eu risus.</li><li>Vestibulum auctor dapibus neque.</li></ul>', $page->find('css', '.field--name-field-utevent-body .field__item')->getHTML());
+    $actual = $page->find('css', '.field--name-field-utevent-body .field__item')->getHTML();
+    // Remove random-generated data-list-item-id values.
+    $actual_clean = preg_replace('/\sdata-list-item-id="[A-Za-z0-9]*"/', '', $actual);
+    $this->assertEquals($text, $actual_clean);
     $this->assertNotEmpty($assert->waitForElementVisible('css', '.field--name-field-utevent-main-media'));
 
     // Make a change to the event and verify the node can be saved and
@@ -179,8 +210,8 @@ class BasicUteventTest extends WebDriverTestBase {
     // Check event listing.
     $this->drupalGet('/events');
     $assert->linkExists('Test Event 1');
-    $assert->elementTextEquals('css', '.views-field-field-utevent-datetime', 'July 31, ' . $next_year . ', 5 to 6 p.m.');
-    $assert->elementTextEquals('css', '.views-field-field-utevent-location', 'Event location test');
+    $assert->elementTextEquals('css', '.views-field-field-utevent-datetime', 'Date and time: July 31, ' . $next_year . ', 5 to 6 p.m.');
+    $assert->elementTextEquals('css', '.views-field-field-utevent-location', 'Location: Event location test');
     $assert->elementTextEquals('css', '.views-field-field-utevent-body', 'Summary text here');
     $this->assertNotEmpty($assert->waitForElementVisible('css', '.views-field-field-utevent-main-media'));
 

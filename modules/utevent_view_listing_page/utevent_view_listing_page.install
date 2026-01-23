@@ -189,3 +189,12 @@ function utevent_view_listing_page_update_8120() {
     'utevent_view_listing_page',
   ], TRUE);
 }
+
+/**
+ * Event Listings' "Location" and "Date and Time" icons text labels (Issue 423).
+ */
+function utevent_view_listing_page_update_8121() {
+  \Drupal::service('features.manager')->import([
+    'utevent_view_listing_page',
+  ], TRUE);
+}

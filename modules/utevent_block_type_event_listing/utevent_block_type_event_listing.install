@@ -111,3 +111,12 @@ function utevent_block_type_event_listing_update_8107() {
     'utevent_block_type_event_listing',
   ], TRUE);
 }
+
+/**
+ * Event Listings' "Location" and "Date and Time" icons text labels (Issue 423).
+ */
+function utevent_block_type_event_listing_update_8108() {
+  \Drupal::service('features.manager')->import([
+    'utevent_block_type_event_listing',
+  ], TRUE);
+}
