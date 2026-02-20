@@ -16,7 +16,6 @@
   },
   "require": {
     "drupal/addtocal_augment": "1.2.4",
-    "drupal/date_ap_style": "2.1.2",
     "drupal/date_augmenter": "1.1.2",
     "drupal/feeds": "3.2.0",
     "drupal/feeds_ex": "1.0.0-beta5",
