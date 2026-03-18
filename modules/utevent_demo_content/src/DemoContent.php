@@ -8,7 +8,6 @@ use Drupal\file\Entity\File;
 use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
-use Drupal\utevent_demo_content\DemoData;
 
 /**
  * Generate curated demo content.
