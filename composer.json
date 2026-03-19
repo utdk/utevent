@@ -16,14 +16,13 @@
   },
   "require": {
     "drupal/addtocal_augment": "1.2.4",
-    "drupal/date_ap_style": "2.1.2",
     "drupal/date_augmenter": "1.1.2",
     "drupal/feeds": "3.2.0",
     "drupal/feeds_ex": "1.0.0-beta5",
     "drupal/feeds_tamper": "2.0.0-rc1",
     "drupal/fullcalendar_view": "5.2.5",
     "drupal/smart_date": "4.2.4",
-    "utexas/utdk_profile": "^3.28.0 || dev-develop"
+    "utexas/utdk_profile": "^3.29.0 || dev-develop"
   },
   "config": {
     "sort-packages": true,

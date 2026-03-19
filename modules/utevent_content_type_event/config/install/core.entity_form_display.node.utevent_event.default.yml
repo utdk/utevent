@@ -13,7 +13,6 @@ dependencies:
     - field.field.node.utevent_event.field_utevent_status
     - field.field.node.utevent_event.field_utevent_tags
     - node.type.utevent_event
-    - workflows.workflow.standard_workflow
   module:
     - content_moderation
     - media_library
