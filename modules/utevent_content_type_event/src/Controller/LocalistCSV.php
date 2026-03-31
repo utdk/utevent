@@ -64,9 +64,9 @@ class LocalistCSV extends ControllerBase {
       'Department',
       'Visibility',
     ];
-    fputcsv($csv_file, $header);
+    fputcsv($csv_file, $header, ',', '"', '\\');
     foreach ($rows as $row) {
-      fputcsv($csv_file, $row);
+      fputcsv($csv_file, $row, ',', '"', '\\');
     }
     // Close the stream.
     fclose($csv_file);
