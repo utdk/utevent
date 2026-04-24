@@ -20,6 +20,7 @@
     "drupal/feeds": "3.2.0",
     "drupal/feeds_ex": "1.0.0-beta5",
     "drupal/feeds_tamper": "2.0.0-rc1",
+    "drupal/feeds_tamper_media_url": "1.0",
     "drupal/fullcalendar_view": "5.2.5",
     "drupal/smart_date": "4.2.4",
     "utexas/utdk_profile": "^3.29.0 || dev-develop"
