@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.utevent_event.feeds_item
     - field.field.node.utevent_event.field_utevent_body
     - field.field.node.utevent_event.field_utevent_datetime
     - field.field.node.utevent_event.field_utevent_featured
