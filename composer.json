@@ -25,13 +25,6 @@
     "drupal/smart_date": "4.2.4",
     "utexas/utdk_profile": "^3.29.0 || dev-develop"
   },
-  "extra": {
-    "patches": {
-      "drupal/feeds_tamper_media_url": {
-        "Add support for importing alt and title text": "https://git.drupalcode.org/project/feeds_tamper_media_url/-/merge_requests/4.diff"
-      }
-    }
-  },
   "config": {
     "sort-packages": true,
     "allow-plugins": {
