@@ -115,7 +115,7 @@ class Hooks {
     $config = \Drupal::service('config.factory')->getEditable($config_id);
     if (is_null($config->get('id'))) {
       \Drupal::logger('utevent_content_type_event')->notice('Standard workflow not found. Skipping...');
-      // This site does not use the standard_workflow from utdk_profile. Move on.
+      // This site does not use the standard_workflow. Move on.
       return;
     }
     \Drupal::logger('utevent_content_type_event')->notice('Standard workflow found. Updating...');
@@ -136,7 +136,7 @@ class Hooks {
     $node = $variables['elements']['#node'];
     $type = $node->getType();
 
-    // If the event is cancelled, hide the "Add to calendar" functionality (#347).
+    // If the event is cancelled, hide "Add to calendar" functionality (#347).
     if ($type === 'utevent_event') {
       if ($node->hasField('field_utevent_status')) {
         $utevent_status = $node->get('field_utevent_status')->getString();

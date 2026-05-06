@@ -21,8 +21,8 @@ class Hooks {
       $theme_hook_original = $variables['theme_hook_original'];
       $base_plugin_id = $variables['elements']['#base_plugin_id'];
       $bundle = $variables['elements']['content']['#block_content']->bundle();
-      // Theme suggestions for custom inline blocks are already correctly added by
-      // core, so we do not want to add another one here.
+      // Theme suggestions for custom inline blocks are already correctly added
+      // by core, so we do not want to add another one here.
       if ($bundle === 'utevent_event_listing' && $base_plugin_id !== 'inline_block') {
         // Add a bundle-specific theme suggestion.
         array_splice($suggestions, 1, 0, $theme_hook_original . '__' . $base_plugin_id . '__' . $bundle);
