@@ -8,6 +8,7 @@
 use Drupal\metatag\Entity\MetatagDefaults;
 use Drupal\pathauto\Entity\PathautoPattern;
 use Drupal\utevent\Permissions;
+use Drupal\utevent_content_type_event\Hook\Hooks;
 use Drupal\utexas_layout_builder_styles\StyleUpdateHelper;
 use Symfony\Component\Yaml\Yaml;
 
@@ -60,8 +61,7 @@ function utevent_content_type_event_install() {
   Permissions::assignPermissions('manager', 'utexas_site_manager');
 
   // Add 'Standard workflow' to Event content type (#289).
-  // This function is defined in the utevent_content_type_event.module file.
-  _utevent_content_type_event_add_standard_workflow();
+  Hooks::addStandardWorkflow();
 }
 
 /**
@@ -181,8 +181,7 @@ function utevent_content_type_event_update_8108() {
  * Add 'Standard workflow' to Event content type (#289).
  */
 function utevent_content_type_event_update_8109() {
-  // This function is defined in the utevent_content_type_event.module file.
-  _utevent_content_type_event_add_standard_workflow();
+  Hooks::addStandardWorkflow();
 }
 
 /**
