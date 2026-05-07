@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\utevent_readonly\Functional;
 
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use Drupal\Tests\BrowserTestBase;
 
 /**
@@ -9,6 +10,7 @@ use Drupal\Tests\BrowserTestBase;
  *
  * @group utexas
  */
+#[RunTestsInSeparateProcesses]
 class ReadOnlyTest extends BrowserTestBase {
 
   /**
