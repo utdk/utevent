@@ -50,6 +50,7 @@ class ReadOnlyHelper {
    * @var array
    */
   public static $viewableRoutes = [
+    'entity.node_type.edit_form',
     'entity_form_display',
     'field_ui_fields',
     'entity_view_display',
