@@ -36,26 +36,16 @@ class CreateMedia extends TamperBase {
 
     $media_type = 'utexas_image';
     $media_field = 'field_utexas_media_image';
-
     $image_data = explode('|', $data);
     $image = $image_data[0] ?? '';
     $alt = $image_data[1] ?? '';
     $title = $image_data[2] ?? '';
-
-    if (empty($image)) {
-      return $data;
-    }
-
     $file_system = \Drupal::service('file_system');
     $file_name = $this->getFileName($file_system, $image);
 
     $file = $this->findFile($file_name);
     if (FALSE === $file) {
-      $content = $this->getContent($image);
-      if (FALSE === $content) {
-        return $data;
-      }
-      $file = $this->writeData($content, 'public://' . $file_name);
+      $file = $this->writeData($this->getContent($image), 'public://' . $file_name);
     }
 
     if (!$file) {
