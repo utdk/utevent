@@ -7,7 +7,6 @@ dependencies:
   - 'feeds:feeds'
   - 'feeds_ex:feeds_ex'
   - 'feeds_tamper:feeds_tamper'
-  - 'feeds_tamper_media_url:feeds_tamper_media_url'
   - 'metatag:metatag'
   - 'smart_date:smart_date'
   - 'utevent_content_type_event:utevent_content_type_event'

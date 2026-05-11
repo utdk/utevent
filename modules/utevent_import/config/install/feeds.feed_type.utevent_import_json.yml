@@ -62,10 +62,6 @@ third_party_settings:
         source: utevent_image_url_json
         weight: 0
         label: 'Create Media Tamper'
-        media_type: utexas_image
-        media_field: field_utexas_media_image
-        alt_field: utevent_image_alt_json
-        title_field: utevent_image_title_json
 label: 'Events import JSON'
 id: utevent_import_json
 description: 'Imports a JSON file to the Event content type.'
@@ -169,16 +165,6 @@ custom_sources:
     label: 'Image URL'
     machine_name: utevent_image_url_json
     type: json
-  utevent_image_alt_json:
-    value: image-alt
-    label: 'Image alt text'
-    machine_name: utevent_image_alt_json
-    type: json
-  utevent_image_title_json:
-    value: image-title
-    label: 'Image title text'
-    machine_name: utevent_image_title_json
-    type: json
 mappings:
   -
     target: title
@@ -259,11 +245,3 @@ mappings:
       reference_by: mid
       autocreate: 0
       autocreate_bundle: utexas_image
-  -
-    target: temporary_target
-    map:
-      temporary: utevent_image_alt_json
-  -
-    target: temporary_target
-    map:
-      temporary: utevent_image_title_json
