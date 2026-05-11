@@ -5,6 +5,7 @@ namespace Drupal\utevent_import\Plugin\Tamper;
 use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\File\Exception\FileException;
 use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\File\FileExists;
 use Drupal\media\Entity\Media;
 use Drupal\tamper\TamperableItemInterface;
 use Drupal\tamper\TamperBase;
@@ -98,7 +99,7 @@ class CreateMedia extends TamperBase {
    */
   protected function writeData($data, $destination) {
     try {
-      return \Drupal::service('file.repository')->writeData($data, $destination, FileSystemInterface::EXISTS_RENAME);
+      return \Drupal::service('file.repository')->writeData($data, $destination, FileExists::Rename);
     }
     catch (EntityStorageException | FileException $e) {
       return FALSE;
