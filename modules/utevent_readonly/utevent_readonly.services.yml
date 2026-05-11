@@ -1,3 +1,6 @@
+parameters:
+  utevent_readonly.skip_procedural_hook_scan: true
+
 services:
   utevent_readonly.route_subscriber:
     class: Drupal\utevent_readonly\Routing\RouteSubscriber
