@@ -165,6 +165,16 @@ custom_sources:
     label: 'Image URL'
     machine_name: utevent_image_url_json
     type: json
+  utevent_image_alt_json:
+    value: image-alt
+    label: 'Image alt'
+    machine_name: utevent_image_alt_json
+    type: json
+  utevent_image_title_json:
+    value: image-title
+    label: 'Image title'
+    machine_name: utevent_image_title_json
+    type: json
 mappings:
   -
     target: title
@@ -245,3 +255,11 @@ mappings:
       reference_by: mid
       autocreate: 0
       autocreate_bundle: utexas_image
+  -
+    target: temporary_target
+    map:
+      temporary: utevent_image_alt_json
+  -
+    target: temporary_target
+    map:
+      temporary: utevent_image_title_json

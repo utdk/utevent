@@ -4,7 +4,6 @@ namespace Drupal\utevent_import\Plugin\Tamper;
 
 use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\File\Exception\FileException;
-use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\File\FileExists;
 use Drupal\media\Entity\Media;
 use Drupal\tamper\TamperableItemInterface;
@@ -14,14 +13,14 @@ use GuzzleHttp\Client;
 /**
  * Plugin implementation of the create_media_tamper plugin.
  *
- * Parses a "url|alt|title" string, fetches the remote image, creates (or
- * reuses) a file and an associated utexas_image media entity, and returns the
- * media id for mapping into field_utevent_main_media.
+ * Fetches the remote image, creates (or reuses) a file and an associated
+ * utexas_image media entity, and returns the media id for mapping into
+ * field_utevent_main_media.
  *
  * @Tamper(
  *   id = "create_media_tamper",
  *   label = @Translation("Create Media Tamper"),
- *   description = @Translation("Create a utexas_image media entity from an image URL, alt, and title delimited by '|'."),
+ *   description = @Translation("Create a utexas_image media entity from an image URL"),
  *   category = "Other"
  * )
  */
@@ -37,16 +36,15 @@ class CreateMedia extends TamperBase {
 
     $media_type = 'utexas_image';
     $media_field = 'field_utexas_media_image';
-    $image_data = explode('|', $data);
-    $image = $image_data[0] ?? '';
-    $alt = $image_data[1] ?? '';
-    $title = $image_data[2] ?? '';
+    $items = $item ? $item->getSource() : [];
+    $alt = $items['image-alt'] ?? '';
+    $title = $items['image-title'] ?? '';
     $file_system = \Drupal::service('file_system');
-    $file_name = $this->getFileName($file_system, $image);
+    $file_name = $this->getFileName($file_system, $data);
 
     $file = $this->findFile($file_name);
     if (FALSE === $file) {
-      $file = $this->writeData($this->getContent($image), 'public://' . $file_name);
+      $file = $this->writeData($this->getContent($data), 'public://' . $file_name);
     }
 
     if (!$file) {
@@ -63,8 +61,8 @@ class CreateMedia extends TamperBase {
         'status' => 1,
         $media_field => [
           'target_id' => $file->id(),
-          'alt' => $alt !== '' ? $alt : $file_name,
-          'title' => $title !== '' ? $title : $file_name,
+          'alt' => $alt,
+          'title' => $title,
         ],
       ]);
       $media->save();
