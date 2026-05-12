@@ -2,6 +2,7 @@
 
 namespace Drupal\utevent_import\Plugin\Tamper;
 
+use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\File\Exception\FileException;
 use Drupal\Core\File\FileExists;
@@ -26,7 +27,7 @@ class UtEventCreateMedia extends TamperBase {
    * {@inheritdoc}
    */
   public function tamper($data, ?TamperableItemInterface $item = NULL) {
-    if (empty($data)) {
+    if (empty($data) || !UrlHelper::isValid($data, TRUE)) {
       return $data;
     }
 
@@ -35,8 +36,7 @@ class UtEventCreateMedia extends TamperBase {
     $items = $item ? $item->getSource() : [];
     $alt = $items['utevent_image_alt_json'] ?? $items['utevent_image_alt_xml'] ?? '';
     $title = $items['utevent_image_title_json'] ?? $items['utevent_image_title_xml'] ?? '';
-    $file_system = \Drupal::service('file_system');
-    $file_name = $this->getFileName($file_system, $data);
+    $file_name = $this->getFileName(\Drupal::service('file_system'), $data);
 
     $file = $this->findFile($file_name);
     if (FALSE === $file) {
@@ -72,13 +72,13 @@ class UtEventCreateMedia extends TamperBase {
    *
    * @param object $file_system
    *   The file system service.
-   * @param mixed $url
+   * @param string $url
    *   The source URL of the file.
    *
    * @return string
    *   A sanitized filename derived from the URL.
    */
-  protected function getFileName(object $file_system, mixed $url) {
+  protected function getFileName(object $file_system, string $url) {
     $filename = trim($file_system->basename($url), " \t\n\r\0\x0B.");
     [$filename] = explode('?', $filename);
     return $filename;
@@ -87,13 +87,13 @@ class UtEventCreateMedia extends TamperBase {
   /**
    * Fetch the remote file contents.
    *
-   * @param mixed $url
+   * @param string $url
    *   The source URL of the file.
    *
    * @return string|false
    *   The file contents as a string, or FALSE on failure.
    */
-  protected function getContent(mixed $url) {
+  protected function getContent(string $url) {
     $client = new Client();
     $response = $client->request('GET', $url);
     if ($response->getStatusCode() >= 400) {
