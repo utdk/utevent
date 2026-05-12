@@ -69,8 +69,16 @@ class UtEventCreateMedia extends TamperBase {
 
   /**
    * Derive a safe filename from the source URL.
+   *
+   * @param object $file_system
+   *   The file system service.
+   * @param mixed $url
+   *   The source URL of the file.
+   *
+   * @return string
+   *   A sanitized filename derived from the URL.
    */
-  protected function getFileName($file_system, $url) {
+  protected function getFileName(object $file_system, mixed $url) {
     $filename = trim($file_system->basename($url), " \t\n\r\0\x0B.");
     [$filename] = explode('?', $filename);
     return $filename;
@@ -78,8 +86,14 @@ class UtEventCreateMedia extends TamperBase {
 
   /**
    * Fetch the remote file contents.
+   *
+   * @param mixed $url
+   *   The source URL of the file.
+   *
+   * @return string|false
+   *   The file contents as a string, or FALSE on failure.
    */
-  protected function getContent($url) {
+  protected function getContent(mixed $url) {
     $client = new Client();
     $response = $client->request('GET', $url);
     if ($response->getStatusCode() >= 400) {
@@ -90,8 +104,16 @@ class UtEventCreateMedia extends TamperBase {
 
   /**
    * Write file data to the public scheme, reusing an existing file if present.
+   *
+   * @param mixed $data
+   *   The file data to write.
+   * @param string $destination
+   *   The destination URI, e.g. 'public://filename.jpg'.
+   *
+   * @return \Drupal\file\Entity\File|false
+   *   The created file entity or FALSE on failure.
    */
-  protected function writeData($data, $destination) {
+  protected function writeData(mixed $data, string $destination) {
     try {
       return \Drupal::service('file.repository')->writeData($data, $destination, FileExists::Rename);
     }
@@ -102,6 +124,12 @@ class UtEventCreateMedia extends TamperBase {
 
   /**
    * Look up an existing managed file by filename.
+   *
+   * @param string $file_name
+   *   The filename to search for.
+   *
+   * @return \Drupal\file\Entity\File|false
+   *   The file entity if found, or FALSE if not found.
    */
   protected function findFile(string $file_name) {
     $existing = \Drupal::entityTypeManager()
@@ -112,8 +140,16 @@ class UtEventCreateMedia extends TamperBase {
 
   /**
    * Look up an existing media entity referencing the given file id.
+   *
+   * @param int $fid
+   *   The file id to search for.
+   * @param string $media_field
+   *   The media field to search in.
+   *
+   * @return \Drupal\media\Entity\Media|false
+   *   The media entity if found, or FALSE if not found.
    */
-  protected function findMedia($fid, $media_field) {
+  protected function findMedia(int $fid, string $media_field) {
     $existing = \Drupal::entityTypeManager()
       ->getStorage('media')
       ->loadByProperties([$media_field => $fid]);
