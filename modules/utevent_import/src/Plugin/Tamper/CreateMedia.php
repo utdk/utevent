@@ -13,14 +13,10 @@ use GuzzleHttp\Client;
 /**
  * Plugin implementation of the create_media_tamper plugin.
  *
- * Fetches the remote image, creates (or reuses) a file and an associated
- * utexas_image media entity, and returns the media id for mapping into
- * field_utevent_main_media.
- *
  * @Tamper(
  *   id = "create_media_tamper",
  *   label = @Translation("Create Media Tamper"),
- *   description = @Translation("Create a utexas_image media entity from an image URL"),
+ *   description = @Translation("Create a utexas_image media entity from an image URL."),
  *   category = "Other"
  * )
  */

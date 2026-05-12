@@ -56,6 +56,12 @@ third_party_settings:
         source: utevent_tags_json
         weight: 1
         label: 'HTML entity decode'
+      93879a9c-526e-4ba9-9150-124d459863a8:
+        uuid: 93879a9c-526e-4ba9-9150-124d459863a8
+        plugin: skip_on_empty
+        source: utevent_tags_json
+        weight: -10
+        label: 'Skip tampers on empty'
       22c83101-ef00-41d5-b096-4e9c139db218:
         uuid: 22c83101-ef00-41d5-b096-4e9c139db218
         plugin: create_media_tamper
