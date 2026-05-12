@@ -36,7 +36,7 @@ class UtEventCreateMedia extends TamperBase {
     $items = $item ? $item->getSource() : [];
     $alt = $items['utevent_image_alt_json'] ?? $items['utevent_image_alt_xml'] ?? '';
     $title = $items['utevent_image_title_json'] ?? $items['utevent_image_title_xml'] ?? '';
-    $file_name = $this->getFileName(\Drupal::service('file_system'), $data);
+    $file_name = $this->getFileName($data);
 
     $file = $this->findFile($file_name);
     if (FALSE === $file) {
@@ -70,16 +70,14 @@ class UtEventCreateMedia extends TamperBase {
   /**
    * Derive a safe filename from the source URL.
    *
-   * @param object $file_system
-   *   The file system service.
    * @param string $url
    *   The source URL of the file.
    *
    * @return string
    *   A sanitized filename derived from the URL.
    */
-  protected function getFileName(object $file_system, string $url) {
-    $filename = trim($file_system->basename($url), " \t\n\r\0\x0B.");
+  protected function getFileName(string $url) {
+    $filename = trim(basename($url), " \t\n\r\0\x0B.");
     [$filename] = explode('?', $filename);
     return $filename;
   }
