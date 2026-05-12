@@ -33,8 +33,8 @@ class CreateMedia extends TamperBase {
     $media_type = 'utexas_image';
     $media_field = 'field_utexas_media_image';
     $items = $item ? $item->getSource() : [];
-    $alt = $items['utevent_image_alt_json'] ?? '';
-    $title = $items['utevent_image_title_json'] ?? '';
+    $alt = $items['utevent_image_alt_json'] ?? $items['utevent_image_alt_xml'] ?? '';
+    $title = $items['utevent_image_title_json'] ?? $items['utevent_image_title_xml'] ?? '';
     $file_system = \Drupal::service('file_system');
     $file_name = $this->getFileName($file_system, $data);
 

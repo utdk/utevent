@@ -36,7 +36,7 @@ third_party_settings:
         uuid: 2ce21c56-d907-4e09-a22f-021c21472483
         plugin: explode
         source: utevent_tags_json
-        weight: 0
+        weight: -9
         label: Explode
       695143b5-4f46-4594-a055-3cff42356572:
         uuid: 695143b5-4f46-4594-a055-3cff42356572
@@ -48,13 +48,13 @@ third_party_settings:
         uuid: 547448a6-8239-4f4d-b4fa-2acf521763f8
         plugin: html_entity_decode
         source: utevent_ocation_json
-        weight: 1
+        weight: -9
         label: 'HTML entity decode'
       56199663-fb02-4300-9d9e-99611f0a2906:
         uuid: 56199663-fb02-4300-9d9e-99611f0a2906
         plugin: html_entity_decode
         source: utevent_tags_json
-        weight: 1
+        weight: -8
         label: 'HTML entity decode'
       93879a9c-526e-4ba9-9150-124d459863a8:
         uuid: 93879a9c-526e-4ba9-9150-124d459863a8
@@ -62,8 +62,8 @@ third_party_settings:
         source: utevent_tags_json
         weight: -10
         label: 'Skip tampers on empty'
-      22c83101-ef00-41d5-b096-4e9c139db218:
-        uuid: 22c83101-ef00-41d5-b096-4e9c139db218
+      cb1186a0-69e7-412d-b6e4-c42db1402a54:
+        uuid: cb1186a0-69e7-412d-b6e4-c42db1402a54
         plugin: create_media_tamper
         source: utevent_image_url_json
         weight: 0
