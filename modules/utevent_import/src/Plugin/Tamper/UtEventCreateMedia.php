@@ -11,16 +11,16 @@ use Drupal\tamper\TamperBase;
 use GuzzleHttp\Client;
 
 /**
- * Plugin implementation of the create_media_tamper plugin.
+ * Plugin implementation of the utevent_create_media_tamper plugin.
  *
  * @Tamper(
- *   id = "create_media_tamper",
+ *   id = "utevent_create_media_tamper",
  *   label = @Translation("Create Media Tamper"),
  *   description = @Translation("Create a utexas_image media entity from an image URL."),
  *   category = "Other"
  * )
  */
-class CreateMedia extends TamperBase {
+class UtEventCreateMedia extends TamperBase {
 
   /**
    * {@inheritdoc}

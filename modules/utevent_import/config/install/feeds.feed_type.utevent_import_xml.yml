@@ -64,7 +64,7 @@ third_party_settings:
         label: 'Skip tampers on empty'
       76244bae-42f7-4a15-969c-9b14bd8383aa:
         uuid: 76244bae-42f7-4a15-969c-9b14bd8383aa
-        plugin: create_media_tamper
+        plugin: utevent_create_media_tamper
         source: utevent_image_url_xml
         weight: 0
         label: 'Create Media Tamper'
