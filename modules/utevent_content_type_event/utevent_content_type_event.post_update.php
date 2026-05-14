@@ -20,7 +20,7 @@ function utevent_content_type_event_post_update_configure_xmlsitemap() {
       if (!empty($config_path)) {
         $data = Yaml::parse(file_get_contents($config_path));
         if (is_array($data)) {
-          $config->setData($data)->save(TRUE);
+          $config->setData($data)->save();
         }
       }
     }
