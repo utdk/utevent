@@ -36,3 +36,12 @@ function utevent_import_update_10000() {
     'utevent_import',
   ], TRUE);
 }
+
+/**
+ * Import main image (#420).
+ */
+function utevent_import_update_10001() {
+  \Drupal::service('features.manager')->import([
+    'utevent_import',
+  ], TRUE);
+}

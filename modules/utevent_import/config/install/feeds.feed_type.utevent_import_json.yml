@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.utevent_event.field_utevent_datetime
     - field.field.node.utevent_event.field_utevent_featured
     - field.field.node.utevent_event.field_utevent_location
+    - field.field.node.utevent_event.field_utevent_main_media
     - field.field.node.utevent_event.field_utevent_status
     - field.field.node.utevent_event.field_utevent_tags
     - node.type.utevent_event
@@ -35,7 +36,7 @@ third_party_settings:
         uuid: 2ce21c56-d907-4e09-a22f-021c21472483
         plugin: explode
         source: utevent_tags_json
-        weight: 0
+        weight: -9
         label: Explode
       695143b5-4f46-4594-a055-3cff42356572:
         uuid: 695143b5-4f46-4594-a055-3cff42356572
@@ -47,19 +48,32 @@ third_party_settings:
         uuid: 547448a6-8239-4f4d-b4fa-2acf521763f8
         plugin: html_entity_decode
         source: utevent_ocation_json
-        weight: 1
+        weight: -9
         label: 'HTML entity decode'
       56199663-fb02-4300-9d9e-99611f0a2906:
         uuid: 56199663-fb02-4300-9d9e-99611f0a2906
         plugin: html_entity_decode
         source: utevent_tags_json
-        weight: 1
+        weight: -8
         label: 'HTML entity decode'
+      93879a9c-526e-4ba9-9150-124d459863a8:
+        uuid: 93879a9c-526e-4ba9-9150-124d459863a8
+        plugin: skip_on_empty
+        source: utevent_tags_json
+        weight: -10
+        label: 'Skip tampers on empty'
+      cb1186a0-69e7-412d-b6e4-c42db1402a54:
+        uuid: cb1186a0-69e7-412d-b6e4-c42db1402a54
+        plugin: utevent_create_media_tamper
+        source: utevent_image_url_json
+        weight: 0
+        label: 'Create Media Tamper'
 label: 'Events import JSON'
 id: utevent_import_json
 description: 'Imports a JSON file to the Event content type.'
 help: ''
 import_period: 3600
+import_period_per_feed: false
 fetcher: http
 fetcher_configuration:
   auto_detect_feeds: false
@@ -152,6 +166,21 @@ custom_sources:
     label: Featured
     machine_name: utevent_featured_json
     type: json
+  utevent_image_url_json:
+    value: image-url
+    label: 'Image URL'
+    machine_name: utevent_image_url_json
+    type: json
+  utevent_image_alt_json:
+    value: image-alt
+    label: 'Image alt'
+    machine_name: utevent_image_alt_json
+    type: json
+  utevent_image_title_json:
+    value: image-title
+    label: 'Image title'
+    machine_name: utevent_image_title_json
+    type: json
 mappings:
   -
     target: title
@@ -223,3 +252,20 @@ mappings:
     settings: {  }
     unique:
       guid: 1
+  -
+    target: field_utevent_main_media
+    map:
+      target_id: utevent_image_url_json
+    settings:
+      language: ''
+      reference_by: mid
+      autocreate: 0
+      autocreate_bundle: utexas_image
+  -
+    target: temporary_target
+    map:
+      temporary: utevent_image_alt_json
+  -
+    target: temporary_target
+    map:
+      temporary: utevent_image_title_json

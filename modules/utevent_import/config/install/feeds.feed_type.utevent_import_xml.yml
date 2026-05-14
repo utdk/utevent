@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.utevent_event.field_utevent_datetime
     - field.field.node.utevent_event.field_utevent_featured
     - field.field.node.utevent_event.field_utevent_location
+    - field.field.node.utevent_event.field_utevent_main_media
     - field.field.node.utevent_event.field_utevent_status
     - field.field.node.utevent_event.field_utevent_tags
     - node.type.utevent_event
@@ -35,7 +36,7 @@ third_party_settings:
         uuid: 9cc5e7ff-718d-4da6-9a1b-cd5c28a4b93a
         plugin: explode
         source: utevent_tags_xml
-        weight: 0
+        weight: -9
         label: Explode
       0a9bc52a-f7f7-4821-9271-0f35585c3c9e:
         uuid: 0a9bc52a-f7f7-4821-9271-0f35585c3c9e
@@ -53,13 +54,26 @@ third_party_settings:
         uuid: 7fd14beb-cbb9-441e-98b1-8def207c9041
         plugin: html_entity_decode
         source: utevent_tags_xml
-        weight: 1
+        weight: -8
         label: 'HTML entity decode'
+      da29dc45-2e80-40b4-b61e-2fbaa0893310:
+        uuid: da29dc45-2e80-40b4-b61e-2fbaa0893310
+        plugin: skip_on_empty
+        source: utevent_tags_xml
+        weight: -10
+        label: 'Skip tampers on empty'
+      76244bae-42f7-4a15-969c-9b14bd8383aa:
+        uuid: 76244bae-42f7-4a15-969c-9b14bd8383aa
+        plugin: utevent_create_media_tamper
+        source: utevent_image_url_xml
+        weight: 0
+        label: 'Create Media Tamper'
 label: 'Events import XML'
 id: utevent_import_xml
 description: 'Imports an XML file to the Event content type.'
 help: ''
 import_period: 3600
+import_period_per_feed: false
 fetcher: http
 fetcher_configuration:
   auto_detect_feeds: false
@@ -177,6 +191,27 @@ custom_sources:
     raw: false
     inner: false
     type: xml
+  utevent_image_url_xml:
+    label: 'Image URL'
+    machine_name: utevent_image_url_xml
+    value: image-url
+    raw: false
+    inner: false
+    type: xml
+  utevent_image_alt_xml:
+    label: 'Image alt'
+    machine_name: utevent_image_alt_xml
+    value: image-alt
+    raw: false
+    inner: false
+    type: xml
+  utevent_image_title_xml:
+    label: 'Image title'
+    machine_name: utevent_image_title_xml
+    value: image-title
+    raw: false
+    inner: false
+    type: xml
 mappings:
   -
     target: title
@@ -248,3 +283,20 @@ mappings:
     settings: {  }
     unique:
       guid: 1
+  -
+    target: field_utevent_main_media
+    map:
+      target_id: utevent_image_url_xml
+    settings:
+      language: ''
+      reference_by: mid
+      autocreate: 0
+      autocreate_bundle: utexas_image
+  -
+    target: temporary_target
+    map:
+      temporary: utevent_image_alt_xml
+  -
+    target: temporary_target
+    map:
+      temporary: utevent_image_title_xml
