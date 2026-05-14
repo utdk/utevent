@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\utevent_readonly\Functional;
 
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use Drupal\Tests\BrowserTestBase;
 
 /**
@@ -9,6 +10,7 @@ use Drupal\Tests\BrowserTestBase;
  *
  * @group utexas
  */
+#[RunTestsInSeparateProcesses]
 class ReadOnlyTest extends BrowserTestBase {
 
   /**
@@ -40,6 +42,7 @@ class ReadOnlyTest extends BrowserTestBase {
     'utevent_vocabulary_tags',
     'utevent_view_listing_page',
     'views_ui',
+    'field_ui',
   ];
 
   /**
@@ -63,12 +66,9 @@ class ReadOnlyTest extends BrowserTestBase {
       '/admin/structure/types/manage/page/form-display',
       '/admin/structure/types/manage/page/display',
       '/admin/structure/types/manage/page/fields/add-field',
-      '/admin/structure/block/block-content/manage/basic/fields',
-      '/admin/structure/block/block-content/manage/basic/form-display',
-      '/admin/structure/block/block-content/manage/basic/display',
-      '/admin/structure/taxonomy/manage/tags/overview/fields',
-      '/admin/structure/taxonomy/manage/tags/overview/form-display',
-      '/admin/structure/taxonomy/manage/tags/overview/display',
+      '/admin/structure/block-content/manage/basic/fields',
+      '/admin/structure/block-content/manage/basic/form-display',
+      '/admin/structure/block-content/manage/basic/display',
       '/admin/structure/views/view/content',
       '/admin/structure/views/view/content/delete',
     ];
@@ -79,7 +79,7 @@ class ReadOnlyTest extends BrowserTestBase {
     // Pages that should be forbidden.
     $fourohthree = [
       '/admin/structure/types/manage/utevent_event/fields/add-field',
-      '/admin/structure/block/block-content/manage/utevent_event_listing/fields/add-field',
+      '/admin/structure/block-content/manage/utevent_event_listing/fields/add-field',
       '/admin/structure/taxonomy/manage/utevent_location/overview/fields/add-field',
       '/admin/structure/taxonomy/manage/utevent_tags/overview/fields/add-field',
       '/admin/structure/taxonomy/manage/utevent_location/delete',
@@ -93,10 +93,9 @@ class ReadOnlyTest extends BrowserTestBase {
     $read_only = [
       '/admin/structure/types/manage/utevent_event/fields',
       '/admin/structure/types/manage/utevent_event/form-display',
-      '/admin/structure/types/manage/utevent_event/display',
-      '/admin/structure/block/block-content/manage/utevent_event_listing/fields',
-      '/admin/structure/block/block-content/manage/utevent_event_listing/form-display',
-      '/admin/structure/block/block-content/manage/utevent_event_listing/display',
+      '/admin/structure/block-content/manage/utevent_event_listing/fields',
+      '/admin/structure/block-content/manage/utevent_event_listing/form-display',
+      '/admin/structure/block-content/manage/utevent_event_listing/display',
       '/admin/structure/taxonomy/manage/utevent_location/overview/fields',
       '/admin/structure/taxonomy/manage/utevent_location/overview/form-display',
       '/admin/structure/taxonomy/manage/utevent_location/overview/display',

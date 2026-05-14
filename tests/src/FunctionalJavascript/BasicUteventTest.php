@@ -12,12 +12,14 @@ use Drupal\Tests\node\Traits\NodeCreationTrait;
 use Drupal\Tests\TestFileCreationTrait;
 use Drupal\utevent\Permissions as UteventPermissions;
 use Drupal\utexas\Permissions as UtexasPermissions;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Test all aspects of Event CRUD functionality.
  *
  * @group utexas
  */
+#[RunTestsInSeparateProcesses]
 class BasicUteventTest extends WebDriverTestBase {
 
   use TestFileCreationTrait;
