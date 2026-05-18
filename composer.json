@@ -15,13 +15,13 @@
     "source": "https://github.austin.utexas.edu/eis1-wcs/utevent"
   },
   "require": {
-    "drupal/addtocal_augment": "1.2.4",
+    "drupal/addtocal_augment": "1.2.5",
     "drupal/date_augmenter": "1.1.2",
     "drupal/feeds": "3.2.0",
     "drupal/feeds_ex": "1.0.0-beta5",
     "drupal/feeds_tamper": "2.0.0-rc1",
     "drupal/fullcalendar_view": "5.2.5",
-    "drupal/smart_date": "4.2.4",
+    "drupal/smart_date": "4.2.5",
     "utexas/utdk_profile": "^3.29.0 || dev-develop"
   },
   "config": {
